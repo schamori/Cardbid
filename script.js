@@ -17,31 +17,58 @@ function updateGalleryCarousel() {
 
   if (!track) return;
 
-  // Update transform
-  track.style.transform = `translateX(calc(-50% + ${-galleryCurrentIndex * 316}px)) translateY(-50%)`;
-
-  // Update card styles
   const cards = track.querySelectorAll('.carousel-card');
+  const totalCards = cards.length;
+  const radius = 200; // Radius of the circular arrangement
+  const angleStep = (Math.PI * 2) / totalCards; // Divide circle into equal parts
+
+  // Position cards in a circle
   cards.forEach((card, index) => {
-    const distance = Math.abs(index - galleryCurrentIndex);
-    const opacity = distance === 0 ? 1 : distance === 1 ? 0.9 : 0.8;
-    const blur = distance === 0 ? 0 : distance === 1 ? 1 : 2;
-    const scale = distance === 0 ? 1 : 0.95;
+    // Calculate position relative to current index
+    const relativeIndex = index - galleryCurrentIndex;
+    const angle = relativeIndex * angleStep;
 
-    card.style.opacity = opacity;
-    card.style.filter = `blur(${blur}px)`;
-    card.style.transform = `scale(${scale})`;
+    // Calculate x and y positions on the circle
+    const x = Math.sin(angle) * radius;
+    const y = -Math.cos(angle) * radius * 0.3; // Flatten the circle vertically
 
-    if (index === galleryCurrentIndex) {
+    // Calculate distance from center for styling
+    const distance = Math.abs(relativeIndex);
+
+    // Scale and opacity based on distance from center
+    let scale = 1;
+    let opacity = 1;
+    let zIndex = 5;
+
+    if (distance === 0) {
+      // Center card (active)
+      scale = 1.15;
+      opacity = 1;
+      zIndex = 10;
       card.classList.add('active');
+    } else if (distance === 1) {
+      // Adjacent cards
+      scale = 0.9;
+      opacity = 0.85;
+      zIndex = 8;
+      card.classList.remove('active');
     } else {
+      // Far cards
+      scale = 0.75;
+      opacity = 0.6;
+      zIndex = 5;
       card.classList.remove('active');
     }
+
+    // Apply transformations
+    card.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
+    card.style.opacity = opacity;
+    card.style.zIndex = zIndex;
   });
 
-  // Update button states
-  if (prevBtn) prevBtn.disabled = galleryCurrentIndex === 0;
-  if (nextBtn) nextBtn.disabled = galleryCurrentIndex === galleryCards.length - 1;
+  // Update button states - allow circular navigation
+  if (prevBtn) prevBtn.disabled = false;
+  if (nextBtn) nextBtn.disabled = false;
 
   // Update info
   if (infoTitle) infoTitle.textContent = galleryCards[galleryCurrentIndex].name;
@@ -49,17 +76,19 @@ function updateGalleryCarousel() {
 }
 
 function handleGalleryPrev() {
-  if (galleryCurrentIndex > 0) {
-    galleryCurrentIndex--;
-    updateGalleryCarousel();
+  galleryCurrentIndex--;
+  if (galleryCurrentIndex < 0) {
+    galleryCurrentIndex = galleryCards.length - 1;
   }
+  updateGalleryCarousel();
 }
 
 function handleGalleryNext() {
-  if (galleryCurrentIndex < galleryCards.length - 1) {
-    galleryCurrentIndex++;
-    updateGalleryCarousel();
+  galleryCurrentIndex++;
+  if (galleryCurrentIndex >= galleryCards.length) {
+    galleryCurrentIndex = 0;
   }
+  updateGalleryCarousel();
 }
 
 // Top4 Carousel Functionality

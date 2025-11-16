@@ -237,6 +237,15 @@ body {
   z-index: 10;
 }
 
+/* Card Images */
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
 .card-placeholder {
   width: 100%;
   height: 100%;
@@ -251,6 +260,23 @@ body {
 
 .card-placeholder.main {
   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+/* Hero Characters */
+.hero-characters {
+  position: absolute;
+  right: clamp(20px, 5vw, 105px);
+  bottom: 0;
+  width: min(600px, 40vw);
+  height: auto;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.characters-image {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .hero-card-1 {
@@ -417,27 +443,33 @@ body {
 
 .carousel-container {
   position: relative;
-  height: 400px;
-  overflow: hidden;
+  height: 500px;
+  overflow: visible;
 }
 
 .carousel-track {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  gap: 42px;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .carousel-card {
-  flex-shrink: 0;
+  position: absolute;
   width: 274px;
   height: 383px;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  left: 50%;
+  top: 50%;
+  margin-left: -137px;
+  margin-top: -191.5px;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 16px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-card.active {
+  z-index: 10;
+  transform: scale(1.1) translateY(-20px);
 }
 
 .card-image-placeholder {
@@ -553,10 +585,36 @@ body {
   color: #10172d;
 }
 
+.top4 .carousel-wrapper {
+  position: relative;
+  margin-bottom: clamp(40px, 6vh, 80px);
+}
+
+.top4 .carousel-container {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.top4 .carousel-track {
+  display: flex;
+  gap: 54px;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 50px;
+}
+
 .top4-card {
   flex-shrink: 0;
   width: 274px;
   text-align: center;
+}
+
+.top4-card .card-image {
+  width: 100%;
+  height: 383px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 16px;
 }
 
 .card-badge {
