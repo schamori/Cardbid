@@ -197,9 +197,9 @@ body {
   right: 0;
   background: linear-gradient(
     to bottom,
-    var(--royal-blue) 0%,
-    var(--moody-purple) 35%,
-    #4a5abf 65%,
+    var(--pale-blue) 0%,
+    var(--moody-purple) 40%,
+    var(--royal-blue) 70%,
     var(--dark-blue) 100%
   );
   opacity: 0;
@@ -257,7 +257,7 @@ body {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 18px;
-  color: var(--text-white);
+  color: var(--dark-blue);
   margin: 0;
 }
 
@@ -278,7 +278,8 @@ body {
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--dark-blue);
+  opacity: 0.85;
   text-decoration: none;
   display: block;
   transition: all 0.2s ease;
@@ -287,6 +288,7 @@ body {
 
 .mega-menu-list a:hover {
   color: var(--moody-purple);
+  opacity: 1;
   transform: translateX(4px);
 }
 
