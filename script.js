@@ -1,3 +1,32 @@
+// Mega Menu Functionality
+const shopButton = document.querySelector('.nav-shop');
+const megaMenu = document.querySelector('.mega-menu');
+const navigation = document.querySelector('.navigation');
+
+let megaMenuTimeout;
+
+// Show mega menu on hover
+shopButton.addEventListener('mouseenter', () => {
+  clearTimeout(megaMenuTimeout);
+  megaMenu.classList.add('active');
+});
+
+// Hide mega menu when leaving both the button and menu
+shopButton.addEventListener('mouseleave', () => {
+  megaMenuTimeout = setTimeout(() => {
+    megaMenu.classList.remove('active');
+  }, 100);
+});
+
+megaMenu.addEventListener('mouseenter', () => {
+  clearTimeout(megaMenuTimeout);
+  megaMenu.classList.add('active');
+});
+
+megaMenu.addEventListener('mouseleave', () => {
+  megaMenu.classList.remove('active');
+});
+
 // Gallery Carousel Functionality
 let galleryCurrentIndex = 2;
 const galleryCards = [
