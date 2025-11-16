@@ -1,0 +1,49 @@
+
+.pre-footer {
+  position: relative;
+  padding: clamp(60px, 10vh, 120px) clamp(20px, 5vw, 80px);
+  z-index: 10;
+}
+
+.pre-footer-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  background: #6974dc;
+  border-radius: 48px;
+  padding: clamp(50px, 8vh, 100px) clamp(30px, 5vw, 80px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pre-footer-title {
+  font-size: clamp(24px, 3.5vw, 42px);
+  font-weight: 700;
+  color: white;
+  margin-bottom: clamp(30px, 5vh, 50px);
+}
+
+.pre-footer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.contact-button {
+  background: white;
+  color: #1c294c;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: clamp(14px, 1.2vw, 16px);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 200px;
+}
+
+.contact-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
