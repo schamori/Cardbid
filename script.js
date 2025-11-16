@@ -19,50 +19,57 @@ function updateGalleryCarousel() {
 
   const cards = track.querySelectorAll('.carousel-card');
   const totalCards = cards.length;
-  const radius = 200; // Radius of the circular arrangement
-  const angleStep = (Math.PI * 2) / totalCards; // Divide circle into equal parts
+  const cardWidth = 316; // Card width + gap
 
-  // Position cards in a circle
+  // Position cards in a horizontal line
   cards.forEach((card, index) => {
     // Calculate position relative to current index
     const relativeIndex = index - galleryCurrentIndex;
-    const angle = relativeIndex * angleStep;
-
-    // Calculate x and y positions on the circle
-    const x = Math.sin(angle) * radius;
-    const y = -Math.cos(angle) * radius * 0.3; // Flatten the circle vertically
-
-    // Calculate distance from center for styling
     const distance = Math.abs(relativeIndex);
 
-    // Scale and opacity based on distance from center
+    // Horizontal position
+    const x = relativeIndex * cardWidth;
+
+    // Scale, opacity, and blur based on distance from center
     let scale = 1;
     let opacity = 1;
+    let blur = 0;
     let zIndex = 5;
 
     if (distance === 0) {
-      // Center card (active)
-      scale = 1.15;
+      // Center card (active) - sharp focus
+      scale = 1.05;
       opacity = 1;
+      blur = 0;
       zIndex = 10;
       card.classList.add('active');
     } else if (distance === 1) {
-      // Adjacent cards
-      scale = 0.9;
-      opacity = 0.85;
+      // Adjacent cards - slight blur
+      scale = 0.95;
+      opacity = 0.8;
+      blur = 2;
       zIndex = 8;
       card.classList.remove('active');
+    } else if (distance === 2) {
+      // Second-level cards - more blur
+      scale = 0.85;
+      opacity = 0.5;
+      blur = 4;
+      zIndex = 6;
+      card.classList.remove('active');
     } else {
-      // Far cards
+      // Far cards - heavy blur
       scale = 0.75;
-      opacity = 0.6;
+      opacity = 0.3;
+      blur = 6;
       zIndex = 5;
       card.classList.remove('active');
     }
 
     // Apply transformations
-    card.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
+    card.style.transform = `translate(calc(-50% + ${x}px), -50%) scale(${scale})`;
     card.style.opacity = opacity;
+    card.style.filter = `blur(${blur}px)`;
     card.style.zIndex = zIndex;
   });
 

@@ -448,13 +448,16 @@ body {
 .carousel-container {
   position: relative;
   height: 500px;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .carousel-track {
   position: relative;
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -462,18 +465,19 @@ body {
   position: absolute;
   width: 274px;
   height: 383px;
-  left: 50%;
-  top: 50%;
-  margin-left: -137px;
-  margin-top: -191.5px;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 16px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .carousel-card.active {
   z-index: 10;
-  transform: scale(1.1) translateY(-20px);
+  filter: blur(0px);
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.05);
 }
 
 .card-image-placeholder {
