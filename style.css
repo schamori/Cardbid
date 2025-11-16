@@ -5,20 +5,27 @@
   padding: 0;
 }
 
-/* Color Palette - Cardbid Style Guide */
+/* Color Palette - Cardbid Official Style Guide */
 :root {
-  --primary-dark: #1e2741;
-  --primary-blue: #2c407c;
-  --accent-lavender: #8b7dd8;
-  --accent-purple: #6974dc;
+  --dark-blue: #1e2741;
+  --royal-blue: #3a5ab6;
+  --moody-purple: #6973db;
+  --pale-blue: #e6eeff;
   --text-white: #ffffff;
   --bg-light: rgba(255, 255, 255, 0.98);
   --shadow-default: 0 20px 60px rgba(0, 0, 0, 0.2);
 }
 
+/* Typography */
+:root {
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--primary-dark);
+  font-family: var(--font-body);
+  font-weight: 400;
+  background: var(--dark-blue);
   color: var(--text-white);
   overflow-x: hidden;
   margin: 0;
@@ -31,7 +38,7 @@ body {
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
-  background: var(--primary-dark);
+  background: var(--dark-blue);
 }
 
 /* Background Gradients */
@@ -42,7 +49,7 @@ body {
   right: 0;
   width: 100%;
   height: min(1118px, 100vh);
-  background: linear-gradient(180deg, var(--primary-dark) 0%, var(--primary-blue) 60%, rgba(30, 39, 65, 0.8) 100%);
+  background: linear-gradient(180deg, var(--dark-blue) 0%, var(--royal-blue) 60%, rgba(58, 90, 182, 0.5) 100%);
   z-index: 0;
 }
 
@@ -53,7 +60,7 @@ body {
   top: min(1108px, 100vh);
   width: 100%;
   min-height: 2000px;
-  background: linear-gradient(180deg, rgba(30, 39, 65, 0.8) 0%, var(--primary-blue) 40%, var(--primary-dark) 100%);
+  background: linear-gradient(180deg, rgba(58, 90, 182, 0.5) 0%, var(--royal-blue) 40%, var(--dark-blue) 100%);
   z-index: 0;
   pointer-events: none;
 }
@@ -100,7 +107,7 @@ body {
 }
 
 .nav-link {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-weight: 700;
   font-size: clamp(14px, 1.2vw, 18px);
   color: var(--text-white);
@@ -114,7 +121,7 @@ body {
 }
 
 .nav-link:hover {
-  color: var(--accent-lavender);
+  color: var(--moody-purple);
 }
 
 .dropdown-icon {
@@ -152,13 +159,13 @@ body {
 .cart-price {
   font-weight: 700;
   font-size: clamp(12px, 1vw, 16px);
-  color: var(--primary-dark);
+  color: var(--dark-blue);
 }
 
 .cart-icon {
   width: 24px;
   height: 24px;
-  color: var(--primary-dark);
+  color: var(--dark-blue);
 }
 
 /* Hero Styles */
@@ -176,6 +183,7 @@ body {
 }
 
 .hero-title {
+  font-family: var(--font-display);
   font-size: clamp(32px, 5vw, 72px);
   font-weight: 700;
   line-height: 1.1;
@@ -185,6 +193,8 @@ body {
 }
 
 .hero-description {
+  font-family: var(--font-body);
+  font-weight: 400;
   font-size: clamp(16px, 1.5vw, 24px);
   line-height: 1.5;
   color: var(--text-white);
@@ -212,24 +222,24 @@ body {
 
 .hero-button.primary {
   background: var(--text-white);
-  color: var(--primary-dark);
+  color: var(--dark-blue);
 }
 
 .hero-button.primary:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--pale-blue);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
 }
 
 .hero-button.secondary {
-  background: var(--accent-lavender);
+  background: var(--moody-purple);
   color: var(--text-white);
 }
 
 .hero-button.secondary:hover {
-  background: var(--accent-purple);
+  background: var(--royal-blue);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(139, 125, 216, 0.4);
+  box-shadow: 0 8px 24px rgba(105, 115, 219, 0.4);
 }
 
 .hero-cards {
@@ -349,9 +359,10 @@ body {
 }
 
 .features-title {
+  font-family: var(--font-display);
   font-size: clamp(28px, 4vw, 48px);
   font-weight: 700;
-  color: var(--primary-dark);
+  color: var(--dark-blue);
   text-align: center;
   margin-bottom: clamp(40px, 6vh, 80px);
 }
@@ -372,21 +383,24 @@ body {
 
 .feature-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 60px rgba(139, 125, 216, 0.2);
+  box-shadow: 0 20px 60px rgba(105, 115, 219, 0.2);
 }
 
 .feature-title {
+  font-family: var(--font-display);
   font-size: clamp(20px, 2vw, 28px);
-  font-weight: 700;
-  color: var(--accent-purple);
+  font-weight: 600;
+  color: var(--moody-purple);
   margin-bottom: 16px;
   line-height: 1.3;
 }
 
 .feature-description {
+  font-family: var(--font-body);
+  font-weight: 400;
   font-size: clamp(14px, 1.2vw, 18px);
   line-height: 1.6;
-  color: var(--primary-dark);
+  color: var(--dark-blue);
   opacity: 0.85;
 }
 
@@ -417,13 +431,14 @@ body {
 }
 
 .gallery-title {
+  font-family: var(--font-display);
   font-size: clamp(28px, 4vw, 48px);
   font-weight: 700;
-  color: var(--primary-dark);
+  color: var(--dark-blue);
 }
 
 .view-all-button {
-  background: var(--accent-lavender);
+  background: var(--moody-purple);
   color: var(--text-white);
   padding: 14px 28px;
   border-radius: 99px;
@@ -435,9 +450,9 @@ body {
 }
 
 .view-all-button:hover {
-  background: var(--accent-purple);
+  background: var(--royal-blue);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(139, 125, 216, 0.4);
+  box-shadow: 0 8px 24px rgba(105, 115, 219, 0.4);
 }
 
 .carousel-wrapper {
@@ -500,7 +515,7 @@ body {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: var(--primary-dark);
+  background: var(--dark-blue);
   border: none;
   cursor: pointer;
   display: flex;
@@ -513,7 +528,7 @@ body {
 }
 
 .carousel-nav:hover:not(:disabled) {
-  background: var(--accent-lavender);
+  background: var(--moody-purple);
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -540,15 +555,18 @@ body {
 }
 
 .info-title {
+  font-family: var(--font-display);
   font-size: clamp(20px, 2vw, 28px);
-  font-weight: 700;
-  color: var(--primary-dark);
+  font-weight: 600;
+  color: var(--dark-blue);
   margin-bottom: 8px;
 }
 
 .info-subtitle {
+  font-family: var(--font-body);
+  font-weight: 400;
   font-size: clamp(14px, 1.2vw, 16px);
-  color: var(--primary-dark);
+  color: var(--dark-blue);
   opacity: 0.7;
   margin-bottom: 24px;
 }
@@ -556,11 +574,11 @@ body {
 .info-status {
   display: inline-block;
   padding: 12px 32px;
-  border: 2.5px solid var(--accent-lavender);
+  border: 2.5px solid var(--moody-purple);
   border-radius: 99px;
   font-weight: 600;
   font-size: clamp(14px, 1.2vw, 18px);
-  color: var(--accent-purple);
+  color: var(--moody-purple);
 }
 
 /* Top4 Styles */
@@ -590,9 +608,10 @@ body {
 }
 
 .top4-title {
+  font-family: var(--font-display);
   font-size: clamp(28px, 4vw, 48px);
   font-weight: 700;
-  color: var(--primary-dark);
+  color: var(--dark-blue);
 }
 
 .top4 .carousel-wrapper {
@@ -629,7 +648,7 @@ body {
 
 .card-badge {
   display: inline-block;
-  background: var(--accent-lavender);
+  background: var(--moody-purple);
   padding: 10px 24px;
   border-radius: 99px;
   margin-bottom: 16px;
@@ -642,16 +661,19 @@ body {
 }
 
 .card-title {
+  font-family: var(--font-display);
   font-size: clamp(18px, 1.8vw, 24px);
-  font-weight: 700;
-  color: var(--primary-dark);
+  font-weight: 600;
+  color: var(--dark-blue);
   margin-top: 16px;
   margin-bottom: 8px;
 }
 
 .card-price {
+  font-family: var(--font-body);
+  font-weight: 400;
   font-size: clamp(14px, 1.2vw, 16px);
-  color: var(--primary-dark);
+  color: var(--dark-blue);
   opacity: 0.7;
 }
 
@@ -665,7 +687,7 @@ body {
 .pre-footer-container {
   max-width: 1600px;
   margin: 0 auto;
-  background: var(--accent-lavender);
+  background: var(--moody-purple);
   border-radius: 48px;
   padding: clamp(50px, 8vh, 100px) clamp(30px, 5vw, 80px);
   text-align: center;
@@ -675,6 +697,7 @@ body {
 }
 
 .pre-footer-title {
+  font-family: var(--font-display);
   font-size: clamp(24px, 3.5vw, 42px);
   font-weight: 700;
   color: var(--text-white);
@@ -690,7 +713,7 @@ body {
 
 .contact-button {
   background: var(--text-white);
-  color: var(--primary-dark);
+  color: var(--dark-blue);
   padding: 14px 32px;
   border-radius: 12px;
   font-weight: 600;
@@ -709,7 +732,7 @@ body {
 /* Footer Styles */
 .footer {
   position: relative;
-  background: var(--primary-dark);
+  background: var(--dark-blue);
   padding: clamp(60px, 10vh, 100px) clamp(20px, 5vw, 105px) clamp(40px, 6vh, 60px);
   z-index: 10;
 }
@@ -739,7 +762,7 @@ body {
 }
 
 .footer-nav a:hover {
-  color: var(--accent-lavender);
+  color: var(--moody-purple);
 }
 
 .footer-contact h4 {
@@ -795,7 +818,7 @@ body {
 
 .footer-socials a:hover,
 .footer-legal a:hover {
-  color: var(--accent-lavender);
+  color: var(--moody-purple);
 }
 
 /* Mobile Responsive Styles */
