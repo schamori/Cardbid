@@ -1,3 +1,32 @@
+// Mega Menu Functionality
+const shopButton = document.querySelector('.nav-shop');
+const megaMenu = document.querySelector('.mega-menu');
+const navigation = document.querySelector('.navigation');
+
+let megaMenuTimeout;
+
+// Show mega menu on hover
+shopButton.addEventListener('mouseenter', () => {
+  clearTimeout(megaMenuTimeout);
+  megaMenu.classList.add('active');
+});
+
+// Hide mega menu when leaving both the button and menu
+shopButton.addEventListener('mouseleave', () => {
+  megaMenuTimeout = setTimeout(() => {
+    megaMenu.classList.remove('active');
+  }, 100);
+});
+
+megaMenu.addEventListener('mouseenter', () => {
+  clearTimeout(megaMenuTimeout);
+  megaMenu.classList.add('active');
+});
+
+megaMenu.addEventListener('mouseleave', () => {
+  megaMenu.classList.remove('active');
+});
+
 // Gallery Carousel Functionality
 let galleryCurrentIndex = 2;
 const galleryCards = [
@@ -17,31 +46,65 @@ function updateGalleryCarousel() {
 
   if (!track) return;
 
-  // Update transform
-  track.style.transform = `translateX(calc(-50% + ${-galleryCurrentIndex * 316}px)) translateY(-50%)`;
-
-  // Update card styles
   const cards = track.querySelectorAll('.carousel-card');
+  const totalCards = cards.length;
+  const cardWidth = 316; // Card width + gap
+
+  // Position cards in a horizontal line
   cards.forEach((card, index) => {
-    const distance = Math.abs(index - galleryCurrentIndex);
-    const opacity = distance === 0 ? 1 : distance === 1 ? 0.9 : 0.8;
-    const blur = distance === 0 ? 0 : distance === 1 ? 1 : 2;
-    const scale = distance === 0 ? 1 : 0.95;
+    // Calculate position relative to current index
+    const relativeIndex = index - galleryCurrentIndex;
+    const distance = Math.abs(relativeIndex);
 
-    card.style.opacity = opacity;
-    card.style.filter = `blur(${blur}px)`;
-    card.style.transform = `scale(${scale})`;
+    // Horizontal position
+    const x = relativeIndex * cardWidth;
 
-    if (index === galleryCurrentIndex) {
+    // Scale, opacity, and blur based on distance from center
+    let scale = 1;
+    let opacity = 1;
+    let blur = 0;
+    let zIndex = 5;
+
+    if (distance === 0) {
+      // Center card (active) - sharp focus
+      scale = 1.05;
+      opacity = 1;
+      blur = 0;
+      zIndex = 10;
       card.classList.add('active');
+    } else if (distance === 1) {
+      // Adjacent cards - slight blur
+      scale = 0.95;
+      opacity = 0.8;
+      blur = 2;
+      zIndex = 8;
+      card.classList.remove('active');
+    } else if (distance === 2) {
+      // Second-level cards - more blur
+      scale = 0.85;
+      opacity = 0.5;
+      blur = 4;
+      zIndex = 6;
+      card.classList.remove('active');
     } else {
+      // Far cards - heavy blur
+      scale = 0.75;
+      opacity = 0.3;
+      blur = 6;
+      zIndex = 5;
       card.classList.remove('active');
     }
+
+    // Apply transformations
+    card.style.transform = `translate(calc(-50% + ${x}px), -50%) scale(${scale})`;
+    card.style.opacity = opacity;
+    card.style.filter = `blur(${blur}px)`;
+    card.style.zIndex = zIndex;
   });
 
-  // Update button states
-  if (prevBtn) prevBtn.disabled = galleryCurrentIndex === 0;
-  if (nextBtn) nextBtn.disabled = galleryCurrentIndex === galleryCards.length - 1;
+  // Update button states - allow circular navigation
+  if (prevBtn) prevBtn.disabled = false;
+  if (nextBtn) nextBtn.disabled = false;
 
   // Update info
   if (infoTitle) infoTitle.textContent = galleryCards[galleryCurrentIndex].name;
@@ -49,17 +112,19 @@ function updateGalleryCarousel() {
 }
 
 function handleGalleryPrev() {
-  if (galleryCurrentIndex > 0) {
-    galleryCurrentIndex--;
-    updateGalleryCarousel();
+  galleryCurrentIndex--;
+  if (galleryCurrentIndex < 0) {
+    galleryCurrentIndex = galleryCards.length - 1;
   }
+  updateGalleryCarousel();
 }
 
 function handleGalleryNext() {
-  if (galleryCurrentIndex < galleryCards.length - 1) {
-    galleryCurrentIndex++;
-    updateGalleryCarousel();
+  galleryCurrentIndex++;
+  if (galleryCurrentIndex >= galleryCards.length) {
+    galleryCurrentIndex = 0;
   }
+  updateGalleryCarousel();
 }
 
 // Top4 Carousel Functionality
