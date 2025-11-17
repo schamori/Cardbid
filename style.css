@@ -369,7 +369,9 @@ body {
 }
 
 .hero-content {
-  max-width: 800px;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 clamp(30px, 5vw, 60px);
   z-index: 10;
 }
 
@@ -575,15 +577,16 @@ body {
 /* Features Styles */
 .features {
   position: relative;
-  padding: clamp(60px, 10vh, 120px) 0;
+  padding: clamp(60px, 10vh, 120px) clamp(20px, 5vw, 105px);
   z-index: 10;
 }
 
 .features-container {
-  max-width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
   background: transparent;
   border-radius: 0;
-  padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 105px);
+  padding: clamp(40px, 6vw, 80px) clamp(30px, 5vw, 60px);
   box-shadow: none;
   backdrop-filter: none;
 }
