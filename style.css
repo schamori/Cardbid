@@ -61,10 +61,10 @@ body {
   overflow-x: hidden;
   background: linear-gradient(135deg,
     var(--dark-blue) 0%,
-    var(--dark-blue) 15%,
-    var(--moody-purple) 35%,
-    var(--royal-blue) 55%,
-    var(--pale-blue) 85%,
+    var(--dark-blue) 10%,
+    var(--moody-purple) 25%,
+    var(--royal-blue) 40%,
+    var(--pale-blue) 60%,
     var(--pale-blue) 100%);
 }
 
@@ -644,7 +644,6 @@ body {
 
 .gallery-container {
   max-width: 1600px;
-  margin: 0 auto;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 48px;
   padding: clamp(40px, 6vw, 80px) clamp(30px, 5vw, 60px);
@@ -821,7 +820,6 @@ body {
 
 .top4-container {
   max-width: 1600px;
-  margin: 0 auto;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 48px;
   padding: clamp(40px, 6vw, 80px) clamp(30px, 5vw, 60px);
@@ -912,6 +910,8 @@ body {
 .pre-footer {
   position: relative;
   padding: clamp(60px, 10vh, 120px) clamp(20px, 5vw, 105px);
+  padding-bottom: 0;
+  margin-bottom: calc(-1 * clamp(50px, 8vh, 100px));
   z-index: 10;
 }
 
@@ -964,8 +964,8 @@ body {
 .footer {
   position: relative;
   background: var(--dark-blue);
-  padding: clamp(60px, 10vh, 100px) clamp(20px, 5vw, 105px) clamp(40px, 6vh, 60px);
-  z-index: 10;
+  padding: clamp(110px, 16vh, 150px) clamp(20px, 5vw, 105px) clamp(40px, 6vh, 60px);
+  z-index: 5;
 }
 
 .footer-content {
