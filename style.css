@@ -371,7 +371,7 @@ body {
 .hero-content {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 0 clamp(30px, 5vw, 60px);
+  padding: 0;
   z-index: 10;
 }
 
@@ -586,7 +586,7 @@ body {
   margin: 0 auto;
   background: transparent;
   border-radius: 0;
-  padding: clamp(40px, 6vw, 80px) clamp(30px, 5vw, 60px);
+  padding: clamp(40px, 6vw, 80px) 0;
   box-shadow: none;
   backdrop-filter: none;
 }
