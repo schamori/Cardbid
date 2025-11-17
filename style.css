@@ -638,16 +638,16 @@ body {
 /* Gallery Styles */
 .gallery {
   position: relative;
-  padding: clamp(60px, 10vh, 120px) clamp(20px, 5vw, 105px);
+  padding: clamp(60px, 10vh, 120px) 0;
   z-index: 10;
 }
 
 .gallery-container {
-  max-width: 1600px;
+  max-width: 100%;
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 48px;
-  padding: clamp(40px, 6vw, 80px) 0;
-  box-shadow: var(--shadow-default);
+  border-radius: 0;
+  padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 105px);
+  box-shadow: none;
   backdrop-filter: blur(10px);
 }
 
@@ -656,7 +656,6 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: clamp(40px, 6vh, 60px);
-  padding: 0 clamp(30px, 5vw, 60px);
   gap: 20px;
   flex-wrap: wrap;
 }
@@ -689,7 +688,6 @@ body {
 .carousel-wrapper {
   position: relative;
   margin-bottom: clamp(40px, 6vh, 80px);
-  padding: 0 clamp(30px, 5vw, 60px);
 }
 
 .carousel-container {
@@ -784,7 +782,6 @@ body {
 
 .gallery-info {
   text-align: center;
-  padding: 0 clamp(30px, 5vw, 60px);
 }
 
 .info-title {
@@ -817,16 +814,16 @@ body {
 /* Top4 Styles */
 .top4 {
   position: relative;
-  padding: clamp(60px, 10vh, 120px) clamp(20px, 5vw, 105px);
+  padding: clamp(60px, 10vh, 120px) 0;
   z-index: 10;
 }
 
 .top4-container {
-  max-width: 1600px;
+  max-width: 100%;
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 48px;
-  padding: clamp(40px, 6vw, 80px) 0;
-  box-shadow: var(--shadow-default);
+  border-radius: 0;
+  padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 105px);
+  box-shadow: none;
   backdrop-filter: blur(10px);
 }
 
@@ -835,7 +832,6 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: clamp(40px, 6vh, 60px);
-  padding: 0 clamp(30px, 5vw, 60px);
   gap: 20px;
   flex-wrap: wrap;
 }
@@ -850,7 +846,6 @@ body {
 .top4 .carousel-wrapper {
   position: relative;
   margin-bottom: clamp(40px, 6vh, 80px);
-  padding: 0 clamp(30px, 5vw, 60px);
 }
 
 .top4 .carousel-container {
