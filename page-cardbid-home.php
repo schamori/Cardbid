@@ -152,25 +152,10 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
             <div class="carousel-container">
               <div class="carousel-track">
                 <?php
-                // Query for Simple Auction products - try multiple methods to find auction products
+                // Query for Simple Auction products
                 $auction_args = array(
                     'post_type' => 'product',
-                    'posts_per_page' => 5,
-                    'meta_query' => array(
-                        'relation' => 'OR',
-                        array(
-                            'key' => '_auction_item_condition',
-                            'compare' => 'EXISTS'
-                        ),
-                        array(
-                            'key' => '_auction_dates_from',
-                            'compare' => 'EXISTS'
-                        ),
-                        array(
-                            'key' => '_regular_price',
-                            'compare' => 'EXISTS'
-                        )
-                    ),
+                    'posts_per_page' => 10,
                     'orderby' => 'date',
                     'order' => 'DESC'
                 );
@@ -190,6 +175,11 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
                             'start_price' => get_post_meta(get_the_ID(), '_auction_start_price', true),
                             'auction_started' => get_post_meta(get_the_ID(), '_auction_started', true)
                         );
+
+                        // Only get 5 products for the carousel
+                        if (count($auction_products) >= 5) {
+                            break;
+                        }
                     endwhile;
                     wp_reset_postdata();
                 endif;
@@ -285,19 +275,11 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
             <div class="carousel-container">
               <div class="carousel-track">
                 <?php
-                // Query for WooCommerce in-stock products
+                // Query for WooCommerce products (simplified to avoid performance issues)
                 $product_args = array(
                     'post_type' => 'product',
                     'posts_per_page' => 4,
-                    'meta_query' => array(
-                        array(
-                            'key' => '_stock_status',
-                            'value' => 'instock',
-                            'compare' => '='
-                        )
-                    ),
-                    'orderby' => 'meta_value_num',
-                    'meta_key' => 'total_sales',
+                    'orderby' => 'date',
                     'order' => 'DESC'
                 );
 
@@ -306,6 +288,7 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
                 if ($product_query->have_posts()) :
                     while ($product_query->have_posts()) : $product_query->the_post();
                         $product = wc_get_product(get_the_ID());
+                        if (!$product) continue;
                         ?>
                         <a href="<?php echo esc_url(get_permalink()); ?>" class="top4-card">
                           <div class="card-badge">
@@ -317,7 +300,7 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
                             <img src="https://cardbid.eu/wp-content/uploads/2025/08/166_hires-33.png" alt="<?php the_title(); ?>" class="card-image">
                           <?php endif; ?>
                           <h3 class="card-title"><?php the_title(); ?></h3>
-                          <p class="card-price">€ <?php echo $product->get_price_html(); ?></p>
+                          <p class="card-price"><?php echo $product->get_price_html(); ?></p>
                         </a>
                         <?php
                     endwhile;
