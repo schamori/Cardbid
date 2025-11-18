@@ -26,9 +26,20 @@ Text Domain: storefront-child-cardbid
   top: 32px !important;
 }
 
+/* Ensure content doesn't get covered by sticky navbar */
+.site-content {
+  position: relative;
+  z-index: 1;
+}
+
 /* Reset and Base Styles */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
   margin: 0;
   padding: 0;
 }
@@ -78,8 +89,15 @@ body {
   color: var(--text-white);
   overflow-x: hidden;
   margin: 0;
+  padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure page container starts at top */
+#page {
+  margin: 0;
+  padding: 0;
 }
 
 .app {
@@ -136,7 +154,8 @@ body {
   display: flex !important;
   justify-content: space-between;
   align-items: center;
-  padding: 20px clamp(20px, 5vw, 105px);
+  padding: clamp(16px, 2.5vh, 24px) clamp(20px, 5vw, 105px);
+  margin: 0;
 
   /* Liquid glass morphism effect */
   background: rgba(30, 39, 65, 0.85);
