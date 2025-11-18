@@ -799,10 +799,10 @@ body {
   height: 383px !important;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
   border-radius: 16px !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   left: 50% !important;
   top: 50% !important;
-  transform: translate(-50%, -50%) !important;
+  transform: translate(-50%, -50%);
   cursor: pointer !important;
   display: block !important;
 }
@@ -815,14 +815,14 @@ body {
 }
 
 .gallery .carousel-track .carousel-card:hover {
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25) !important;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
 }
 
 .gallery .carousel-track .carousel-card.active {
-  z-index: 10 !important;
-  filter: blur(0px) !important;
-  opacity: 1 !important;
-  transform: translate(-50%, -50%) scale(1.05) !important;
+  z-index: 10;
+  filter: blur(0px);
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.05);
 }
 
 .card-image-placeholder {
