@@ -36,13 +36,7 @@ function storefront_child_cardbid_enqueue_assets() {
         null
     );
 
-    // Enqueue Cardbid custom styles (carousel, gradients, etc.)
-    wp_enqueue_style(
-        'cardbid-custom-style',
-        get_stylesheet_directory_uri() . '/cardbid-style.css',
-        array(),
-        wp_get_theme()->get('Version')
-    );
+
 
     // Enqueue custom header styles
     wp_enqueue_style(

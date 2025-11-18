@@ -717,20 +717,6 @@ body {
   font-weight: 400;
   font-size: clamp(14px, 1.2vw, 18px);
   line-height: 1.6;
-  color: var(--dark-blue);
-  opacity: 0.85;
-}
-
-/* Gallery Styles */
-.gallery {
-  position: relative;
-  padding: clamp(60px, 10vh, 120px) clamp(20px, 5vw, 105px);
-  z-index: 10;
-}
-
-.gallery-container {
-  max-width: 1600px;
-  margin: 0 auto;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 48px;
   padding: clamp(40px, 6vw, 80px) clamp(30px, 5vw, 60px);
