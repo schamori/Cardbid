@@ -29,13 +29,6 @@ megaMenu.addEventListener('mouseleave', () => {
 
 // Gallery Carousel Functionality
 let galleryCurrentIndex = 2;
-const galleryCards = [
-  { name: 'Card 1', price: '€ 25,00' },
-  { name: 'Card 2', price: '€ 35,00' },
-  { name: 'Meloetta ex - 159', price: '€ 25,00' },
-  { name: 'Card 4', price: '€ 45,00' },
-  { name: 'Card 5', price: '€ 55,00' }
-];
 
 function updateGalleryCarousel() {
   const track = document.querySelector('.gallery .carousel-track');
@@ -48,6 +41,14 @@ function updateGalleryCarousel() {
 
   const cards = track.querySelectorAll('.carousel-card');
   const totalCards = cards.length;
+
+  // Ensure currentIndex is valid
+  if (galleryCurrentIndex >= totalCards) {
+    galleryCurrentIndex = totalCards > 0 ? Math.floor(totalCards / 2) : 0;
+  }
+  if (galleryCurrentIndex < 0) {
+    galleryCurrentIndex = 0;
+  }
   const cardWidth = 316; // Card width + gap
 
   // Position cards in a horizontal line
@@ -106,22 +107,28 @@ function updateGalleryCarousel() {
   if (prevBtn) prevBtn.disabled = false;
   if (nextBtn) nextBtn.disabled = false;
 
-  // Update info
-  if (infoTitle) infoTitle.textContent = galleryCards[galleryCurrentIndex].name;
-  if (infoSubtitle) infoSubtitle.textContent = `Starting bid: ${galleryCards[galleryCurrentIndex].price}`;
+  // Info section is handled by PHP, no need to update here
 }
 
 function handleGalleryPrev() {
+  const track = document.querySelector('.gallery .carousel-track');
+  if (!track) return;
+  const totalCards = track.querySelectorAll('.carousel-card').length;
+
   galleryCurrentIndex--;
   if (galleryCurrentIndex < 0) {
-    galleryCurrentIndex = galleryCards.length - 1;
+    galleryCurrentIndex = totalCards - 1;
   }
   updateGalleryCarousel();
 }
 
 function handleGalleryNext() {
+  const track = document.querySelector('.gallery .carousel-track');
+  if (!track) return;
+  const totalCards = track.querySelectorAll('.carousel-card').length;
+
   galleryCurrentIndex++;
-  if (galleryCurrentIndex >= galleryCards.length) {
+  if (galleryCurrentIndex >= totalCards) {
     galleryCurrentIndex = 0;
   }
   updateGalleryCarousel();
