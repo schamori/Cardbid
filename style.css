@@ -211,6 +211,23 @@ body {
   color: var(--moody-purple) !important;
 }
 
+/* Hover effects for nav-logo when used as navigation links */
+.nav-menu .nav-logo:hover {
+  color: var(--moody-purple) !important;
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
+.nav-menu button.nav-logo,
+.nav-menu a.nav-logo {
+  transition: all 0.2s ease;
+}
+
+.nav-menu button.nav-logo:hover,
+.nav-menu a.nav-logo:hover {
+  color: var(--moody-purple) !important;
+}
+
 /* Ensure logo link is visible */
 .nav-logo a {
   display: flex;

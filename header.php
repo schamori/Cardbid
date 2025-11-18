@@ -39,14 +39,14 @@
     </div>
 
     <div class="nav-menu" style="display: flex !important; align-items: center; gap: clamp(16px, 3vw, 32px); visibility: visible !important;">
-      <button class="nav-link nav-shop" style="display: flex !important; align-items: center; gap: 6px; color: #ffffff !important; background: none; border: none; cursor: pointer; font-weight: 700; font-size: clamp(14px, 1.2vw, 18px); text-decoration: none !important; visibility: visible !important; opacity: 1 !important;">
+      <button class="nav-logo nav-shop" style="display: flex !important; align-items: center; gap: 6px; color: #ffffff !important; background: none; border: none; cursor: pointer; font-weight: 700; font-size: clamp(14px, 1.2vw, 18px); text-decoration: none !important; visibility: visible !important; opacity: 1 !important;">
         Shop
         <svg class="dropdown-icon" viewBox="0 0 10 6" fill="none" style="width: 10px; height: 6px;">
           <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-      <a href="<?php echo esc_url( home_url( '/my-account/' ) ); ?>" class="nav-link" style="display: flex !important; align-items: center; gap: 6px; color: #ffffff !important; background: none; border: none; cursor: pointer; font-weight: 700; font-size: clamp(14px, 1.2vw, 18px); text-decoration: none !important; visibility: visible !important; opacity: 1 !important;">Dashboard</a>
-      <a href="<?php echo esc_url( home_url( '/my-account/' ) ); ?>" class="nav-link" style="display: flex !important; align-items: center; gap: 6px; color: #ffffff !important; background: none; border: none; cursor: pointer; font-weight: 700; font-size: clamp(14px, 1.2vw, 18px); text-decoration: none !important; visibility: visible !important; opacity: 1 !important;">Account</a>
+      <a href="<?php echo esc_url( home_url( '/my-account/' ) ); ?>" class="nav-logo" style="display: flex !important; align-items: center; gap: 6px; color: #ffffff !important; background: none; border: none; cursor: pointer; font-weight: 700; font-size: clamp(14px, 1.2vw, 18px); text-decoration: none !important; visibility: visible !important; opacity: 1 !important;">Dashboard</a>
+      <a href="<?php echo esc_url( home_url( '/my-account/' ) ); ?>" class="nav-logo" style="display: flex !important; align-items: center; gap: 6px; color: #ffffff !important; background: none; border: none; cursor: pointer; font-weight: 700; font-size: clamp(14px, 1.2vw, 18px); text-decoration: none !important; visibility: visible !important; opacity: 1 !important;">Account</a>
 
       <div class="nav-cart">
         <?php if ( function_exists( 'WC' ) ) : ?>
