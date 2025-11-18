@@ -191,9 +191,11 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
                     foreach ($auction_products as $auction_product) :
                         $active_class = ($count === 2) ? ' active' : '';
                         ?>
-                        <a href="<?php echo esc_url($auction_product['url']); ?>" class="carousel-card<?php echo $active_class; ?>" data-product-id="<?php echo $auction_product['id']; ?>">
-                          <img src="<?php echo esc_url($auction_product['thumbnail']); ?>" alt="<?php echo esc_attr($auction_product['title']); ?>" class="card-image">
-                        </a>
+                        <div class="carousel-card<?php echo $active_class; ?>" data-product-id="<?php echo $auction_product['id']; ?>">
+                          <a href="<?php echo esc_url($auction_product['url']); ?>">
+                            <img src="<?php echo esc_url($auction_product['thumbnail']); ?>" alt="<?php echo esc_attr($auction_product['title']); ?>" class="card-image">
+                          </a>
+                        </div>
                         <?php
                         $count++;
                     endforeach;
@@ -291,18 +293,20 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
                         $product = wc_get_product(get_the_ID());
                         if (!$product) continue;
                         ?>
-                        <a href="<?php echo esc_url(get_permalink()); ?>" class="top4-card">
-                          <div class="card-badge">
-                            <span>In Stock</span>
-                          </div>
-                          <?php if (has_post_thumbnail()) : ?>
-                            <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>" alt="<?php the_title(); ?>" class="card-image">
-                          <?php else : ?>
-                            <img src="https://cardbid.eu/wp-content/uploads/2025/08/166_hires-33.png" alt="<?php the_title(); ?>" class="card-image">
-                          <?php endif; ?>
-                          <h3 class="card-title"><?php the_title(); ?></h3>
-                          <p class="card-price"><?php echo $product->get_price_html(); ?></p>
-                        </a>
+                        <div class="top4-card">
+                          <a href="<?php echo esc_url(get_permalink()); ?>">
+                            <div class="card-badge">
+                              <span>In Stock</span>
+                            </div>
+                            <?php if (has_post_thumbnail()) : ?>
+                              <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>" alt="<?php the_title(); ?>" class="card-image">
+                            <?php else : ?>
+                              <img src="https://cardbid.eu/wp-content/uploads/2025/08/166_hires-33.png" alt="<?php the_title(); ?>" class="card-image">
+                            <?php endif; ?>
+                            <h3 class="card-title"><?php the_title(); ?></h3>
+                            <p class="card-price"><?php echo $product->get_price_html(); ?></p>
+                          </a>
+                        </div>
                         <?php
                     endwhile;
                     wp_reset_postdata();
