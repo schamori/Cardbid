@@ -32,15 +32,15 @@ let galleryCurrentIndex = 2;
 
 function updateGalleryCarousel() {
   console.log('=== updateGalleryCarousel called ===');
-  const track = document.querySelector('.gallery .carousel-track');
-  const prevBtn = document.querySelector('.gallery .carousel-nav.prev');
-  const nextBtn = document.querySelector('.gallery .carousel-nav.next');
-  const infoTitle = document.querySelector('.gallery .info-title');
-  const infoSubtitle = document.querySelector('.gallery .info-subtitle');
+  const track = document.querySelector('.cardbid-gallery .carousel-track');
+  const prevBtn = document.querySelector('.cardbid-gallery .carousel-nav.prev');
+  const nextBtn = document.querySelector('.cardbid-gallery .carousel-nav.next');
+  const infoTitle = document.querySelector('.cardbid-gallery .info-title');
+  const infoSubtitle = document.querySelector('.cardbid-gallery .info-subtitle');
 
   console.log('Track found:', track);
   if (!track) {
-    console.error('ERROR: .gallery .carousel-track not found!');
+    console.error('ERROR: .cardbid-gallery .carousel-track not found!');
     return;
   }
 
@@ -123,7 +123,7 @@ function updateGalleryCarousel() {
 }
 
 function handleGalleryPrev() {
-  const track = document.querySelector('.gallery .carousel-track');
+  const track = document.querySelector('.cardbid-gallery .carousel-track');
   if (!track) return;
   const totalCards = track.querySelectorAll('.carousel-card').length;
 
@@ -135,7 +135,7 @@ function handleGalleryPrev() {
 }
 
 function handleGalleryNext() {
-  const track = document.querySelector('.gallery .carousel-track');
+  const track = document.querySelector('.cardbid-gallery .carousel-track');
   if (!track) return;
   const totalCards = track.querySelectorAll('.carousel-card').length;
 
@@ -190,8 +190,8 @@ document.addEventListener('DOMContentLoaded', function () {
   console.log('Script.js is executing!');
 
   // Setup Gallery Carousel
-  const galleryPrevBtn = document.querySelector('.gallery .carousel-nav.prev');
-  const galleryNextBtn = document.querySelector('.gallery .carousel-nav.next');
+  const galleryPrevBtn = document.querySelector('.cardbid-gallery .carousel-nav.prev');
+  const galleryNextBtn = document.querySelector('.cardbid-gallery .carousel-nav.next');
 
   console.log('Gallery prev button:', galleryPrevBtn);
   console.log('Gallery next button:', galleryNextBtn);
