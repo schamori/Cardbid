@@ -1,31 +1,46 @@
 // Mega Menu Functionality
+console.log('=== script.js loaded ===');
 const shopButton = document.querySelector('.nav-shop');
 const megaMenu = document.querySelector('.mega-menu');
 const navigation = document.querySelector('.navigation');
-console.log('=== script.js loaded ===');
+
+console.log('Mega menu elements check:');
+console.log('  shopButton:', shopButton);
+console.log('  megaMenu:', megaMenu);
+console.log('  navigation:', navigation);
+
 let megaMenuTimeout;
 
-// Show mega menu on hover
-shopButton.addEventListener('mouseenter', () => {
-  clearTimeout(megaMenuTimeout);
-  megaMenu.classList.add('active');
-});
+// Only set up mega menu if elements exist
+if (shopButton && megaMenu) {
+  console.log('Setting up mega menu event listeners...');
 
-// Hide mega menu when leaving both the button and menu
-shopButton.addEventListener('mouseleave', () => {
-  megaMenuTimeout = setTimeout(() => {
+  // Show mega menu on hover
+  shopButton.addEventListener('mouseenter', () => {
+    clearTimeout(megaMenuTimeout);
+    megaMenu.classList.add('active');
+  });
+
+  // Hide mega menu when leaving both the button and menu
+  shopButton.addEventListener('mouseleave', () => {
+    megaMenuTimeout = setTimeout(() => {
+      megaMenu.classList.remove('active');
+    }, 100);
+  });
+
+  megaMenu.addEventListener('mouseenter', () => {
+    clearTimeout(megaMenuTimeout);
+    megaMenu.classList.add('active');
+  });
+
+  megaMenu.addEventListener('mouseleave', () => {
     megaMenu.classList.remove('active');
-  }, 100);
-});
+  });
 
-megaMenu.addEventListener('mouseenter', () => {
-  clearTimeout(megaMenuTimeout);
-  megaMenu.classList.add('active');
-});
-
-megaMenu.addEventListener('mouseleave', () => {
-  megaMenu.classList.remove('active');
-});
+  console.log('✓ Mega menu event listeners added');
+} else {
+  console.warn('⚠ Mega menu elements not found - skipping mega menu setup');
+}
 
 // Gallery Carousel Functionality
 let galleryCurrentIndex = 2;
