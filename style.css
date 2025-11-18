@@ -435,39 +435,51 @@ body {
   box-shadow: 0 8px 24px rgba(105, 115, 219, 0.4);
 }
 
-/* Floating animations for cards */
-@keyframes float1 {
-  0%, 100% { transform: rotate(-12deg) translateY(0px); }
-  50% { transform: rotate(-12deg) translateY(-20px); }
+/* Wiggle animations for cards */
+@keyframes wiggle1 {
+  0%, 100% { transform: rotate(-15deg) translateY(0px) translateX(0px); }
+  25% { transform: rotate(-18deg) translateY(-10px) translateX(-5px); }
+  50% { transform: rotate(-12deg) translateY(-15px) translateX(5px); }
+  75% { transform: rotate(-16deg) translateY(-8px) translateX(-3px); }
 }
 
-@keyframes float2 {
-  0%, 100% { transform: rotate(-15deg) translateY(0px); }
-  50% { transform: rotate(-15deg) translateY(-25px); }
+@keyframes wiggle2 {
+  0%, 100% { transform: rotate(12deg) translateY(0px) translateX(0px); }
+  25% { transform: rotate(15deg) translateY(-12px) translateX(5px); }
+  50% { transform: rotate(9deg) translateY(-18px) translateX(-5px); }
+  75% { transform: rotate(13deg) translateY(-10px) translateX(3px); }
 }
 
-@keyframes float3 {
-  0%, 100% { transform: rotate(10deg) translateY(0px); }
-  50% { transform: rotate(10deg) translateY(-18px); }
+@keyframes wiggle3 {
+  0%, 100% { transform: rotate(-20deg) translateY(0px) translateX(0px); }
+  25% { transform: rotate(-23deg) translateY(-15px) translateX(5px); }
+  50% { transform: rotate(-17deg) translateY(-20px) translateX(-5px); }
+  75% { transform: rotate(-21deg) translateY(-12px) translateX(3px); }
 }
 
-@keyframes float4 {
-  0%, 100% { transform: rotate(12deg) translateY(0px); }
-  50% { transform: rotate(12deg) translateY(-22px); }
+@keyframes wiggle4 {
+  0%, 100% { transform: rotate(18deg) translateY(0px) translateX(0px); }
+  25% { transform: rotate(21deg) translateY(-10px) translateX(-5px); }
+  50% { transform: rotate(15deg) translateY(-16px) translateX(5px); }
+  75% { transform: rotate(19deg) translateY(-8px) translateX(-3px); }
 }
 
-@keyframes float5 {
-  0%, 100% { transform: rotate(-8deg) translateY(0px); }
-  50% { transform: rotate(-8deg) translateY(-15px); }
+@keyframes wiggle5 {
+  0%, 100% { transform: rotate(-10deg) translateY(0px) translateX(0px); }
+  25% { transform: rotate(-13deg) translateY(-14px) translateX(5px); }
+  50% { transform: rotate(-7deg) translateY(-20px) translateX(-5px); }
+  75% { transform: rotate(-11deg) translateY(-10px) translateX(3px); }
 }
 
 .hero-cards {
   position: absolute;
-  right: clamp(20px, 5vw, 105px);
-  top: 50%;
-  transform: translateY(-50%);
-  width: min(500px, 40vw);
-  height: min(600px, 45vw);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 .hero-card {
@@ -517,58 +529,61 @@ body {
   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
 }
 
+/* Upper-left cards */
 .hero-card-1 {
-  width: 30%;
-  height: 40%;
-  top: 5%;
-  left: 5%;
-  animation: float1 4s ease-in-out infinite;
-  z-index: 2;
+  width: 200px;
+  height: 280px;
+  top: 8%;
+  left: 15%;
+  animation: wiggle1 5s ease-in-out infinite;
+  z-index: 1;
 }
 
 .hero-card-2 {
-  width: 30%;
-  height: 40%;
-  top: 5%;
-  right: 5%;
-  animation: float2 3.5s ease-in-out infinite 0.5s;
-  z-index: 2;
+  width: 180px;
+  height: 250px;
+  top: 15%;
+  left: 5%;
+  animation: wiggle2 4.5s ease-in-out infinite 0.5s;
+  z-index: 1;
 }
 
+/* Upper-right cards */
 .hero-card-3 {
-  width: 30%;
-  height: 40%;
-  top: 30%;
-  left: 35%;
-  animation: float3 4.2s ease-in-out infinite 1s;
-  z-index: 2;
+  width: 190px;
+  height: 270px;
+  top: 5%;
+  right: 10%;
+  animation: wiggle3 5.2s ease-in-out infinite 1s;
+  z-index: 1;
 }
 
 .hero-card-4 {
-  width: 30%;
-  height: 40%;
-  bottom: 5%;
-  left: 5%;
-  animation: float4 3.8s ease-in-out infinite 1.5s;
-  z-index: 2;
+  width: 200px;
+  height: 280px;
+  top: 12%;
+  right: 20%;
+  animation: wiggle4 4.8s ease-in-out infinite 1.5s;
+  z-index: 1;
 }
 
 .hero-card-5 {
-  width: 30%;
-  height: 40%;
-  bottom: 5%;
-  right: 5%;
-  animation: float5 4.5s ease-in-out infinite 0.8s;
-  z-index: 2;
+  width: 180px;
+  height: 250px;
+  top: 18%;
+  right: 2%;
+  animation: wiggle5 5.5s ease-in-out infinite 0.8s;
+  z-index: 1;
 }
 
+/* Characters - front and center in lower portion */
 .hero-card-main {
-  width: 45%;
-  height: 65%;
+  width: min(600px, 50vw);
+  height: auto;
   position: absolute;
-  left: clamp(20px, 5vw, 105px);
-  top: 50%;
-  transform: translateY(-50%);
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
   z-index: 10;
   box-shadow: none;
   border-radius: 0;
