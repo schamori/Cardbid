@@ -31,8 +31,8 @@ Text Domain: cardbid
 @font-face {
   font-family: 'Genaminto';
   src: url('fonts/Genaminto-Regular.woff2') format('woff2'),
-       url('fonts/Genaminto-Regular.woff') format('woff'),
-       url('fonts/Genaminto-Regular.ttf') format('truetype');
+    url('fonts/Genaminto-Regular.woff') format('woff'),
+    url('fonts/Genaminto-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -41,8 +41,8 @@ Text Domain: cardbid
 @font-face {
   font-family: 'Genaminto';
   src: url('fonts/Genaminto-Bold.woff2') format('woff2'),
-       url('fonts/Genaminto-Bold.woff') format('woff'),
-       url('fonts/Genaminto-Bold.ttf') format('truetype');
+    url('fonts/Genaminto-Bold.woff') format('woff'),
+    url('fonts/Genaminto-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -71,12 +71,12 @@ body {
   width: 100%;
   overflow-x: hidden;
   background: linear-gradient(135deg,
-    var(--dark-blue) 0%,
-    var(--dark-blue) 10%,
-    var(--moody-purple) 25%,
-    var(--royal-blue) 40%,
-    var(--pale-blue) 60%,
-    var(--pale-blue) 100%);
+      var(--dark-blue) 0%,
+      var(--dark-blue) 10%,
+      var(--moody-purple) 25%,
+      var(--royal-blue) 40%,
+      var(--pale-blue) 60%,
+      var(--pale-blue) 100%);
 }
 
 /* Background Gradients */
@@ -212,13 +212,11 @@ body {
   top: 100%;
   left: 0;
   right: 0;
-  background: linear-gradient(
-    to bottom,
-    var(--pale-blue) 0%,
-    var(--moody-purple) 40%,
-    var(--royal-blue) 70%,
-    var(--dark-blue) 100%
-  );
+  background: linear-gradient(to bottom,
+      var(--pale-blue) 0%,
+      var(--moody-purple) 40%,
+      var(--royal-blue) 70%,
+      var(--dark-blue) 100%);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
@@ -443,38 +441,103 @@ body {
 
 /* Wiggle animations for cards */
 @keyframes wiggle1 {
-  0%, 100% { transform: rotate(-15deg) translateY(0px) translateX(0px); }
-  25% { transform: rotate(-18deg) translateY(-10px) translateX(-5px); }
-  50% { transform: rotate(-12deg) translateY(-15px) translateX(5px); }
-  75% { transform: rotate(-16deg) translateY(-8px) translateX(-3px); }
+
+  0%,
+  100% {
+    transform: rotate(-15deg) translateY(0px) translateX(0px);
+  }
+
+  25% {
+    transform: rotate(-18deg) translateY(-10px) translateX(-5px);
+  }
+
+  50% {
+    transform: rotate(-12deg) translateY(-15px) translateX(5px);
+  }
+
+  75% {
+    transform: rotate(-16deg) translateY(-8px) translateX(-3px);
+  }
 }
 
 @keyframes wiggle2 {
-  0%, 100% { transform: rotate(12deg) translateY(0px) translateX(0px); }
-  25% { transform: rotate(15deg) translateY(-12px) translateX(5px); }
-  50% { transform: rotate(9deg) translateY(-18px) translateX(-5px); }
-  75% { transform: rotate(13deg) translateY(-10px) translateX(3px); }
+
+  0%,
+  100% {
+    transform: rotate(12deg) translateY(0px) translateX(0px);
+  }
+
+  25% {
+    transform: rotate(15deg) translateY(-12px) translateX(5px);
+  }
+
+  50% {
+    transform: rotate(9deg) translateY(-18px) translateX(-5px);
+  }
+
+  75% {
+    transform: rotate(13deg) translateY(-10px) translateX(3px);
+  }
 }
 
 @keyframes wiggle3 {
-  0%, 100% { transform: rotate(-20deg) translateY(0px) translateX(0px); }
-  25% { transform: rotate(-23deg) translateY(-15px) translateX(5px); }
-  50% { transform: rotate(-17deg) translateY(-20px) translateX(-5px); }
-  75% { transform: rotate(-21deg) translateY(-12px) translateX(3px); }
+
+  0%,
+  100% {
+    transform: rotate(-20deg) translateY(0px) translateX(0px);
+  }
+
+  25% {
+    transform: rotate(-23deg) translateY(-15px) translateX(5px);
+  }
+
+  50% {
+    transform: rotate(-17deg) translateY(-20px) translateX(-5px);
+  }
+
+  75% {
+    transform: rotate(-21deg) translateY(-12px) translateX(3px);
+  }
 }
 
 @keyframes wiggle4 {
-  0%, 100% { transform: rotate(18deg) translateY(0px) translateX(0px); }
-  25% { transform: rotate(21deg) translateY(-10px) translateX(-5px); }
-  50% { transform: rotate(15deg) translateY(-16px) translateX(5px); }
-  75% { transform: rotate(19deg) translateY(-8px) translateX(-3px); }
+
+  0%,
+  100% {
+    transform: rotate(18deg) translateY(0px) translateX(0px);
+  }
+
+  25% {
+    transform: rotate(21deg) translateY(-10px) translateX(-5px);
+  }
+
+  50% {
+    transform: rotate(15deg) translateY(-16px) translateX(5px);
+  }
+
+  75% {
+    transform: rotate(19deg) translateY(-8px) translateX(-3px);
+  }
 }
 
 @keyframes wiggle5 {
-  0%, 100% { transform: rotate(-10deg) translateY(0px) translateX(0px); }
-  25% { transform: rotate(-13deg) translateY(-14px) translateX(5px); }
-  50% { transform: rotate(-7deg) translateY(-20px) translateX(-5px); }
-  75% { transform: rotate(-11deg) translateY(-10px) translateX(3px); }
+
+  0%,
+  100% {
+    transform: rotate(-10deg) translateY(0px) translateX(0px);
+  }
+
+  25% {
+    transform: rotate(-13deg) translateY(-14px) translateX(5px);
+  }
+
+  50% {
+    transform: rotate(-7deg) translateY(-20px) translateX(-5px);
+  }
+
+  75% {
+    transform: rotate(-11deg) translateY(-10px) translateX(3px);
+  }
 }
 
 .hero-cards {
@@ -730,17 +793,17 @@ body {
 }
 
 .gallery .carousel-track .carousel-card {
-  position: absolute !important;
-  width: 274px !important;
-  height: 383px !important;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  border-radius: 16px !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
-  left: 50% !important;
-  top: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  cursor: pointer !important;
-  display: block !important;
+  position: absolute;
+  width: 274px;
+  height: 383px;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  display: block;
 }
 
 .gallery .carousel-track .carousel-card a {
@@ -755,10 +818,10 @@ body {
 }
 
 .gallery .carousel-track .carousel-card.active {
-  z-index: 10 !important;
-  filter: blur(0px) !important;
-  opacity: 1 !important;
-  transform: translate(-50%, -50%) scale(1.05) !important;
+  z-index: 10;
+  filter: blur(0px);
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.05);
 }
 
 .card-image-placeholder {

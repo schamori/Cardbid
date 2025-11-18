@@ -179,9 +179,11 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
                         // Debug: Output each card
                         echo '<!-- Card ' . $count . ': ' . esc_html($product_title) . ' -->';
                         ?>
-                        <a href="<?php echo esc_url($product_url); ?>" class="carousel-card<?php echo $active_class; ?>" data-product-id="<?php echo $product_id; ?>">
-                          <img src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_attr($product_title); ?>" class="card-image">
-                        </a>
+                        <div class="carousel-card<?php echo $active_class; ?>" data-product-id="<?php echo $product_id; ?>">
+                          <a href="<?php echo esc_url($product_url); ?>">
+                            <img src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_attr($product_title); ?>" class="card-image">
+                          </a>
+                        </div>
                         <?php
                         $count++;
                     endforeach;
