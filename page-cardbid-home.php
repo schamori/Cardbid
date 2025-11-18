@@ -152,10 +152,16 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
             <div class="carousel-container">
               <div class="carousel-track">
                 <?php
-                // Query for Simple Auction products
+                // Query for ALL auction products from Simple Auction plugin
                 $auction_args = array(
                     'post_type' => 'product',
-                    'posts_per_page' => 10,
+                    'posts_per_page' => -1, // Get all auctions
+                    'meta_query' => array(
+                        array(
+                            'key' => '_auction_item_condition',
+                            'compare' => 'EXISTS'
+                        )
+                    ),
                     'orderby' => 'date',
                     'order' => 'DESC'
                 );
@@ -175,11 +181,6 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
                             'start_price' => get_post_meta(get_the_ID(), '_auction_start_price', true),
                             'auction_started' => get_post_meta(get_the_ID(), '_auction_started', true)
                         );
-
-                        // Only get 5 products for the carousel
-                        if (count($auction_products) >= 5) {
-                            break;
-                        }
                     endwhile;
                     wp_reset_postdata();
                 endif;
