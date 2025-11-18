@@ -45,11 +45,20 @@ function storefront_child_cardbid_enqueue_fonts() {
 add_action( 'wp_enqueue_scripts', 'storefront_child_cardbid_enqueue_fonts' );
 
 /**
- * Enqueue custom JavaScript for Cardbid homepage
+ * Enqueue custom Cardbid homepage assets (CSS and JS)
  */
 function storefront_child_cardbid_enqueue_scripts() {
     // Only load on pages using the Cardbid Home Page template
     if ( is_page_template( 'page-cardbid-home.php' ) ) {
+        // Enqueue Cardbid custom styles (carousel, gradients, etc.)
+        wp_enqueue_style(
+            'cardbid-custom-style',
+            get_stylesheet_directory_uri() . '/cardbid-style.css',
+            array(), // No dependencies
+            wp_get_theme()->get('Version')
+        );
+
+        // Enqueue Cardbid custom JavaScript
         wp_enqueue_script(
             'cardbid-scripts',
             get_stylesheet_directory_uri() . '/script.js',
