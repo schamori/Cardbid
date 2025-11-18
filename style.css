@@ -1398,37 +1398,103 @@ nav.cardbid-nav,
   opacity: 1 !important;
 }
 
+/* Ultra-specific selectors for nav menu */
+nav.navigation .nav-menu,
+nav.cardbid-nav .nav-menu,
+.navigation.cardbid-nav .nav-menu,
+div.nav-menu {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  align-items: center !important;
+}
+
 nav.navigation .nav-logo,
 nav.cardbid-nav .nav-logo,
-nav.navigation .nav-menu,
-nav.cardbid-nav .nav-menu {
+.navigation.cardbid-nav .nav-logo {
   display: flex !important;
   visibility: visible !important;
   opacity: 1 !important;
 }
 
+/* Force nav links visible with maximum specificity */
 nav.navigation .nav-link,
 nav.cardbid-nav .nav-link,
+.navigation.cardbid-nav .nav-link,
 nav.navigation button.nav-link,
 nav.cardbid-nav button.nav-link,
+.navigation.cardbid-nav button.nav-link,
 nav.navigation a.nav-link,
-nav.cardbid-nav a.nav-link {
+nav.cardbid-nav a.nav-link,
+.navigation.cardbid-nav a.nav-link,
+button.nav-link.nav-shop,
+a.nav-link {
   display: flex !important;
   visibility: visible !important;
   opacity: 1 !important;
   color: #ffffff !important;
+  font-size: clamp(14px, 1.2vw, 18px) !important;
 }
 
 nav.navigation .nav-cart,
-nav.cardbid-nav .nav-cart {
+nav.cardbid-nav .nav-cart,
+.navigation.cardbid-nav .nav-cart,
+div.nav-cart {
   display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: #ffffff !important;
+}
+
+nav.navigation svg,
+nav.cardbid-nav svg,
+.navigation.cardbid-nav svg {
+  display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
 }
 
-nav.navigation svg,
-nav.cardbid-nav svg {
-  display: block !important;
+/* Ensure text content is visible */
+nav.navigation .nav-link,
+nav.cardbid-nav .nav-link,
+button.nav-link,
+a.nav-link {
+  font-size: clamp(14px, 1.2vw, 18px) !important;
+  line-height: 1.5 !important;
+  white-space: nowrap !important;
+}
+
+/* NUCLEAR OPTION: Force everything visible - Last resort overrides */
+body nav.navigation *:not(.mega-menu):not(.mega-menu *),
+body nav.cardbid-nav *:not(.mega-menu):not(.mega-menu *),
+body .navigation.cardbid-nav *:not(.mega-menu):not(.mega-menu *) {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Force specific children */
+body .nav-menu *,
+body button.nav-shop,
+body a[href*="my-account"],
+body .nav-cart * {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: inline !important;
+}
+
+body button.nav-shop,
+body .nav-link {
+  display: flex !important;
+}
+
+/* Override any WordPress/theme display:none */
+.storefront-full-width-content nav.navigation .nav-menu,
+.storefront-full-width-content nav.navigation .nav-link,
+body.storefront nav.navigation .nav-menu,
+body.storefront nav.navigation .nav-link,
+body.woocommerce nav.navigation .nav-menu,
+body.woocommerce nav.navigation .nav-link {
+  display: flex !important;
   visibility: visible !important;
   opacity: 1 !important;
 }
