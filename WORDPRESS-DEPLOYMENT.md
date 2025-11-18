@@ -4,10 +4,13 @@ This guide explains how to deploy your Cardbid landing page to WordPress using *
 
 ## ✅ What You Have Now
 
+- `style.css` - Main WordPress theme stylesheet (with proper theme header)
 - `page-cardbid-home.php` - WordPress page template
-- `cardbid-style.css` - Stylesheet for the template
+- `cardbid-style.css` - Copy of stylesheet for the template
 - `script.js` - JavaScript file
 - `images/` - Folder for card and character images
+
+**Important:** The `style.css` file now includes the WordPress theme header, making this folder a valid WordPress theme!
 
 ## 📁 WordPress Theme File Structure
 
