@@ -143,11 +143,25 @@ body {
   opacity: 1 !important;
 }
 
-/* Force all navigation children to be visible */
-.navigation *,
-.cardbid-nav * {
+/* Force all navigation children to be visible EXCEPT mega menu */
+.navigation *:not(.mega-menu):not(.mega-menu *),
+.cardbid-nav *:not(.mega-menu):not(.mega-menu *) {
   visibility: visible !important;
   opacity: 1 !important;
+}
+
+/* Ensure mega menu is hidden by default */
+.mega-menu {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Show mega menu only when active */
+.mega-menu.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: all !important;
 }
 
 .nav-logo {
