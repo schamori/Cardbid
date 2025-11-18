@@ -240,7 +240,7 @@ body {
   margin: 0 auto;
   padding: 48px clamp(20px, 5vw, 105px);
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: 1fr;
   gap: 32px;
 }
 
@@ -248,14 +248,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  border-right: 1px solid rgba(30, 39, 65, 0.2);
-  padding-right: 24px;
 }
 
-.mega-menu-game:last-child {
-  border-right: none;
-  padding-right: 0;
-}
 
 .mega-menu-game-header {
   display: flex;
@@ -367,6 +361,66 @@ body {
 .view-all-link:hover {
   color: var(--moody-purple);
   text-decoration: underline;
+}
+
+/* Mega Menu Set Links */
+.mega-menu-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(30, 39, 65, 0.1);
+}
+
+.mega-menu-list li:last-child {
+  border-bottom: none;
+}
+
+.set-name {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--dark-blue);
+  margin-left: 8px;
+  display: inline-block;
+}
+
+.set-links {
+  display: flex;
+  gap: 8px;
+  margin-left: 48px;
+  margin-top: 4px;
+}
+
+.set-link {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--dark-blue);
+  opacity: 0.7;
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: rgba(30, 39, 65, 0.05);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.set-link:hover {
+  opacity: 1;
+  background: rgba(124, 74, 255, 0.1);
+  color: var(--moody-purple);
+  transform: translateY(-1px);
+}
+
+.set-link.singles:hover {
+  background: rgba(124, 74, 255, 0.15);
+}
+
+.set-link.sealed:hover {
+  background: rgba(59, 130, 246, 0.15);
 }
 
 /* Hero Styles */

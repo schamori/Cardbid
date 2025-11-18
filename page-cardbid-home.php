@@ -66,7 +66,81 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
           </div>
         </div>
 
-        <!-- Mega Menu (content omitted for brevity - include full menu from HTML) -->
+        <!-- Mega Menu -->
+        <div class="mega-menu">
+          <div class="mega-menu-content">
+            <!-- Pokémon Section -->
+            <div class="mega-menu-game">
+              <div class="mega-menu-game-header">
+                <span class="mega-menu-icon">⚪</span>
+                <h3 class="mega-menu-game-title">Pokémon</h3>
+              </div>
+              <div class="mega-menu-two-column">
+                <div class="mega-menu-section">
+                  <h4 class="mega-menu-section-title">SETS</h4>
+                  <ul class="mega-menu-list">
+                    <?php
+                    // Get Pokemon Non-Japanese category
+                    $pokemon_category = get_term_by('slug', 'pokemon-non-japanese', 'product_cat');
+
+                    if ($pokemon_category) {
+                      // Get all subcategories (sets) of Pokemon Non-Japanese
+                      $sets = get_terms(array(
+                        'taxonomy' => 'product_cat',
+                        'parent' => $pokemon_category->term_id,
+                        'hide_empty' => false,
+                        'orderby' => 'name',
+                        'order' => 'ASC'
+                      ));
+
+                      if (!empty($sets) && !is_wp_error($sets)) {
+                        foreach ($sets as $set) {
+                          // Skip the Singles and Sealed categories themselves
+                          if (strpos($set->slug, 'singles-') === 0 || strpos($set->slug, 'sealed-') === 0) {
+                            continue;
+                          }
+
+                          // Generate the set name without "Singles" or "Sealed" suffix
+                          $set_name = $set->name;
+                          $set_slug = $set->slug;
+
+                          // Create links for Singles and Sealed
+                          $singles_url = home_url("/product-category/pokemon-non-japanese/{$set_slug}/singles-{$set_slug}/");
+                          $sealed_url = home_url("/product-category/pokemon-non-japanese/{$set_slug}/sealed-{$set_slug}/");
+
+                          echo '<li>';
+                          echo '<span class="expansion-badge">' . esc_html(strtoupper(substr($set_slug, 0, 3))) . '</span>';
+                          echo '<span class="set-name">' . esc_html($set_name) . '</span>';
+                          echo '<div class="set-links">';
+                          echo '<a href="' . esc_url($singles_url) . '" class="set-link singles">🃏 Singles</a>';
+                          echo '<a href="' . esc_url($sealed_url) . '" class="set-link sealed">📦 Sealed</a>';
+                          echo '</div>';
+                          echo '</li>';
+                        }
+                      }
+                    }
+                    ?>
+                  </ul>
+                  <a href="<?php echo esc_url(home_url('/product-category/pokemon-non-japanese/')); ?>" class="view-all-link">View all sets...</a>
+                </div>
+                <div class="mega-menu-section">
+                  <h4 class="mega-menu-section-title">CATEGORIES</h4>
+                  <ul class="mega-menu-list">
+                    <li><a href="#"><span class="category-icon">🃏</span>Singles</a></li>
+                    <li><a href="#"><span class="category-icon">📦</span>Booster Box</a></li>
+                    <li><a href="#"><span class="category-icon">🎁</span>Bundle</a></li>
+                    <li><a href="#"><span class="category-icon">💎</span>Graded Cards</a></li>
+                    <li><a href="#"><span class="category-icon">📋</span>Blisters</a></li>
+                    <li><a href="#"><span class="category-icon">🎯</span>Elite Trainer Box</a></li>
+                    <li><a href="#"><span class="category-icon">🏆</span>Premium Collection</a></li>
+                    <li><a href="#"><span class="category-icon">🗂️</span>Complete Set</a></li>
+                  </ul>
+                  <a href="<?php echo esc_url(home_url('/product-category/pokemon-non-japanese/')); ?>" class="view-all-link">View all categories...</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </nav>
 
       <!-- Hero Section -->
