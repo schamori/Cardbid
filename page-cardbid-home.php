@@ -135,7 +135,7 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
       </section>
 
       <!-- Gallery Section - Höchste Gebote (Simple Auction Integration) -->
-      <section class="cardbid-gallery">
+      <section class="gallery">
         <div class="gallery-container">
           <div class="gallery-header">
             <h2 class="gallery-title">Höchste Gebote</h2>
