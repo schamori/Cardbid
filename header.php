@@ -141,6 +141,67 @@
     </div>
   </nav>
 
+  <script>
+  // Force navbar visibility - runs immediately after nav element loads
+  (function() {
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', forceNavbarVisible);
+    } else {
+      forceNavbarVisible();
+    }
+
+    function forceNavbarVisible() {
+      // Force navigation container visible
+      var nav = document.querySelector('nav.navigation, nav.cardbid-nav');
+      if (nav) {
+        nav.style.setProperty('display', 'flex', 'important');
+        nav.style.setProperty('visibility', 'visible', 'important');
+        nav.style.setProperty('opacity', '1', 'important');
+      }
+
+      // Force all nav elements visible
+      var navElements = [
+        '.nav-logo',
+        '.nav-menu',
+        '.nav-link',
+        'button.nav-shop',
+        'a.nav-link',
+        '.nav-cart',
+        '.logo-icon',
+        '.logo-text',
+        '.cart-icon'
+      ];
+
+      navElements.forEach(function(selector) {
+        var elements = document.querySelectorAll(selector);
+        elements.forEach(function(el) {
+          el.style.setProperty('display', 'flex', 'important');
+          el.style.setProperty('visibility', 'visible', 'important');
+          el.style.setProperty('opacity', '1', 'important');
+        });
+      });
+
+      // Special handling for SVGs
+      var svgs = document.querySelectorAll('nav svg');
+      svgs.forEach(function(svg) {
+        svg.style.setProperty('display', 'block', 'important');
+        svg.style.setProperty('visibility', 'visible', 'important');
+        svg.style.setProperty('opacity', '1', 'important');
+      });
+
+      // Force text color on links
+      var links = document.querySelectorAll('.nav-link, button.nav-shop, a.nav-link');
+      links.forEach(function(link) {
+        link.style.setProperty('color', '#ffffff', 'important');
+        link.style.setProperty('font-size', 'clamp(14px, 1.2vw, 18px)', 'important');
+      });
+
+      console.log('Navbar visibility forced via JavaScript');
+    }
+  })();
+  </script>
+
   <?php do_action( 'storefront_after_header' ); ?>
 
   <?php
