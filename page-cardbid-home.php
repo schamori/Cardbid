@@ -178,8 +178,16 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
 
                         // Debug: Output each card
                         echo '<!-- Card ' . $count . ': ' . esc_html($product_title) . ' -->';
+
+                        // Get product price
+                        $product_price = $product->get_price();
+                        $formatted_price = $product_price ? number_format((float)$product_price, 2, ',', '.') : '0,00';
                         ?>
-                        <div class="carousel-card<?php echo $active_class; ?>" data-product-id="<?php echo $product_id; ?>">
+                        <div class="carousel-card<?php echo $active_class; ?>"
+                             data-product-id="<?php echo $product_id; ?>"
+                             data-product-name="<?php echo esc_attr($product_title); ?>"
+                             data-product-url="<?php echo esc_url($product_url); ?>"
+                             data-product-price="<?php echo esc_attr($formatted_price); ?>">
                           <a href="<?php echo esc_url($product_url); ?>">
                             <img src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_attr($product_title); ?>" class="card-image">
                           </a>
@@ -222,31 +230,16 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
                 $display_product = isset($products[2]) ? $products[2] : $products[0];
                 $display_title = $display_product->get_name();
                 $display_price = $display_product->get_price();
-                $current_bid = get_post_meta($display_product->get_id(), '_auction_current_bid', true);
-                $start_price = get_post_meta($display_product->get_id(), '_auction_start_price', true);
-                $auction_started = get_post_meta($display_product->get_id(), '_auction_started', true);
+                $display_url = get_permalink($display_product->get_id());
+                $formatted_display_price = $display_price ? number_format((float)$display_price, 2, ',', '.') : '0,00';
                 ?>
                 <h3 class="info-title"><?php echo esc_html($display_title); ?></h3>
-                <p class="info-subtitle">
-                  <?php if ($current_bid) : ?>
-                    Current bid: € <?php echo number_format((float)$current_bid, 2, ',', '.'); ?>
-                  <?php elseif ($start_price) : ?>
-                    Starting bid: € <?php echo number_format((float)$start_price, 2, ',', '.'); ?>
-                  <?php elseif ($display_price) : ?>
-                    Price: € <?php echo number_format((float)$display_price, 2, ',', '.'); ?>
-                  <?php else : ?>
-                    View product for pricing
-                  <?php endif; ?>
-                </p>
-                <div class="info-status">
-                  <span><?php echo $auction_started ? 'Auction in progress' : 'Available'; ?></span>
-                </div>
+                <p class="info-subtitle">Price: € <span class="info-price"><?php echo $formatted_display_price; ?></span></p>
+                <a href="<?php echo esc_url($display_url); ?>" class="info-button">Bid now</a>
             <?php else : ?>
-                <h3 class="info-title">Meloetta ex - 159</h3>
-                <p class="info-subtitle">Starting bid: € 25,00</p>
-                <div class="info-status">
-                  <span>Auction not started</span>
-                </div>
+                <h3 class="info-title">No products available</h3>
+                <p class="info-subtitle">Price: € <span class="info-price">0,00</span></p>
+                <a href="#" class="info-button">Bid now</a>
             <?php endif; ?>
           </div>
         </div>

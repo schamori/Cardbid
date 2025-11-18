@@ -176,8 +176,40 @@ function updateGalleryCarousel() {
   if (prevBtn) prevBtn.disabled = false;
   if (nextBtn) nextBtn.disabled = false;
 
+  // Update info section with current card data
+  const currentCard = cards[galleryCurrentIndex];
+  if (currentCard && infoTitle && infoSubtitle) {
+    const productName = currentCard.getAttribute('data-product-name');
+    const productPrice = currentCard.getAttribute('data-product-price');
+    const productUrl = currentCard.getAttribute('data-product-url');
+
+    console.log('\nUpdating info section:');
+    console.log('  Product name:', productName);
+    console.log('  Product price:', productPrice);
+    console.log('  Product URL:', productUrl);
+
+    if (productName) {
+      infoTitle.textContent = productName;
+    }
+
+    if (productPrice) {
+      // Update the price span within the subtitle
+      const priceSpan = infoSubtitle.querySelector('.info-price');
+      if (priceSpan) {
+        priceSpan.textContent = productPrice;
+      } else {
+        infoSubtitle.innerHTML = `Price: € <span class="info-price">${productPrice}</span>`;
+      }
+    }
+
+    // Update button link
+    const infoButton = document.querySelector('.gallery .info-button');
+    if (infoButton && productUrl) {
+      infoButton.href = productUrl;
+    }
+  }
+
   console.log('=== updateGalleryCarousel completed ===');
-  // Info section is handled by PHP, no need to update here
 }
 
 function handleGalleryPrev() {
