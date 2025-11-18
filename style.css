@@ -126,18 +126,21 @@ body {
 }
 
 /* Navigation Styles */
-.navigation {
+.navigation,
+.cardbid-nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  display: flex;
+  display: flex !important;
   justify-content: space-between;
   align-items: center;
   padding: 24px clamp(20px, 5vw, 105px);
   background: rgba(18, 24, 38, 0.8);
   backdrop-filter: blur(10px);
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .nav-logo {
@@ -166,7 +169,7 @@ body {
   font-family: var(--font-body);
   font-weight: 700;
   font-size: clamp(14px, 1.2vw, 18px);
-  color: var(--text-white);
+  color: var(--text-white) !important;
   background: none;
   border: none;
   cursor: pointer;
@@ -174,10 +177,33 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
+  text-decoration: none !important;
 }
 
 .nav-link:hover {
-  color: var(--moody-purple);
+  color: var(--moody-purple) !important;
+}
+
+/* Ensure logo link is visible */
+.nav-logo a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+/* Ensure SVGs display properly */
+.logo-icon svg,
+.logo-text svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cart-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .dropdown-icon {
