@@ -45,7 +45,7 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
           </div>
         </div>
 
-        <div class="nav-menu">
+        <div class="nav-logo">
           <button class="nav-link nav-shop">
             Shop
             <svg class="dropdown-icon" viewBox="0 0 10 6" fill="none">
