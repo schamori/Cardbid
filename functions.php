@@ -62,6 +62,34 @@ function storefront_child_cardbid_enqueue_scripts() {
 add_action( 'wp_enqueue_scripts', 'storefront_child_cardbid_enqueue_scripts' );
 
 /**
+ * Enqueue custom header assets (cc-header)
+ */
+function storefront_child_enqueue_header_assets() {
+    wp_enqueue_style(
+        'cc-header',
+        get_stylesheet_directory_uri() . '/cc-header.css',
+        array(),
+        null
+    );
+    wp_enqueue_script(
+        'cc-header',
+        get_stylesheet_directory_uri() . '/cc-header.js',
+        array(),
+        null,
+        true
+    );
+}
+add_action( 'wp_enqueue_scripts', 'storefront_child_enqueue_header_assets' );
+
+/**
+ * Disable Storefront handheld nav to prevent conflicts with custom header
+ */
+function storefront_child_disable_handheld_nav() {
+    wp_add_inline_style('cc-header', '.handheld-navigation{display:none!important}');
+}
+add_action( 'wp_enqueue_scripts', 'storefront_child_disable_handheld_nav' );
+
+/**
  * Optional: Remove Storefront default header/footer for Cardbid template
  * Uncomment if you want the custom template to be completely standalone
  */
