@@ -152,16 +152,16 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
             <div class="carousel-container">
               <div class="carousel-track">
                 <?php
-                // Get all WooCommerce products using wc_get_products (recommended method)
+                // Get limited WooCommerce products (20 products for carousel performance)
                 $products = wc_get_products(array(
-                    'limit' => -1, // Get all products
+                    'limit' => 20,
                     'orderby' => 'date',
                     'order' => 'DESC',
                     'status' => 'publish'
                 ));
 
-                // Display products or fallback
-                if (!empty($products)) :
+                // Display products
+                if (!empty($products) && count($products) > 0) :
                     $count = 0;
                     foreach ($products as $product) :
                         $active_class = ($count === 2) ? ' active' : '';
