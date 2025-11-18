@@ -160,6 +160,9 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
                     'status' => 'publish'
                 ));
 
+                // Debug: Output product count
+                echo '<!-- Found ' . count($products) . ' products -->';
+
                 // Display products
                 if (!empty($products) && count($products) > 0) :
                     $count = 0;
@@ -172,8 +175,11 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
                         if (!$product_image) {
                             $product_image = 'https://cardbid.eu/wp-content/uploads/2025/08/166_hires-33.png';
                         }
+
+                        // Debug: Output each card
+                        echo '<!-- Card ' . $count . ': ' . esc_html($product_title) . ' -->';
                         ?>
-                        <div class="carousel-card<?php echo $active_class; ?>" data-product-id="<?php echo $product_id; ?>">
+                        <div class="carousel-card<?php echo $active_class; ?>" data-product-id="<?php echo $product_id; ?>" style="position: absolute !important; left: 50% !important; top: 50% !important;">
                           <a href="<?php echo esc_url($product_url); ?>">
                             <img src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_attr($product_title); ?>" class="card-image">
                           </a>
