@@ -21,20 +21,31 @@ if (shopButton && megaMenu) {
     megaMenu.classList.add('active');
   });
 
-  // Hide mega menu when leaving both the button and menu
+  // Hide mega menu when leaving the button - with longer delay for easier navigation
   shopButton.addEventListener('mouseleave', () => {
     megaMenuTimeout = setTimeout(() => {
       megaMenu.classList.remove('active');
-    }, 100);
+    }, 300);
   });
 
+  // Keep mega menu open when hovering over it
   megaMenu.addEventListener('mouseenter', () => {
     clearTimeout(megaMenuTimeout);
     megaMenu.classList.add('active');
   });
 
+  // Hide mega menu when leaving - with delay for easier dismissal
   megaMenu.addEventListener('mouseleave', () => {
-    megaMenu.classList.remove('active');
+    megaMenuTimeout = setTimeout(() => {
+      megaMenu.classList.remove('active');
+    }, 200);
+  });
+
+  // Close mega menu when clicking anywhere outside
+  document.addEventListener('click', (e) => {
+    if (!shopButton.contains(e.target) && !megaMenu.contains(e.target)) {
+      megaMenu.classList.remove('active');
+    }
   });
 
   console.log('✓ Mega menu event listeners added');
