@@ -152,48 +152,30 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
             <div class="carousel-container">
               <div class="carousel-track">
                 <?php
-                // Query for ALL auction products from Simple Auction plugin
-                $auction_args = array(
-                    'post_type' => 'product',
-                    'posts_per_page' => -1, // Get all auctions
-                    'meta_query' => array(
-                        array(
-                            'key' => '_auction_item_condition',
-                            'compare' => 'EXISTS'
-                        )
-                    ),
+                // Get all WooCommerce products using wc_get_products (recommended method)
+                $products = wc_get_products(array(
+                    'limit' => -1, // Get all products
                     'orderby' => 'date',
-                    'order' => 'DESC'
-                );
-
-                $auction_query = new WP_Query($auction_args);
-
-                // Store all product IDs and data for the carousel
-                $auction_products = array();
-                if ($auction_query->have_posts()) :
-                    while ($auction_query->have_posts()) : $auction_query->the_post();
-                        $auction_products[] = array(
-                            'id' => get_the_ID(),
-                            'title' => get_the_title(),
-                            'url' => get_permalink(),
-                            'thumbnail' => has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : 'https://cardbid.eu/wp-content/uploads/2025/08/166_hires-33.png',
-                            'current_bid' => get_post_meta(get_the_ID(), '_auction_current_bid', true),
-                            'start_price' => get_post_meta(get_the_ID(), '_auction_start_price', true),
-                            'auction_started' => get_post_meta(get_the_ID(), '_auction_started', true)
-                        );
-                    endwhile;
-                    wp_reset_postdata();
-                endif;
+                    'order' => 'DESC',
+                    'status' => 'publish'
+                ));
 
                 // Display products or fallback
-                if (!empty($auction_products)) :
+                if (!empty($products)) :
                     $count = 0;
-                    foreach ($auction_products as $auction_product) :
+                    foreach ($products as $product) :
                         $active_class = ($count === 2) ? ' active' : '';
+                        $product_id = $product->get_id();
+                        $product_url = get_permalink($product_id);
+                        $product_title = $product->get_name();
+                        $product_image = wp_get_attachment_image_url($product->get_image_id(), 'large');
+                        if (!$product_image) {
+                            $product_image = 'https://cardbid.eu/wp-content/uploads/2025/08/166_hires-33.png';
+                        }
                         ?>
-                        <div class="carousel-card<?php echo $active_class; ?>" data-product-id="<?php echo $auction_product['id']; ?>">
-                          <a href="<?php echo esc_url($auction_product['url']); ?>">
-                            <img src="<?php echo esc_url($auction_product['thumbnail']); ?>" alt="<?php echo esc_attr($auction_product['title']); ?>" class="card-image">
+                        <div class="carousel-card<?php echo $active_class; ?>" data-product-id="<?php echo $product_id; ?>">
+                          <a href="<?php echo esc_url($product_url); ?>">
+                            <img src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_attr($product_title); ?>" class="card-image">
                           </a>
                         </div>
                         <?php
@@ -229,25 +211,29 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
 
           <div class="gallery-info">
             <?php
-            // Display info for the first product (or middle active one)
-            if (!empty($auction_products)) :
-                $display_product = isset($auction_products[2]) ? $auction_products[2] : $auction_products[0];
-                $current_bid = $display_product['current_bid'];
-                $start_price = $display_product['start_price'];
-                $auction_started = $display_product['auction_started'];
+            // Display info for the center product (index 2 or first one)
+            if (!empty($products)) :
+                $display_product = isset($products[2]) ? $products[2] : $products[0];
+                $display_title = $display_product->get_name();
+                $display_price = $display_product->get_price();
+                $current_bid = get_post_meta($display_product->get_id(), '_auction_current_bid', true);
+                $start_price = get_post_meta($display_product->get_id(), '_auction_start_price', true);
+                $auction_started = get_post_meta($display_product->get_id(), '_auction_started', true);
                 ?>
-                <h3 class="info-title"><?php echo esc_html($display_product['title']); ?></h3>
+                <h3 class="info-title"><?php echo esc_html($display_title); ?></h3>
                 <p class="info-subtitle">
                   <?php if ($current_bid) : ?>
                     Current bid: € <?php echo number_format((float)$current_bid, 2, ',', '.'); ?>
                   <?php elseif ($start_price) : ?>
                     Starting bid: € <?php echo number_format((float)$start_price, 2, ',', '.'); ?>
+                  <?php elseif ($display_price) : ?>
+                    Price: € <?php echo number_format((float)$display_price, 2, ',', '.'); ?>
                   <?php else : ?>
                     View product for pricing
                   <?php endif; ?>
                 </p>
                 <div class="info-status">
-                  <span><?php echo $auction_started ? 'Auction in progress' : 'Auction not started'; ?></span>
+                  <span><?php echo $auction_started ? 'Auction in progress' : 'Available'; ?></span>
                 </div>
             <?php else : ?>
                 <h3 class="info-title">Meloetta ex - 159</h3>
@@ -278,38 +264,36 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
             <div class="carousel-container">
               <div class="carousel-track">
                 <?php
-                // Query for WooCommerce products (simplified to avoid performance issues)
-                $product_args = array(
-                    'post_type' => 'product',
-                    'posts_per_page' => 4,
+                // Get top products using wc_get_products (recommended method)
+                $top4_products = wc_get_products(array(
+                    'limit' => 4,
                     'orderby' => 'date',
-                    'order' => 'DESC'
-                );
+                    'order' => 'DESC',
+                    'status' => 'publish'
+                ));
 
-                $product_query = new WP_Query($product_args);
-
-                if ($product_query->have_posts()) :
-                    while ($product_query->have_posts()) : $product_query->the_post();
-                        $product = wc_get_product(get_the_ID());
-                        if (!$product) continue;
+                if (!empty($top4_products)) :
+                    foreach ($top4_products as $product) :
+                        $product_id = $product->get_id();
+                        $product_url = get_permalink($product_id);
+                        $product_title = $product->get_name();
+                        $product_image = wp_get_attachment_image_url($product->get_image_id(), 'large');
+                        if (!$product_image) {
+                            $product_image = 'https://cardbid.eu/wp-content/uploads/2025/08/166_hires-33.png';
+                        }
                         ?>
                         <div class="top4-card">
-                          <a href="<?php echo esc_url(get_permalink()); ?>">
+                          <a href="<?php echo esc_url($product_url); ?>">
                             <div class="card-badge">
                               <span>In Stock</span>
                             </div>
-                            <?php if (has_post_thumbnail()) : ?>
-                              <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>" alt="<?php the_title(); ?>" class="card-image">
-                            <?php else : ?>
-                              <img src="https://cardbid.eu/wp-content/uploads/2025/08/166_hires-33.png" alt="<?php the_title(); ?>" class="card-image">
-                            <?php endif; ?>
-                            <h3 class="card-title"><?php the_title(); ?></h3>
+                            <img src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_attr($product_title); ?>" class="card-image">
+                            <h3 class="card-title"><?php echo esc_html($product_title); ?></h3>
                             <p class="card-price"><?php echo $product->get_price_html(); ?></p>
                           </a>
                         </div>
                         <?php
-                    endwhile;
-                    wp_reset_postdata();
+                    endforeach;
                 else : ?>
                   <!-- Fallback cards if no products found -->
                   <div class="top4-card">
