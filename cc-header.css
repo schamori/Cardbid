@@ -1,0 +1,73 @@
+/* Sticky header */
+.cc-header{
+  position: sticky; top: 0; z-index: 9999;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,.05);
+  transition: transform .28s ease, box-shadow .25s ease, background .25s ease;
+}
+
+/* Admin bar offset */
+body.admin-bar .cc-header{ top: 32px; }
+@media (max-width:782px){ body.admin-bar .cc-header{ top: 46px; } }
+
+.cc-header-inner{
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; gap: 1rem;
+  padding: .6rem 1rem;
+}
+
+.cc-brand{
+  font-weight: 800; font-size: 1.25rem; color: #0f3460; text-decoration: none;
+}
+
+/* Search */
+.cc-search form{ display:flex; align-items:center; }
+.cc-search input[type="search"]{
+  width: 260px; max-width: 42vw;
+  padding: .45rem .8rem; border:1px solid #d5d5d5; border-radius:999px; font-size:.95rem;
+}
+
+/* Desktop nav */
+.cc-nav{ margin-left: auto; }
+.cc-menu{ display:flex; gap: 1.4rem; list-style:none; margin:0; padding:0; }
+.cc-menu a{ text-decoration:none; font-weight:600; color:#222; }
+.cc-menu a:hover{ color:#0f3460; }
+
+/* Burger */
+.cc-menu-toggle{
+  display:none; margin-left:auto; font-size:1.8rem; line-height:1;
+  background:none; border:0; cursor:pointer;
+}
+
+/* Drawer + overlay (mobile) */
+.cc-drawer{
+  position: fixed; inset: 0 auto 0 0; width: 82%; max-width: 340px;
+  transform: translateX(-100%); transition: transform .3s ease;
+  background:#fff; z-index: 10000; padding: 1rem 1rem 2rem; overflow-y:auto;
+  box-shadow: 2px 0 16px rgba(0,0,0,.12);
+}
+.cc-drawer.open{ transform: translateX(0); }
+.cc-drawer-close{
+  font-size:2rem; background:none; border:0; line-height:1; cursor:pointer; margin-bottom:.5rem;
+}
+.cc-drawer-menu{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:1rem; }
+.cc-drawer-menu a{ text-decoration:none; font-weight:700; color:#222; }
+
+/* Hide on scroll (applied by JS) */
+.cc-header.is-hidden{ transform: translateY(-110%); }
+
+/* Responsive */
+@media (max-width: 1024px){
+  .cc-search input[type="search"]{ width:220px; }
+}
+@media (max-width: 768px){
+  .cc-menu-toggle{ display:block; }
+  .cc-nav{ display:none; }       /* hide inline nav, use drawer */
+  .cc-header-inner{ gap:.75rem; }
+  .cc-search input[type="search"]{ width: 58vw; }
+}
+
+/* Optional: subtle focus styles */
+.cc-header a:focus, .cc-header button:focus, .cc-header input:focus{
+  outline: 2px solid #0f3460; outline-offset: 2px;
+}
