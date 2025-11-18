@@ -10,26 +10,20 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: storefront-child-cardbid
 */
 
-/* Hide default WordPress/Storefront header and footer on custom template pages */
-.page-template-page-cardbid-home .site-header,
-.page-template-page-cardbid-home .site-footer,
-.page-template-page-cardbid-home .storefront-primary-navigation,
-.page-template-page-cardbid-home #masthead,
-.page-template-page-cardbid-home .handheld-navigation,
-.page-template-page-cardbid-home .woocommerce-breadcrumb {
+/* Hide default WordPress/Storefront header and footer globally */
+.site-header,
+.storefront-primary-navigation,
+#masthead,
+.handheld-navigation,
+.woocommerce-breadcrumb,
+.storefront-handheld-footer-bar {
   display: none !important;
 }
 
 /* Remove WordPress admin bar margin */
-.page-template-page-cardbid-home.admin-bar .navigation {
-  top: 32px;
-}
-
-/* Ensure body has no margin or padding on custom template */
-.page-template-page-cardbid-home body,
-body.page-template-page-cardbid-home {
-  margin: 0 !important;
-  padding: 0 !important;
+.admin-bar .navigation,
+.admin-bar .cardbid-nav {
+  top: 32px !important;
 }
 
 /* Reset and Base Styles */

@@ -76,15 +76,28 @@ function storefront_child_cardbid_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'storefront_child_cardbid_enqueue_assets' );
 
 /**
- * Optional: Remove Storefront default header/footer for Cardbid template
- * Uncomment if you want the custom template to be completely standalone
+ * Remove Storefront default header elements globally
+ * Our custom header.php replaces them
  */
-/*
-function storefront_child_remove_default_template_hooks() {
-    if ( is_page_template( 'page-cardbid-home.php' ) ) {
-        remove_all_actions( 'storefront_header' );
-        remove_all_actions( 'storefront_footer' );
-    }
+function storefront_child_remove_default_header() {
+    remove_action( 'storefront_header', 'storefront_header_container', 0 );
+    remove_action( 'storefront_header', 'storefront_skip_links', 5 );
+    remove_action( 'storefront_header', 'storefront_site_branding', 20 );
+    remove_action( 'storefront_header', 'storefront_secondary_navigation', 30 );
+    remove_action( 'storefront_header', 'storefront_product_search', 40 );
+    remove_action( 'storefront_header', 'storefront_header_container_close', 41 );
+    remove_action( 'storefront_header', 'storefront_primary_navigation_wrapper', 42 );
+    remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
+    remove_action( 'storefront_header', 'storefront_header_cart', 60 );
+    remove_action( 'storefront_header', 'storefront_primary_navigation_wrapper_close', 68 );
 }
-add_action( 'wp', 'storefront_child_remove_default_template_hooks' );
-*/
+add_action( 'init', 'storefront_child_remove_default_header' );
+
+/**
+ * Hide WooCommerce breadcrumbs globally
+ */
+function cardbid_remove_woo_breadcrumbs() {
+    remove_action( 'storefront_before_content', 'woocommerce_breadcrumb', 10 );
+    remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+}
+add_action( 'init', 'cardbid_remove_woo_breadcrumbs' );
