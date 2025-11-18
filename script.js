@@ -2,7 +2,7 @@
 const shopButton = document.querySelector('.nav-shop');
 const megaMenu = document.querySelector('.mega-menu');
 const navigation = document.querySelector('.navigation');
-
+console.log('=== script.js loaded ===');
 let megaMenuTimeout;
 
 // Show mega menu on hover
@@ -185,7 +185,7 @@ function handleTop4Next() {
 }
 
 // Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   console.log('=== DOMContentLoaded fired ===');
   console.log('Script.js is executing!');
 
