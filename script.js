@@ -31,16 +31,23 @@ megaMenu.addEventListener('mouseleave', () => {
 let galleryCurrentIndex = 2;
 
 function updateGalleryCarousel() {
+  console.log('=== updateGalleryCarousel called ===');
   const track = document.querySelector('.gallery .carousel-track');
   const prevBtn = document.querySelector('.gallery .carousel-nav.prev');
   const nextBtn = document.querySelector('.gallery .carousel-nav.next');
   const infoTitle = document.querySelector('.gallery .info-title');
   const infoSubtitle = document.querySelector('.gallery .info-subtitle');
 
-  if (!track) return;
+  console.log('Track found:', track);
+  if (!track) {
+    console.error('ERROR: .gallery .carousel-track not found!');
+    return;
+  }
 
   const cards = track.querySelectorAll('.carousel-card');
   const totalCards = cards.length;
+  console.log('Total cards found:', totalCards);
+  console.log('Current index:', galleryCurrentIndex);
 
   // Ensure currentIndex is valid
   if (galleryCurrentIndex >= totalCards) {
@@ -50,6 +57,7 @@ function updateGalleryCarousel() {
     galleryCurrentIndex = 0;
   }
   const cardWidth = 316; // Card width + gap
+  console.log('Card width:', cardWidth);
 
   // Position cards in a horizontal line
   cards.forEach((card, index) => {
@@ -97,16 +105,20 @@ function updateGalleryCarousel() {
     }
 
     // Apply transformations
-    card.style.transform = `translate(calc(-50% + ${x}px), -50%) scale(${scale})`;
+    const transform = `translate(calc(-50% + ${x}px), -50%) scale(${scale})`;
+    card.style.transform = transform;
     card.style.opacity = opacity;
     card.style.filter = `blur(${blur}px)`;
     card.style.zIndex = zIndex;
+
+    console.log(`Card ${index}: x=${x}px, transform="${transform}", opacity=${opacity}, zIndex=${zIndex}`);
   });
 
   // Update button states - allow circular navigation
   if (prevBtn) prevBtn.disabled = false;
   if (nextBtn) nextBtn.disabled = false;
 
+  console.log('=== updateGalleryCarousel completed ===');
   // Info section is handled by PHP, no need to update here
 }
 
@@ -174,16 +186,24 @@ function handleTop4Next() {
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('=== DOMContentLoaded fired ===');
+  console.log('Script.js is executing!');
+
   // Setup Gallery Carousel
   const galleryPrevBtn = document.querySelector('.gallery .carousel-nav.prev');
   const galleryNextBtn = document.querySelector('.gallery .carousel-nav.next');
 
+  console.log('Gallery prev button:', galleryPrevBtn);
+  console.log('Gallery next button:', galleryNextBtn);
+
   if (galleryPrevBtn) {
     galleryPrevBtn.addEventListener('click', handleGalleryPrev);
+    console.log('Gallery prev button click listener added');
   }
 
   if (galleryNextBtn) {
     galleryNextBtn.addEventListener('click', handleGalleryNext);
+    console.log('Gallery next button click listener added');
   }
 
   // Setup Top4 Carousel
@@ -199,6 +219,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Initial carousel setup
+  console.log('Calling initial carousel setup...');
   updateGalleryCarousel();
   updateTop4Carousel();
+  console.log('=== Initialization complete ===');
 });
