@@ -125,10 +125,10 @@ body {
   z-index: 10;
 }
 
-/* Navigation Styles */
+/* Navigation Styles - Liquid Glass Effect */
 .navigation,
 .cardbid-nav {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
@@ -136,11 +136,18 @@ body {
   display: flex !important;
   justify-content: space-between;
   align-items: center;
-  padding: 24px clamp(20px, 5vw, 105px);
-  background: rgba(18, 24, 38, 0.8);
-  backdrop-filter: blur(10px);
+  padding: 20px clamp(20px, 5vw, 105px);
+
+  /* Liquid glass morphism effect */
+  background: rgba(30, 39, 65, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
   visibility: visible !important;
   opacity: 1 !important;
+  transition: all 0.3s ease;
 }
 
 /* Force all navigation children to be visible EXCEPT mega menu */
@@ -212,20 +219,24 @@ body {
 }
 
 /* Hover effects for nav-logo when used as navigation links */
+.nav-menu .nav-logo {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
 .nav-menu .nav-logo:hover {
-  color: var(--moody-purple) !important;
-  transform: translateY(-1px);
-  transition: all 0.2s ease;
+  color: var(--pale-blue) !important;
+  transform: translateY(-2px);
 }
 
 .nav-menu button.nav-logo,
 .nav-menu a.nav-logo {
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-menu button.nav-logo:hover,
 .nav-menu a.nav-logo:hover {
-  color: var(--moody-purple) !important;
+  color: var(--pale-blue) !important;
 }
 
 /* Ensure logo link is visible */
@@ -296,25 +307,26 @@ body {
   color: var(--dark-blue);
 }
 
-/* Mega Menu Styles */
+/* Mega Menu Styles - Liquid Glass Effect */
 .mega-menu {
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
-  background: linear-gradient(to bottom,
-      var(--pale-blue) 0%,
-      var(--moody-purple) 40%,
-      var(--royal-blue) 70%,
-      var(--dark-blue) 100%);
+
+  /* Liquid glass morphism effect matching navbar */
+  background: rgba(30, 39, 65, 0.9);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 6px solid var(--dark-blue);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mega-menu.active {
@@ -327,10 +339,10 @@ body {
 .mega-menu-content {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 48px clamp(20px, 5vw, 105px);
+  padding: 32px clamp(20px, 5vw, 105px);
   display: grid;
   grid-template-columns: 1fr;
-  gap: 32px;
+  gap: 24px;
 }
 
 .mega-menu-game {
@@ -346,18 +358,19 @@ body {
   gap: 8px;
   margin-bottom: 12px;
   padding-bottom: 12px;
-  border-bottom: 2px solid var(--dark-blue);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .mega-menu-icon {
   font-size: 20px;
+  color: var(--text-white);
 }
 
 .mega-menu-game-title {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 16px;
-  color: var(--dark-blue);
+  color: var(--text-white);
   margin: 0;
 }
 
@@ -377,7 +390,7 @@ body {
   font-family: var(--font-body);
   font-weight: 700;
   font-size: 11px;
-  color: var(--dark-blue);
+  color: var(--pale-blue);
   margin: 0;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -400,8 +413,8 @@ body {
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 13px;
-  color: var(--dark-blue);
-  opacity: 0.8;
+  color: var(--text-white);
+  opacity: 0.85;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -418,7 +431,7 @@ body {
 
 .expansion-badge {
   display: inline-block;
-  background: var(--dark-blue);
+  background: var(--moody-purple);
   color: var(--text-white);
   font-size: 10px;
   font-weight: 700;
@@ -434,13 +447,14 @@ body {
   display: inline-block;
   width: 20px;
   text-align: center;
+  color: var(--text-white);
 }
 
 .view-all-link {
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 13px;
-  color: var(--royal-blue);
+  color: var(--pale-blue);
   text-decoration: none;
   margin-top: 8px;
   display: inline-block;
@@ -448,7 +462,7 @@ body {
 }
 
 .view-all-link:hover {
-  color: var(--moody-purple);
+  color: var(--text-white);
   text-decoration: underline;
 }
 
@@ -458,7 +472,7 @@ body {
   flex-direction: column;
   gap: 4px;
   padding: 8px 0;
-  border-bottom: 1px solid rgba(30, 39, 65, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mega-menu-list li:last-child {
@@ -469,7 +483,7 @@ body {
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 13px;
-  color: var(--dark-blue);
+  color: var(--text-white);
   margin-left: 8px;
   display: inline-block;
 }
@@ -485,12 +499,12 @@ body {
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 12px;
-  color: var(--dark-blue);
-  opacity: 0.7;
+  color: var(--text-white);
+  opacity: 0.8;
   text-decoration: none;
   padding: 4px 8px;
   border-radius: 4px;
-  background: rgba(30, 39, 65, 0.05);
+  background: rgba(255, 255, 255, 0.1);
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
@@ -499,17 +513,17 @@ body {
 
 .set-link:hover {
   opacity: 1;
-  background: rgba(124, 74, 255, 0.1);
-  color: var(--moody-purple);
+  background: rgba(105, 115, 219, 0.3);
+  color: var(--pale-blue);
   transform: translateY(-1px);
 }
 
 .set-link.singles:hover {
-  background: rgba(124, 74, 255, 0.15);
+  background: rgba(105, 115, 219, 0.4);
 }
 
 .set-link.sealed:hover {
-  background: rgba(59, 130, 246, 0.15);
+  background: rgba(58, 90, 182, 0.4);
 }
 
 /* Hero Styles */

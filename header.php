@@ -15,7 +15,7 @@
   <?php do_action( 'storefront_before_header' ); ?>
 
   <!-- Custom Cardbid Navigation -->
-  <nav class="navigation cardbid-nav" style="display: flex !important; visibility: visible !important; opacity: 1 !important; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(18, 24, 38, 0.8); padding: 24px clamp(20px, 5vw, 105px); justify-content: space-between; align-items: center;">
+  <nav class="navigation cardbid-nav">
     <div class="nav-logo" style="display: flex !important; align-items: center; gap: 12px;">
       <a href="<?php echo esc_url( home_url( '/' ) ); ?>" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
         <div class="logo-icon">
@@ -92,10 +92,18 @@
                   ));
 
                   if (!empty($sets) && !is_wp_error($sets)) {
+                    $count = 0;
+                    $max_sets = 5; // Limit to 5 sets
+
                     foreach ($sets as $set) {
                       // Skip the Singles and Sealed categories themselves
                       if (strpos($set->slug, 'singles-') === 0 || strpos($set->slug, 'sealed-') === 0) {
                         continue;
+                      }
+
+                      // Stop after 5 sets
+                      if ($count >= $max_sets) {
+                        break;
                       }
 
                       // Generate the set name without "Singles" or "Sealed" suffix
@@ -114,6 +122,8 @@
                       echo '<a href="' . esc_url($sealed_url) . '" class="set-link sealed">📦 Sealed</a>';
                       echo '</div>';
                       echo '</li>';
+
+                      $count++;
                     }
                   }
                 }
