@@ -1,3 +1,6 @@
+    </div><!-- .col-full -->
+  </div><!-- #content -->
+
 <!-- PreFooter Section -->
 <section class="pre-footer">
   <div class="pre-footer-container">
@@ -66,6 +69,8 @@
     </div>
   </div>
 </footer>
+
+</div><!-- #page -->
 
 <?php wp_footer(); ?>
 </body>

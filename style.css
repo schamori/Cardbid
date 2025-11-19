@@ -74,6 +74,30 @@ Text Domain: storefront-child-cardbid
   box-sizing: border-box !important;
 }
 
+/* Ensure WooCommerce shop pages have proper z-index and pointer events */
+.woocommerce-shop,
+.post-type-archive-product,
+.tax-product_cat,
+.woocommerce-page {
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+/* Ensure WooCommerce products and links are clickable */
+.woocommerce-shop .site-content,
+.post-type-archive-product .site-content,
+.tax-product_cat .site-content,
+.woocommerce-page .site-content,
+.woocommerce ul.products,
+.woocommerce .products,
+.woocommerce .product,
+.woocommerce a,
+.woocommerce button,
+.woocommerce input,
+.woocommerce select {
+  pointer-events: auto !important;
+}
+
 /* Reset and Base Styles */
 * {
   box-sizing: border-box;
@@ -101,6 +125,14 @@ Text Domain: storefront-child-cardbid
 /* Critical: Ensure parent containers don't break sticky */
 body {
   padding-top: 90px !important; /* Space for fixed navbar */
+}
+
+/* Shop pages should have normal background, not the gradient */
+body.woocommerce-shop,
+body.post-type-archive-product,
+body.tax-product_cat,
+body.woocommerce-page {
+  background: #f5f5f5 !important;
 }
 
 #page, .hfeed, .site {
