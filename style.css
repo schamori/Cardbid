@@ -70,24 +70,9 @@ Text Domain: storefront-child-cardbid
   padding: 0;
 }
 
-html {
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow-x: hidden !important;
-  height: auto !important;
-  min-height: 100% !important;
-}
 
-/* Prevent any scrollable containers interfering with navbar */
-/* Use overflow: clip instead of hidden - clip doesn't break sticky/fixed */
-html, body, #page, .site, .hfeed {
-  overflow-x: clip !important;
-  overflow-y: auto !important;
-  position: relative !important;
-  height: auto !important;
-  transform: none !important;
-  will-change: auto !important;
-}
+
+
 
 /* Override Storefront container that might interfere */
 .col-full,
@@ -105,9 +90,6 @@ html, body, #page, .site, .hfeed {
 
 /* Critical: Ensure parent containers don't break sticky */
 body {
-  height: auto !important;
-  overflow-y: scroll !important;
-  overflow-x: clip !important;
   padding-top: 90px !important; /* Space for fixed navbar */
 }
 
