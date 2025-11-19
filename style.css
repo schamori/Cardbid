@@ -1388,7 +1388,7 @@ nav .nav-menu {
 .footer {
   position: relative;
   background: var(--dark-blue);
-  padding: clamp(110px, 16vh, 150px) clamp(20px, 5vw, 105px) clamp(40px, 6vh, 60px);
+  padding: clamp(150px, 20vh, 200px) clamp(20px, 5vw, 105px) clamp(40px, 6vh, 60px);
   z-index: 5;
 }
 
