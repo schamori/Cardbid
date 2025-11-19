@@ -19,7 +19,6 @@ Text Domain: storefront-child-cardbid
 .storefront-handheld-footer-bar {
   display: none !important;
   margin: 0 !important;
-  padding: 0 !important;
   height: 0 !important;
 }
 
@@ -67,7 +66,7 @@ Text Domain: storefront-child-cardbid
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
+
 }
 
 
@@ -85,7 +84,6 @@ Text Domain: storefront-child-cardbid
   will-change: auto !important;
   background: transparent !important;
   margin: 0 !important;
-  padding: 0 !important;
 }
 
 /* Critical: Ensure parent containers don't break sticky */
@@ -147,7 +145,6 @@ body {
   color: var(--text-white) !important;
   overflow-x: hidden !important;
   margin: 0 !important;
-  padding: 0 !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh !important;
