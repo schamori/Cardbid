@@ -104,7 +104,7 @@ html, body, #page, .site, .hfeed {
 
 /* Critical: Ensure parent containers don't break sticky */
 body {
-  padding-top: 80px!important;
+  padding-top: 80000px!important;
   
 }
 
