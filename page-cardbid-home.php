@@ -9,9 +9,6 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
 
 get_header();
 ?>
-    </div><!-- .col-full -->
-  </div><!-- #content -->
-</div><!-- #page -->
 
 <div class="app">
   <div class="hero-background"></div>
@@ -348,6 +345,10 @@ get_header();
     </div>
   </div>
 
-  <?php wp_footer(); ?>
+    </div><!-- .col-full -->
+  </div><!-- #content -->
+</div><!-- #page -->
+
+<?php wp_footer(); ?>
 </body>
 </html>
