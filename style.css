@@ -79,8 +79,9 @@ html {
 }
 
 /* Prevent any scrollable containers interfering with navbar */
+/* Use overflow: clip instead of hidden - clip doesn't break sticky/fixed */
 html, body, #page, .site, .hfeed {
-  overflow-x: hidden !important;
+  overflow-x: clip !important;
   overflow-y: auto !important;
   position: relative !important;
   height: auto !important;
@@ -104,8 +105,10 @@ html, body, #page, .site, .hfeed {
 
 /* Critical: Ensure parent containers don't break sticky */
 body {
-  padding-top: 80000px!important;
-  
+  height: auto !important;
+  overflow-y: scroll !important;
+  overflow-x: clip !important;
+  padding-top: 90px !important; /* Space for fixed navbar */
 }
 
 #page, .hfeed, .site {
@@ -241,7 +244,7 @@ body {
   z-index: 10;
 }
 
-/* Navigation Styles - Liquid Glass Effect */
+/* Navigation Styles - Liquid Glass Effect - FIXED POSITIONING */
 nav.navigation,
 nav.cardbid-nav,
 .navigation,
@@ -256,7 +259,6 @@ body.woocommerce nav.navigation,
 #page > nav.navigation,
 .site > nav.navigation,
 .hfeed > nav.navigation {
-
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -271,7 +273,7 @@ body.woocommerce nav.navigation,
   padding: clamp(16px, 2.5vh, 24px) clamp(20px, 5vw, 105px) !important;
   margin: 0 !important;
 
-  /* Override any transform that might break sticky */
+  /* Override any transform that might break fixed */
   transform: none !important;
   transform-style: flat !important;
   will-change: auto !important;
