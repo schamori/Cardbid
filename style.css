@@ -1346,7 +1346,7 @@ nav .nav-menu {
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-default);
-      transform: translateY(22%);
+  transform: translateY(22%);
 }
 
 .pre-footer-title {
@@ -1681,7 +1681,7 @@ a.nav-link {
 }
 
 /* NUCLEAR OPTION: Force everything visible - Last resort overrides */
-body nav.navigation *:not(.mega-menu):not(.mega-menu *),
+body nav.navigation *:not(.mega-menu):not(.mega-menu *), 
 body nav.cardbid-nav *:not(.mega-menu):not(.mega-menu *),
 body .navigation.cardbid-nav *:not(.mega-menu):not(.mega-menu *) {
   visibility: visible !important;
