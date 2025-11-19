@@ -81,7 +81,11 @@ html {
 /* Prevent any scrollable containers interfering with navbar */
 html, body, #page, .site, .hfeed {
   overflow-x: hidden !important;
+  overflow-y: auto !important;
   position: relative !important;
+  height: auto !important;
+  transform: none !important;
+  will-change: auto !important;
 }
 
 /* Override Storefront container that might interfere */
@@ -91,6 +95,23 @@ html, body, #page, .site, .hfeed {
 #content {
   overflow: visible !important;
   position: relative !important;
+  transform: none !important;
+  will-change: auto !important;
+}
+
+/* Critical: Ensure parent containers don't break sticky */
+body {
+  height: auto !important;
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+}
+
+#page, .hfeed, .site {
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow: visible !important;
+  transform: none !important;
+  perspective: none !important;
 }
 
 /* Color Palette - Cardbid Official Style Guide */
@@ -220,13 +241,19 @@ body.single-product .cardbid-nav,
 body.woocommerce-page .navigation,
 body.woocommerce-page .cardbid-nav,
 body.storefront nav.navigation,
-body.woocommerce nav.navigation {
+body.woocommerce nav.navigation,
+#page > nav.navigation,
+.site > nav.navigation,
+.hfeed > nav.navigation {
+  position: -webkit-sticky !important;
   position: sticky !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
+  bottom: auto !important;
   width: 100% !important;
-  z-index: 1000 !important;
+  max-width: 100vw !important;
+  z-index: 9999 !important;
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
@@ -235,7 +262,10 @@ body.woocommerce nav.navigation {
 
   /* Override any transform that might break sticky */
   transform: none !important;
+  transform-style: flat !important;
   will-change: auto !important;
+  perspective: none !important;
+  contain: layout !important;
 
   /* Liquid glass morphism effect */
   background: rgba(30, 39, 65, 0.85) !important;
@@ -250,8 +280,10 @@ body.woocommerce nav.navigation {
 
   /* Prevent overflow issues */
   overflow: visible !important;
-  max-width: 100vw !important;
   box-sizing: border-box !important;
+
+  /* Force display above everything */
+  isolation: isolate !important;
 }
 
 /* Force all navigation children to be visible EXCEPT mega menu */
