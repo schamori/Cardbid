@@ -1390,7 +1390,8 @@ nav .nav-menu {
 }
 
 .footer-content {
-  max-width: 1600px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1490,7 +1491,8 @@ nav .nav-menu {
 
 /* Bottom Section - Social Media Icons & Legal Links */
 .footer-bottom {
-  max-width: 1600px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: center;
