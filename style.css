@@ -1346,6 +1346,7 @@ nav .nav-menu {
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-default);
+      transform: translateY(22%);
 }
 
 .pre-footer-title {
