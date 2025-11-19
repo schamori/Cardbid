@@ -1,1 +1,1840 @@
+/*
+Theme Name: Storefront Child - Cardbid
+Theme URI: https://github.com/schamori/Cardbid
+Template: storefront
+Author: Cardbid Team
+Description: Storefront child theme with custom Cardbid landing page featuring diagonal gradient background, wiggle animations, and windowed sections
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: storefront-child-cardbid
+*/
+
+/* Hide default WordPress/Storefront header and footer globally */
+.site-header,
+.storefront-primary-navigation,
+#masthead,
+.handheld-navigation,
+.woocommerce-breadcrumb,
+.storefront-handheld-footer-bar {
+  display: none !important;
+  margin: 0 !important;
+  height: 0 !important;
+}
+
+/* Remove WordPress admin bar margin */
+.admin-bar .navigation,
+.admin-bar .cardbid-nav {
+  top: 32px !important;
+}
+
+/* Ensure content doesn't get covered by sticky navbar */
+.site-content {
+  position: relative;
+  z-index: 1;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Override any WordPress/theme spacing on content */
+#content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.col-full {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* WooCommerce product page specific fixes */
+.single-product #content,
+.single-product .site-content,
+.woocommerce-page #content,
+.woocommerce-page .site-content {
+  margin-top: 0 !important;
+  padding-top: 20px !important;
+}
+
+/* Add top padding to product content to prevent navbar overlap */
+.single-product .woocommerce,
+.woocommerce-page .woocommerce {
+  padding-top: 20px !important;
+}
+
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+
+}
+
+
+
+
+
+/* Override Storefront container that might interfere */
+.col-full,
+.storefront-full-width-content,
+.site-content,
+#content {
+  overflow: visible !important;
+  position: relative !important;
+  transform: none !important;
+  will-change: auto !important;
+  background: transparent !important;
+  margin: 0 !important;
+}
+
+/* Critical: Ensure parent containers don't break sticky */
+body {
+  padding-top: 90px !important; /* Space for fixed navbar */
+}
+
+#page, .hfeed, .site {
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow: visible !important;
+  transform: none !important;
+  perspective: none !important;
+}
+
+/* Color Palette - Cardbid Official Style Guide */
+:root {
+  --dark-blue: #1e2741;
+  --royal-blue: #3a5ab6;
+  --moody-purple: #6973db;
+  --pale-blue: #e6eeff;
+  --text-white: #ffffff;
+  --bg-light: rgba(255, 255, 255, 0.98);
+  --shadow-default: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom Fonts */
+@font-face {
+  font-family: 'Genaminto';
+  src: url('fonts/Genaminto-Regular.woff2') format('woff2'),
+    url('fonts/Genaminto-Regular.woff') format('woff'),
+    url('fonts/Genaminto-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Genaminto';
+  src: url('fonts/Genaminto-Bold.woff2') format('woff2'),
+    url('fonts/Genaminto-Bold.woff') format('woff'),
+    url('fonts/Genaminto-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Typography */
+:root {
+  --font-display: 'Genaminto', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  background: var(--dark-blue) !important;
+  background-color: var(--dark-blue) !important;
+  color: var(--text-white) !important;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh !important;
+}
+
+/* Ensure page container starts at top */
+#page {
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  background: transparent !important;
+  min-height: 100vh !important;
+}
+
+.site-header {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+/* Force any WordPress hooks to not add space */
+.hfeed {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  min-height: 100vh !important;
+}
+
+.site {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  min-height: 100vh !important;
+}
+
+.app {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  background: linear-gradient(135deg,
+      var(--dark-blue) 0%,
+      var(--dark-blue) 10%,
+      var(--moody-purple) 25%,
+      var(--royal-blue) 40%,
+      var(--pale-blue) 60%,
+      var(--pale-blue) 100%) !important;
+}
+
+/* Background Gradients */
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: min(1118px, 100vh);
+  background: transparent;
+  z-index: 0;
+}
+
+.lower-background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: min(900px, 85vh);
+  width: 100%;
+  min-height: 2000px;
+  background: transparent;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+}
+
+/* Navigation Styles - Liquid Glass Effect - FIXED POSITIONING */
+nav.navigation,
+nav.cardbid-nav,
+.navigation,
+.cardbid-nav,
+body nav.navigation,
+body.single-product .navigation,
+body.single-product .cardbid-nav,
+body.woocommerce-page .navigation,
+body.woocommerce-page .cardbid-nav,
+body.storefront nav.navigation,
+body.woocommerce nav.navigation,
+#page > nav.navigation,
+.site > nav.navigation,
+.hfeed > nav.navigation {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: auto !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: clamp(16px, 2.5vh, 24px) clamp(20px, 5vw, 105px) !important;
+  margin: 0 !important;
+
+  /* Override any transform that might break fixed */
+  transform: none !important;
+  transform-style: flat !important;
+  will-change: auto !important;
+  perspective: none !important;
+  contain: layout !important;
+
+  /* Liquid glass morphism effect */
+  background: rgba(30, 39, 65, 0.85) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+
+  visibility: visible !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease !important;
+
+  /* Prevent overflow issues */
+  overflow: visible !important;
+  box-sizing: border-box !important;
+
+  /* Force display above everything */
+  isolation: isolate !important;
+}
+
+/* Force all navigation children to be visible EXCEPT mega menu */
+.navigation *:not(.mega-menu):not(.mega-menu *),
+.cardbid-nav *:not(.mega-menu):not(.mega-menu *) {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure mega menu is hidden by default */
+.mega-menu {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Show mega menu only when active */
+.mega-menu.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: all !important;
+}
+
+/* Handle both nav-logo and nav-menu classes */
+.nav-logo,
+.nav-menu,
+div.nav-logo,
+div.nav-menu,
+nav .nav-logo,
+nav .nav-menu {
+  display: flex !important;
+  align-items: center !important;
+  gap: clamp(16px, 3vw, 32px) !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* First nav-logo (logo container) gets smaller gap */
+.navigation > .nav-logo:first-child,
+.cardbid-nav > .nav-logo:first-child {
+  gap: 12px !important;
+}
+
+.logo-icon {
+  width: clamp(50px, 8vw, 74px);
+  height: clamp(40px, 6vw, 58px);
+  display: block !important;
+}
+
+.logo-text {
+  width: clamp(120px, 18vw, 170px);
+  height: auto;
+  display: block !important;
+}
+
+.nav-link {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(14px, 1.2vw, 18px);
+  color: var(--text-white) !important;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex !important;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.nav-link:hover {
+  color: var(--moody-purple) !important;
+}
+
+/* Hover effects for nav-logo when used as navigation links */
+.nav-menu .nav-logo {
+  transition: color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.nav-menu .nav-logo:hover {
+  color: rgba(230, 238, 255, 0.95) !important;
+}
+
+.nav-menu .nav-logo::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 100%;
+  height: 2px;
+  background: var(--pale-blue);
+  border-radius: 2px;
+  transition: transform 0.2s ease;
+}
+
+.nav-menu .nav-logo:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.nav-menu button.nav-logo,
+.nav-menu a.nav-logo {
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-menu button.nav-logo:hover,
+.nav-menu a.nav-logo:hover {
+  color: rgba(230, 238, 255, 0.95) !important;
+}
+
+/* Ensure logo link is visible */
+.nav-logo a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+/* Ensure SVGs display properly */
+.logo-icon svg,
+.logo-text svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cart-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown-icon {
+  width: 10px;
+  height: 6px;
+  transition: transform 0.2s ease;
+}
+
+.nav-shop:hover .dropdown-icon,
+.mega-menu.active + .navigation .nav-shop .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+.nav-cart {
+  display: flex !important;
+  align-items: center;
+  gap: 12px;
+  background: var(--text-white);
+  padding: 8px 16px;
+  border-radius: 99px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.nav-cart:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.cart-items {
+  font-size: clamp(12px, 1vw, 16px);
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.cart-price {
+  font-weight: 700;
+  font-size: clamp(12px, 1vw, 16px);
+  color: var(--dark-blue);
+}
+
+.cart-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--dark-blue);
+}
+
+/* Mega Menu Styles - Compact Dropdown */
+.mega-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  width: 420px;
+  max-width: 90vw;
+
+  /* Liquid glass morphism effect */
+  background: rgba(30, 39, 65, 0.95);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 16px;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 1001;
+}
+
+.mega-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: all;
+}
+
+.mega-menu-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mega-menu-game {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+.mega-menu-game-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.mega-menu-icon {
+  font-size: 18px;
+  color: var(--text-white);
+}
+
+.mega-menu-game-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-white);
+  margin: 0;
+}
+
+.mega-menu-two-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mega-menu-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mega-menu-section-title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 10px;
+  color: rgba(230, 238, 255, 0.7);
+  margin: 0 0 12px 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.mega-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mega-menu-list li {
+  margin: 0;
+}
+
+.mega-menu-list a {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--text-white);
+  opacity: 0.9;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+
+.mega-menu-list a:hover {
+  background: rgba(105, 115, 219, 0.2);
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+.expansion-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(105, 115, 219, 0.3);
+  color: var(--text-white);
+  font-size: 9px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 4px;
+  min-width: 35px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(105, 115, 219, 0.4);
+}
+
+.category-icon {
+  font-size: 14px;
+  display: inline-block;
+  width: 18px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.view-all-link {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 12px;
+  color: rgba(230, 238, 255, 0.8);
+  text-decoration: none;
+  margin-top: 8px;
+  padding: 6px 8px;
+  display: inline-block;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+}
+
+.view-all-link:hover {
+  color: var(--text-white);
+  background: rgba(105, 115, 219, 0.15);
+}
+
+/* Mega Menu Set Links */
+.mega-menu-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.mega-menu-list li:last-child {
+  border-bottom: none;
+}
+
+.mega-menu-list li:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.set-name {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--text-white);
+  margin-left: 6px;
+  display: inline-block;
+}
+
+.set-links {
+  display: flex;
+  gap: 6px;
+  margin-left: 42px;
+}
+
+.set-link {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 11px;
+  color: var(--text-white);
+  opacity: 0.85;
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.set-link:hover {
+  opacity: 1;
+  background: rgba(105, 115, 219, 0.25);
+  transform: translateY(-1px);
+}
+
+.set-link.singles:hover {
+  background: rgba(105, 115, 219, 0.35);
+}
+
+.set-link.sealed:hover {
+  background: rgba(58, 90, 182, 0.35);
+}
+
+/* Hero Styles */
+.hero {
+  position: relative;
+  min-height: min(900px, 90vh);
+  display: flex;
+  align-items: center;
+  padding: clamp(100px, 15vh, 180px) clamp(20px, 5vw, 105px) clamp(60px, 10vh, 120px);
+}
+
+
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 72px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-white);
+  margin-bottom: clamp(20px, 3vh, 40px);
+  letter-spacing: -0.02em;
+}
+
+.hero-description {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(16px, 1.5vw, 24px);
+  line-height: 1.5;
+  color: var(--text-white);
+  margin-bottom: clamp(30px, 5vh, 60px);
+  max-width: 560px;
+  opacity: 0.95;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-button {
+  padding: 16px 32px;
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: clamp(14px, 1.2vw, 18px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  min-width: 180px;
+}
+
+.hero-button.primary {
+  background: var(--text-white);
+  color: var(--dark-blue);
+}
+
+.hero-button.primary:hover {
+  background: var(--pale-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
+}
+
+.hero-button.secondary {
+  background: var(--moody-purple);
+  color: var(--text-white);
+}
+
+.hero-button.secondary:hover {
+  background: var(--royal-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(105, 115, 219, 0.4);
+}
+
+/* Wiggle animations for cards */
+@keyframes wiggle1 {
+
+  0%,
+  100% {
+    transform: rotate(-15deg) translateY(0px) translateX(0px);
+  }
+
+  25% {
+    transform: rotate(-18deg) translateY(-10px) translateX(-5px);
+  }
+
+  50% {
+    transform: rotate(-12deg) translateY(-15px) translateX(5px);
+  }
+
+  75% {
+    transform: rotate(-16deg) translateY(-8px) translateX(-3px);
+  }
+}
+
+@keyframes wiggle2 {
+
+  0%,
+  100% {
+    transform: rotate(12deg) translateY(0px) translateX(0px);
+  }
+
+  25% {
+    transform: rotate(15deg) translateY(-12px) translateX(5px);
+  }
+
+  50% {
+    transform: rotate(9deg) translateY(-18px) translateX(-5px);
+  }
+
+  75% {
+    transform: rotate(13deg) translateY(-10px) translateX(3px);
+  }
+}
+
+@keyframes wiggle3 {
+
+  0%,
+  100% {
+    transform: rotate(-20deg) translateY(0px) translateX(0px);
+  }
+
+  25% {
+    transform: rotate(-23deg) translateY(-15px) translateX(5px);
+  }
+
+  50% {
+    transform: rotate(-17deg) translateY(-20px) translateX(-5px);
+  }
+
+  75% {
+    transform: rotate(-21deg) translateY(-12px) translateX(3px);
+  }
+}
+
+@keyframes wiggle4 {
+
+  0%,
+  100% {
+    transform: rotate(18deg) translateY(0px) translateX(0px);
+  }
+
+  25% {
+    transform: rotate(21deg) translateY(-10px) translateX(-5px);
+  }
+
+  50% {
+    transform: rotate(15deg) translateY(-16px) translateX(5px);
+  }
+
+  75% {
+    transform: rotate(19deg) translateY(-8px) translateX(-3px);
+  }
+}
+
+@keyframes wiggle5 {
+
+  0%,
+  100% {
+    transform: rotate(-10deg) translateY(0px) translateX(0px);
+  }
+
+  25% {
+    transform: rotate(-13deg) translateY(-14px) translateX(5px);
+  }
+
+  50% {
+    transform: rotate(-7deg) translateY(-20px) translateX(-5px);
+  }
+
+  75% {
+    transform: rotate(-11deg) translateY(-10px) translateX(3px);
+  }
+}
+
+.hero-cards {
+  position: absolute;
+  right: clamp(20px, 5vw, 105px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(600px, 45vw);
+  height: min(700px, 60vh);
+  pointer-events: none;
+}
+
+.hero-card {
+  position: absolute;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  transition: transform 0.5s;
+}
+
+.hero-card:hover {
+  animation-play-state: paused;
+  z-index: 15;
+}
+
+.hero-card:not(.hero-card-main):hover {
+  transform: scale(1.05);
+}
+
+/* Card Images */
+.card-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 16px !important;
+  display: block !important;
+}
+
+.card-image.main {
+  object-fit: contain;
+  object-position: bottom;
+  border-radius: 0;
+}
+
+.card-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+}
+
+.card-placeholder.main {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+/* Cards clustered on the right with various angles - behind figures */
+.hero-card-1 {
+  width: 180px;
+  height: 250px;
+  top: 5%;
+  left: 0%;
+  animation: wiggle1 5s ease-in-out infinite;
+  z-index: 2;
+}
+
+.hero-card-2 {
+  width: 190px;
+  height: 270px;
+  top: 15%;
+  left: 10%;
+  animation: wiggle2 4.5s ease-in-out infinite 0.5s;
+  z-index: 2;
+}
+
+.hero-card-3 {
+  width: 180px;
+  height: 250px;
+  top: 8%;
+  right: 5%;
+  animation: wiggle3 5.2s ease-in-out infinite 1s;
+  z-index: 2;
+}
+
+.hero-card-4 {
+  width: 200px;
+  height: 280px;
+  top: 20%;
+  right: 15%;
+  animation: wiggle4 4.8s ease-in-out infinite 1.5s;
+  z-index: 2;
+}
+
+.hero-card-5 {
+  width: 180px;
+  height: 250px;
+  top: 30%;
+  left: 15%;
+  animation: wiggle5 5.5s ease-in-out infinite 0.8s;
+  z-index: 2;
+}
+
+/* Characters - in front of cards, bottom positioned */
+.hero-card-main {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: none;
+  z-index: 10;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* Features Styles */
+.features {
+  position: relative;
+  padding: clamp(60px, 10vh, 120px) clamp(20px, 5vw, 105px);
+  z-index: 10;
+}
+
+.features-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  background: transparent;
+  border-radius: 0;
+  padding: clamp(40px, 6vw, 80px) 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.features-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  color: var(--dark-blue);
+  text-align: left;
+  margin-bottom: clamp(40px, 6vh, 80px);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(24px, 4vw, 48px);
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 32px;
+  padding: clamp(24px, 3vw, 36px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(105, 115, 219, 0.2);
+}
+
+.feature-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 600;
+  color: var(--moody-purple);
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.feature-description {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.6;
+  color: var(--dark-blue);
+  opacity: 0.85;
+}
+
+/* Gallery Styles */
+.gallery {
+  position: relative;
+  padding: clamp(60px, 10vh, 120px) clamp(20px, 5vw, 105px);
+  z-index: 10;
+}
+
+.gallery-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 48px;
+  padding: clamp(40px, 6vw, 80px) clamp(30px, 5vw, 60px);
+  box-shadow: var(--shadow-default);
+  backdrop-filter: blur(10px);
+}
+
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: clamp(40px, 6vh, 60px);
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.gallery-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  color: var(--dark-blue);
+}
+
+.view-all-button {
+  background: var(--moody-purple);
+  color: var(--text-white);
+  padding: 14px 28px;
+  border-radius: 99px;
+  font-weight: 600;
+  font-size: clamp(14px, 1.2vw, 18px);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-all-button:hover {
+  background: var(--royal-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(105, 115, 219, 0.4);
+}
+
+.carousel-wrapper {
+  position: relative;
+  margin-bottom: clamp(40px, 6vh, 80px);
+}
+
+.carousel-container {
+  position: relative !important;
+  height: 500px !important;
+  overflow: hidden !important;
+}
+
+.carousel-track {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.gallery .carousel-track .carousel-card {
+  position: absolute !important;
+  width: 274px !important;
+  height: 383px !important;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%);
+  cursor: pointer !important;
+  display: block !important;
+}
+
+.gallery .carousel-track .carousel-card a {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  text-decoration: none !important;
+}
+
+.gallery .carousel-track .carousel-card:hover {
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+}
+
+.gallery .carousel-track .carousel-card.active {
+  z-index: 10;
+  filter: blur(0px);
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.card-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--dark-blue);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-white);
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-nav:hover:not(:disabled) {
+  background: var(--moody-purple);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.carousel-nav.prev {
+  left: 20px;
+}
+
+.carousel-nav.next {
+  right: 20px;
+}
+
+.carousel-nav svg {
+  width: 24px;
+  height: 24px;
+}
+
+.gallery-info {
+  text-align: center;
+}
+
+.info-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 600;
+  color: var(--dark-blue);
+  margin-bottom: 8px;
+}
+
+.info-subtitle {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(14px, 1.2vw, 16px);
+  color: var(--dark-blue);
+  opacity: 0.7;
+  margin-bottom: 24px;
+}
+
+.info-status {
+  display: inline-block;
+  padding: 12px 32px;
+  border: 2.5px solid var(--moody-purple);
+  border-radius: 99px;
+  font-weight: 600;
+  font-size: clamp(14px, 1.2vw, 18px);
+  color: var(--moody-purple);
+}
+
+/* Top4 Styles */
+.top4 {
+  position: relative;
+  padding: clamp(60px, 10vh, 120px) clamp(20px, 5vw, 105px);
+  z-index: 10;
+}
+
+.top4-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 48px;
+  padding: clamp(40px, 6vw, 80px) clamp(30px, 5vw, 60px);
+  box-shadow: var(--shadow-default);
+  backdrop-filter: blur(10px);
+}
+
+.top4-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: clamp(40px, 6vh, 60px);
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.top4-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  color: var(--dark-blue);
+}
+
+.top4 .carousel-wrapper {
+  position: relative;
+  margin-bottom: clamp(40px, 6vh, 80px);
+}
+
+.top4 .carousel-container {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.top4 .carousel-track {
+  display: flex;
+  gap: 54px;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+}
+
+.top4-card {
+  flex-shrink: 0;
+  width: 274px;
+  text-align: center;
+}
+
+.top4-card .card-image {
+  width: 100%;
+  height: 383px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.card-badge {
+  display: inline-block;
+  background: var(--moody-purple);
+  padding: 10px 24px;
+  border-radius: 99px;
+  margin-bottom: 16px;
+}
+
+.card-badge span {
+  color: var(--text-white);
+  font-weight: 600;
+  font-size: clamp(14px, 1.2vw, 16px);
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 1.8vw, 24px);
+  font-weight: 600;
+  color: var(--dark-blue);
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.card-price {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(14px, 1.2vw, 16px);
+  color: var(--dark-blue);
+  opacity: 0.7;
+}
+
+/* PreFooter Styles */
+.pre-footer {
+  position: relative;
+  padding: clamp(60px, 10vh, 120px) clamp(20px, 5vw, 105px);
+  padding-bottom: 0;
+  margin-bottom: calc(-1 * clamp(50px, 8vh, 100px));
+  z-index: 10;
+}
+
+.pre-footer-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  background: var(--moody-purple);
+  border-radius: 48px;
+  padding: clamp(50px, 8vh, 100px) clamp(30px, 5vw, 80px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-default);
+}
+
+.pre-footer-title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3.5vw, 42px);
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: clamp(30px, 5vh, 50px);
+}
+
+.pre-footer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.contact-button {
+  background: var(--text-white);
+  color: var(--dark-blue);
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: clamp(14px, 1.2vw, 16px);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+.contact-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
+}
+
+/* Footer Styles - Symmetrical Layout */
+.footer {
+  position: relative;
+  background: var(--dark-blue);
+  padding: clamp(110px, 16vh, 150px) clamp(20px, 5vw, 105px) clamp(40px, 6vh, 60px);
+  z-index: 5;
+}
+
+.footer-content {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: clamp(40px, 6vw, 60px);
+  align-items: start;
+  margin-bottom: clamp(50px, 7vh, 80px);
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Left Section - Navigation */
+.footer-nav {
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.footer-nav a {
+  color: var(--text-white);
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.3vw, 18px);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 4px 0;
+}
+
+.footer-nav a:hover {
+  color: var(--moody-purple);
+  transform: translateX(4px);
+}
+
+/* Center Section - Logo */
+.footer-logo {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.footer-logo-icon {
+  width: clamp(70px, 9vw, 110px);
+  height: auto;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-logo-icon svg {
+  width: 100%;
+  height: auto;
+}
+
+.footer .logo-text {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 700;
+  color: var(--text-white);
+  text-transform: lowercase;
+  letter-spacing: -0.02em;
+  display: block;
+}
+
+/* Right Section - Contact */
+.footer-contact {
+  text-align: right;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.footer-contact h4 {
+  color: var(--text-white);
+  font-family: var(--font-body);
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.footer-contact p {
+  color: var(--text-white);
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.2vw, 17px);
+  font-weight: 400;
+  opacity: 0.9;
+  margin: 0;
+  padding: 3px 0;
+}
+
+.copyright {
+  margin-top: 16px;
+  opacity: 0.6;
+  font-size: clamp(13px, 1.1vw, 15px);
+}
+
+/* Bottom Section - Social Media Icons & Legal Links */
+.footer-bottom {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: clamp(40px, 6vh, 50px);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  gap: clamp(40px, 8vw, 100px);
+  flex-wrap: wrap;
+}
+
+/* Social Media Icons */
+.footer-socials {
+  display: flex;
+  gap: clamp(24px, 3vw, 40px);
+  align-items: center;
+}
+
+.footer-socials a {
+  color: var(--text-white);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.footer-socials a:hover {
+  color: var(--moody-purple);
+  background: rgba(105, 115, 219, 0.15);
+  transform: translateY(-3px);
+}
+
+.footer-socials a svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+/* Legal Links */
+.footer-legal {
+  display: flex;
+  gap: clamp(24px, 3vw, 40px);
+  align-items: center;
+}
+
+.footer-legal a {
+  color: var(--text-white);
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.2vw, 16px);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  opacity: 0.85;
+}
+
+.footer-legal a:hover {
+  color: var(--moody-purple);
+  opacity: 1;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-cards {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    margin-top: 60px;
+    width: min(500px, 80vw);
+    height: min(500px, 80vw);
+  }
+}
+
+@media (max-width: 768px) {
+  .navigation,
+  .cardbid-nav {
+    padding: 16px 20px;
+  }
+
+  /* Keep all nav links visible on mobile */
+  .nav-link {
+    display: flex !important;
+    font-size: 14px;
+  }
+
+  .nav-cart {
+    padding: 6px 12px;
+  }
+
+  /* Mega menu adjustments for mobile */
+  .mega-menu {
+    width: 95vw;
+    left: 2.5vw;
+    right: 2.5vw;
+    transform: translateX(0) translateY(-10px);
+  }
+
+  .mega-menu.active {
+    transform: translateX(0) translateY(0);
+  }
+
+  .mega-menu-content {
+    padding: 20px;
+  }
+
+  .set-links {
+    margin-left: 0;
+    flex-wrap: wrap;
+  }
+
+  .logo-icon {
+    width: 50px;
+    height: 40px;
+  }
+
+  .logo-text {
+    width: 120px;
+  }
+
+  .hero {
+    padding: 80px 20px 40px;
+  }
+
+  .hero-cards {
+    width: 90vw;
+    height: 90vw;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .carousel-card {
+    width: 200px;
+    height: 280px;
+  }
+
+  .carousel-nav {
+    width: 40px;
+    height: 40px;
+  }
+
+  .carousel-nav.prev {
+    left: 10px;
+  }
+
+  .carousel-nav.next {
+    right: 10px;
+  }
+
+  .top4-card {
+    width: 220px;
+  }
+
+  .top4 .carousel-track {
+    gap: 20px;
+  }
+
+  /* Footer Mobile Responsive */
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: clamp(32px, 6vw, 48px);
+  }
+
+  .footer-nav,
+  .footer-contact {
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-nav a:hover {
+    transform: none;
+  }
+
+  .footer-contact {
+    align-items: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: clamp(24px, 5vw, 32px);
+  }
+
+  .footer-socials,
+  .footer-legal {
+    gap: clamp(20px, 4vw, 32px);
+  }
+
+  .footer-socials a {
+    width: 42px;
+    height: 42px;
+  }
+}
+/* CRITICAL: Force navbar visibility - Override ALL WordPress/WooCommerce styles */
+nav.navigation,
+nav.cardbid-nav,
+.navigation.cardbid-nav {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ultra-specific selectors for nav menu */
+nav.navigation .nav-menu,
+nav.cardbid-nav .nav-menu,
+.navigation.cardbid-nav .nav-menu,
+div.nav-menu {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  align-items: center !important;
+}
+
+nav.navigation .nav-logo,
+nav.cardbid-nav .nav-logo,
+.navigation.cardbid-nav .nav-logo {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Force nav links visible with maximum specificity */
+nav.navigation .nav-link,
+nav.cardbid-nav .nav-link,
+.navigation.cardbid-nav .nav-link,
+nav.navigation button.nav-link,
+nav.cardbid-nav button.nav-link,
+.navigation.cardbid-nav button.nav-link,
+nav.navigation a.nav-link,
+nav.cardbid-nav a.nav-link,
+.navigation.cardbid-nav a.nav-link,
+button.nav-link.nav-shop,
+a.nav-link {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: #ffffff !important;
+  font-size: clamp(14px, 1.2vw, 18px) !important;
+}
+
+nav.navigation .nav-cart,
+nav.cardbid-nav .nav-cart,
+.navigation.cardbid-nav .nav-cart,
+div.nav-cart {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: #ffffff !important;
+}
+
+nav.navigation svg,
+nav.cardbid-nav svg,
+.navigation.cardbid-nav svg {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure text content is visible */
+nav.navigation .nav-link,
+nav.cardbid-nav .nav-link,
+button.nav-link,
+a.nav-link {
+  font-size: clamp(14px, 1.2vw, 18px) !important;
+  line-height: 1.5 !important;
+  white-space: nowrap !important;
+}
+
+/* NUCLEAR OPTION: Force everything visible - Last resort overrides */
+body nav.navigation *:not(.mega-menu):not(.mega-menu *),
+body nav.cardbid-nav *:not(.mega-menu):not(.mega-menu *),
+body .navigation.cardbid-nav *:not(.mega-menu):not(.mega-menu *) {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Force specific children */
+body .nav-menu *,
+body button.nav-shop,
+body a[href*="my-account"],
+body .nav-cart * {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: inline !important;
+}
+
+body button.nav-shop,
+body .nav-link {
+  display: flex !important;
+}
+
+/* Override any WordPress/theme display:none */
+.storefront-full-width-content nav.navigation .nav-menu,
+.storefront-full-width-content nav.navigation .nav-link,
+body.storefront nav.navigation .nav-menu,
+body.storefront nav.navigation .nav-link,
+body.woocommerce nav.navigation .nav-menu,
+body.woocommerce nav.navigation .nav-link {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* WooCommerce product page navbar link visibility fixes */
+body.single-product nav.navigation .nav-logo,
+body.single-product nav.navigation button.nav-logo,
+body.single-product nav.navigation a.nav-logo,
+body.woocommerce-page nav.navigation .nav-logo,
+body.woocommerce-page nav.navigation button.nav-logo,
+body.woocommerce-page nav.navigation a.nav-logo {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: #ffffff !important;
+}
+
+body.single-product .nav-menu,
+body.woocommerce-page .nav-menu {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+body.single-product .nav-cart,
+body.woocommerce-page .nav-cart {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
 
