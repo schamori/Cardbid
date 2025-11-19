@@ -48,14 +48,14 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
         </div>
 
         <div class="nav-logo">
-          <button class="nav-link nav-shop">
+          <a href="<?php echo esc_url(wc_get_page_permalink('shop')); ?>" class="nav-link nav-shop">
             Shop
             <svg class="dropdown-icon" viewBox="0 0 10 6" fill="none">
               <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-          </button>
-          <button class="nav-link">Dashboard</button>
-          <button class="nav-link">Account</button>
+          </a>
+          <a href="<?php echo esc_url(home_url('/dashboard')); ?>" class="nav-link">Dashboard</a>
+          <a href="<?php echo esc_url(wc_get_page_permalink('myaccount')); ?>" class="nav-link">Account</a>
 
           <div class="nav-cart">
             <span class="cart-items">0 Items</span>

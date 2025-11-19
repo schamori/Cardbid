@@ -10,6 +10,7 @@ console.log('  megaMenu:', megaMenu);
 console.log('  navigation:', navigation);
 
 let megaMenuTimeout;
+let megaMenuIsOpen = false;
 
 // Only set up mega menu if elements exist
 if (shopButton && megaMenu) {
@@ -19,12 +20,14 @@ if (shopButton && megaMenu) {
   shopButton.addEventListener('mouseenter', () => {
     clearTimeout(megaMenuTimeout);
     megaMenu.classList.add('active');
+    megaMenuIsOpen = true;
   });
 
   // Hide mega menu when leaving the button - with longer delay for easier navigation
   shopButton.addEventListener('mouseleave', () => {
     megaMenuTimeout = setTimeout(() => {
       megaMenu.classList.remove('active');
+      megaMenuIsOpen = false;
     }, 300);
   });
 
@@ -32,19 +35,35 @@ if (shopButton && megaMenu) {
   megaMenu.addEventListener('mouseenter', () => {
     clearTimeout(megaMenuTimeout);
     megaMenu.classList.add('active');
+    megaMenuIsOpen = true;
   });
 
   // Hide mega menu when leaving - with delay for easier dismissal
   megaMenu.addEventListener('mouseleave', () => {
     megaMenuTimeout = setTimeout(() => {
       megaMenu.classList.remove('active');
+      megaMenuIsOpen = false;
     }, 200);
+  });
+
+  // Handle click on shop link - if mega menu is open, allow navigation
+  // If mega menu is closed, prevent navigation and show mega menu instead
+  shopButton.addEventListener('click', (e) => {
+    if (!megaMenuIsOpen) {
+      // First click: prevent navigation and show mega menu
+      e.preventDefault();
+      clearTimeout(megaMenuTimeout);
+      megaMenu.classList.add('active');
+      megaMenuIsOpen = true;
+    }
+    // Second click (when menu is already open): allow normal navigation to shop page
   });
 
   // Close mega menu when clicking anywhere outside
   document.addEventListener('click', (e) => {
     if (!shopButton.contains(e.target) && !megaMenu.contains(e.target)) {
       megaMenu.classList.remove('active');
+      megaMenuIsOpen = false;
     }
   });
 
