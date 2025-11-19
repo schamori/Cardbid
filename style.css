@@ -114,9 +114,8 @@ body {
 @font-face {
   font-family: 'Genaminto';
   src: url('fonts/Genaminto-Regular.woff2') format('woff2'),
-    url('fonts/Genaminto-Regular.woff') format('woff'),
-    url('fonts/Genaminto-Regular.ttf') format('truetype');
-  font-weight: 400;
+    url('fonts/Genaminto-Regular.woff') format('woff');
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
@@ -124,9 +123,8 @@ body {
 @font-face {
   font-family: 'Genaminto';
   src: url('fonts/Genaminto-Bold.woff2') format('woff2'),
-    url('fonts/Genaminto-Bold.woff') format('woff'),
-    url('fonts/Genaminto-Bold.ttf') format('truetype');
-  font-weight: 700;
+    url('fonts/Genaminto-Bold.woff') format('woff');
+  font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
@@ -1334,7 +1332,7 @@ nav .nav-menu {
 /* PreFooter Styles */
 .pre-footer {
   position: relative;
-  padding: clamp(60px, 10vh, 120px) clamp(20px, 5vw, 105px);
+  padding: clamp(120px, 15vh, 180px) clamp(20px, 5vw, 105px);
   padding-bottom: 0;
   margin-bottom: calc(-1 * clamp(50px, 8vh, 100px));
   z-index: 10;
