@@ -104,9 +104,8 @@ html, body, #page, .site, .hfeed {
 
 /* Critical: Ensure parent containers don't break sticky */
 body {
-  height: auto !important;
-  overflow-y: scroll !important;
-  overflow-x: hidden !important;
+  padding-top: 80px;
+  
 }
 
 #page, .hfeed, .site {
