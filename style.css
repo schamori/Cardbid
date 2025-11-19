@@ -62,6 +62,18 @@ Text Domain: storefront-child-cardbid
   padding-top: 20px !important;
 }
 
+/* Override WooCommerce/Storefront max-width restriction on shop pages */
+.woocommerce-shop .col-full,
+.post-type-archive-product .col-full,
+.tax-product_cat .col-full,
+.woocommerce-page .col-full {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: clamp(20px, 5vw, 105px) !important;
+  padding-right: clamp(20px, 5vw, 105px) !important;
+  box-sizing: border-box !important;
+}
+
 /* Reset and Base Styles */
 * {
   box-sizing: border-box;
