@@ -97,6 +97,9 @@ html, body, #page, .site, .hfeed {
   position: relative !important;
   transform: none !important;
   will-change: auto !important;
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* Critical: Ensure parent containers don't break sticky */
@@ -155,36 +158,45 @@ body {
 body {
   font-family: var(--font-body);
   font-weight: 400;
-  background: var(--dark-blue);
-  color: var(--text-white);
-  overflow-x: hidden;
+  background: var(--dark-blue) !important;
+  background-color: var(--dark-blue) !important;
+  color: var(--text-white) !important;
+  overflow-x: hidden !important;
   margin: 0 !important;
   padding: 0 !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh !important;
 }
 
 /* Ensure page container starts at top */
 #page {
   margin: 0 !important;
   padding: 0 !important;
-  position: relative;
+  position: relative !important;
+  background: transparent !important;
+  min-height: 100vh !important;
 }
 
 .site-header {
   margin: 0 !important;
   padding: 0 !important;
+  background: transparent !important;
 }
 
 /* Force any WordPress hooks to not add space */
 .hfeed {
   margin: 0 !important;
   padding: 0 !important;
+  background: transparent !important;
+  min-height: 100vh !important;
 }
 
 .site {
   margin: 0 !important;
   padding: 0 !important;
+  background: transparent !important;
+  min-height: 100vh !important;
 }
 
 .app {
@@ -198,7 +210,7 @@ body {
       var(--moody-purple) 25%,
       var(--royal-blue) 40%,
       var(--pale-blue) 60%,
-      var(--pale-blue) 100%);
+      var(--pale-blue) 100%) !important;
 }
 
 /* Background Gradients */
