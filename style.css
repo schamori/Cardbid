@@ -697,7 +697,7 @@ nav .nav-menu {
   min-height: min(900px, 90vh);
   display: flex;
   align-items: center;
-  padding: clamp(100px, 15vh, 180px) clamp(20px, 5vw, 105px) clamp(60px, 10vh, 120px);
+  padding: clamp(100px, 15vh, 180px) clamp(20px, 5vw, 105px) clamp(40px, 6vh, 80px);
 }
 
 
@@ -982,7 +982,7 @@ nav .nav-menu {
 /* Features Styles */
 .features {
   position: relative;
-  padding: clamp(60px, 10vh, 120px) clamp(20px, 5vw, 105px);
+  padding: clamp(40px, 6vh, 80px) clamp(20px, 5vw, 105px);
   z-index: 10;
 }
 
@@ -991,7 +991,7 @@ nav .nav-menu {
   margin: 0 auto;
   background: transparent;
   border-radius: 0;
-  padding: clamp(40px, 6vw, 80px) 0;
+  padding: clamp(20px, 3vw, 40px) 0;
   box-shadow: none;
   backdrop-filter: none;
 }
@@ -1046,7 +1046,7 @@ nav .nav-menu {
 /* Gallery Styles */
 .gallery {
   position: relative;
-  padding: clamp(60px, 10vh, 120px) clamp(20px, 5vw, 105px);
+  padding: clamp(40px, 6vh, 80px) clamp(20px, 5vw, 105px);
   z-index: 10;
 }
 
@@ -1236,7 +1236,7 @@ nav .nav-menu {
 /* Top4 Styles */
 .top4 {
   position: relative;
-  padding: clamp(60px, 10vh, 120px) clamp(20px, 5vw, 105px);
+  padding: clamp(40px, 6vh, 80px) clamp(20px, 5vw, 105px);
   z-index: 10;
 }
 
@@ -1332,7 +1332,7 @@ nav .nav-menu {
 /* PreFooter Styles */
 .pre-footer {
   position: relative;
-  padding: clamp(120px, 15vh, 180px) clamp(20px, 5vw, 105px);
+  padding: clamp(80px, 10vh, 120px) clamp(20px, 5vw, 105px);
   padding-bottom: 0;
   margin-bottom: calc(-1 * clamp(50px, 8vh, 100px));
   z-index: 10;
@@ -1388,7 +1388,7 @@ nav .nav-menu {
 .footer {
   position: relative;
   background: var(--dark-blue);
-  padding: clamp(150px, 20vh, 200px) clamp(20px, 5vw, 105px) clamp(40px, 6vh, 60px);
+  padding: clamp(120px, 15vh, 160px) clamp(20px, 5vw, 105px) clamp(40px, 6vh, 60px);
   z-index: 5;
 }
 
