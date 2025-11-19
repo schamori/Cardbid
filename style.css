@@ -140,14 +140,18 @@ body {
 body {
   font-family: var(--font-body);
   font-weight: 400;
-  background: var(--dark-blue) !important;
-  background-color: var(--dark-blue) !important;
-  color: var(--text-white) !important;
   overflow-x: hidden !important;
   margin: 0 !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh !important;
+}
+
+/* Blue background only for home page template */
+body.page-template-page-cardbid-home {
+  background: var(--dark-blue) !important;
+  background-color: var(--dark-blue) !important;
+  color: var(--text-white) !important;
 }
 
 /* Ensure page container starts at top */
