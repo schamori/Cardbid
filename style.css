@@ -63,15 +63,52 @@ Text Domain: storefront-child-cardbid
 }
 
 /* Override WooCommerce/Storefront max-width restriction on shop pages */
+/* Style shop pages as white windowed containers with rounded edges */
 .woocommerce-shop .col-full,
 .post-type-archive-product .col-full,
 .tax-product_cat .col-full,
 .woocommerce-page .col-full {
-  max-width: 100% !important;
-  width: 100% !important;
-  padding-left: clamp(20px, 5vw, 105px) !important;
-  padding-right: clamp(20px, 5vw, 105px) !important;
+  max-width: calc(100% - clamp(80px, 12vw, 240px)) !important;
+  width: calc(100% - clamp(80px, 12vw, 240px)) !important;
+  margin: clamp(20px, 3vh, 40px) clamp(80px, 12vw, 240px) clamp(20px, 3vh, 40px) 0 !important;
+  padding: clamp(40px, 6vw, 80px) clamp(30px, 5vw, 60px) !important;
   box-sizing: border-box !important;
+  background: linear-gradient(to bottom, #A2A3A7 0%, #ffffff 30%) !important;
+  border-radius: 48px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Ensure WooCommerce shop pages have proper z-index and pointer events */
+.woocommerce-shop,
+.post-type-archive-product,
+.tax-product_cat,
+.woocommerce-page {
+  position: relative !important;
+  z-index: 100 !important;
+}
+
+/* Ensure WooCommerce shop content has higher z-index than pre-footer */
+.woocommerce-shop #content,
+.post-type-archive-product #content,
+.tax-product_cat #content,
+.woocommerce-page #content {
+  position: relative !important;
+  z-index: 100 !important;
+}
+
+/* Ensure WooCommerce products and links are clickable */
+.woocommerce-shop .site-content,
+.post-type-archive-product .site-content,
+.tax-product_cat .site-content,
+.woocommerce-page .site-content,
+.woocommerce ul.products,
+.woocommerce .products,
+.woocommerce .product,
+.woocommerce a,
+.woocommerce button,
+.woocommerce input,
+.woocommerce select {
+  pointer-events: auto !important;
 }
 
 /* Reset and Base Styles */
@@ -101,6 +138,15 @@ Text Domain: storefront-child-cardbid
 /* Critical: Ensure parent containers don't break sticky */
 body {
   padding-top: 90px !important; /* Space for fixed navbar */
+  /* Gradient background for all pages */
+  background: linear-gradient(135deg,
+      var(--dark-blue) 0%,
+      var(--dark-blue) 10%,
+      var(--moody-purple) 25%,
+      var(--royal-blue) 40%,
+      var(--pale-blue) 60%,
+      var(--pale-blue) 100%) !important;
+  min-height: 100vh !important;
 }
 
 #page, .hfeed, .site {
@@ -157,10 +203,8 @@ body {
   min-height: 100vh !important;
 }
 
-/* Blue background only for home page template */
+/* Home page template specific styles */
 body.page-template-page-cardbid-home {
-  background: var(--dark-blue) !important;
-  background-color: var(--dark-blue) !important;
   color: var(--text-white) !important;
 }
 
@@ -1012,7 +1056,7 @@ nav .nav-menu {
   font-family: var(--font-display);
   font-size: clamp(28px, 4vw, 48px);
   font-weight: 700;
-  color: var(--dark-blue);
+  color: var(--text-white);
   text-align: left;
   margin-bottom: clamp(40px, 6vh, 80px);
 }
@@ -1347,11 +1391,22 @@ nav .nav-menu {
   padding: clamp(80px, 10vh, 120px) clamp(20px, 5vw, 105px);
   padding-bottom: 0;
   margin-bottom: calc(-1 * clamp(50px, 8vh, 100px));
-  z-index: 10;
+  z-index: 10 !important; /* Above footer (5) for overlap effect on homepage */
+}
+
+/* Fix pre-footer positioning on shop pages - no overlap with content */
+body.woocommerce-shop .pre-footer,
+body.post-type-archive-product .pre-footer,
+body.tax-product_cat .pre-footer,
+body.woocommerce-page .pre-footer {
+  z-index: 10 !important; /* Keep above footer, but shop content is z-index 100 */
+  margin-top: clamp(60px, 8vh, 100px) !important;
+  padding-top: clamp(40px, 6vh, 80px) !important;
 }
 
 .pre-footer-container {
-  max-width: 1600px;
+  width: 75%;
+  max-width: 75%;
   margin: 0 auto;
   background: var(--moody-purple);
   border-radius: 48px;
@@ -1361,6 +1416,14 @@ nav .nav-menu {
   overflow: hidden;
   box-shadow: var(--shadow-default);
   transform: translateY(22%);
+}
+
+/* Fix pre-footer container transform on shop pages */
+body.woocommerce-shop .pre-footer-container,
+body.post-type-archive-product .pre-footer-container,
+body.tax-product_cat .pre-footer-container,
+body.woocommerce-page .pre-footer-container {
+  transform: translateY(0) !important;
 }
 
 .pre-footer-title {
@@ -1402,6 +1465,15 @@ nav .nav-menu {
   background: var(--dark-blue);
   padding: clamp(120px, 15vh, 160px) clamp(20px, 5vw, 105px) clamp(40px, 6vh, 60px);
   z-index: 5;
+}
+
+/* Fix footer spacing on shop pages - reduce top padding since pre-footer doesn't overlap */
+body.woocommerce-shop .footer,
+body.post-type-archive-product .footer,
+body.tax-product_cat .footer,
+body.woocommerce-page .footer {
+  padding-top: clamp(60px, 8vh, 80px) !important;
+  margin-top: 0 !important;
 }
 
 .footer-content {
