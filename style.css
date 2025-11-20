@@ -843,6 +843,37 @@ nav .nav-menu {
   background: rgba(58, 90, 182, 0.35);
 }
 
+/* Release date styling */
+.release-date {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 4px;
+  margin-left: 0;
+}
+
+.mega-menu-list li a {
+  display: block;
+  width: 100%;
+}
+
+.mega-menu-list li a .set-name {
+  display: block;
+  margin-left: 0;
+  margin-bottom: 2px;
+}
+
+/* No releases message */
+.no-releases {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
 /* Hero Styles */
 .hero {
   position: relative;

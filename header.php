@@ -100,76 +100,140 @@
   <!-- Mega Menu -->
   <div class="mega-menu">
     <div class="mega-menu-content">
-      <!-- Pokémon Section -->
-      <div class="mega-menu-game">
-        <div class="mega-menu-game-header">
-          <span class="mega-menu-icon">⚪</span>
-          <h3 class="mega-menu-game-title">Pokémon</h3>
-        </div>
-        <div class="mega-menu-two-column">
-          <div class="mega-menu-section">
-            <h4 class="mega-menu-section-title">SETS</h4>
-            <ul class="mega-menu-list">
-              <?php
-              // Get Pokemon Non-Japanese category
-              $pokemon_category = get_term_by('slug', 'pokemon-non-japanese', 'product_cat');
+      <?php
+      // Define all game categories with their icons and subcategories
+      $game_categories = array(
+        array(
+          'name' => 'One Piece Cards',
+          'slug' => 'one-piece-cards',
+          'icon' => '🏴‍☠️',
+          'categories' => array('Single Cards', 'Graded Cards', 'Booster')
+        ),
+        array(
+          'name' => 'Pokemon Cards',
+          'slug' => 'pokemon-non-japanese',
+          'icon' => '⚪',
+          'categories' => array('Single Cards', 'Graded Cards', 'Booster Box', 'Bundle', 'Blisters', 'Elite Trainer Box', 'Premium Collection', 'Complete Set')
+        ),
+        array(
+          'name' => 'Lorcana Cards',
+          'slug' => 'lorcana-cards',
+          'icon' => '✨',
+          'categories' => array('Single Cards', 'Graded Cards', 'Lots')
+        ),
+        array(
+          'name' => 'Yu-Gi-Oh! Card',
+          'slug' => 'yugioh-cards',
+          'icon' => '👁️',
+          'categories' => array('Single Cards')
+        )
+      );
 
-              if ($pokemon_category) {
-                // Get all subcategories (sets) of Pokemon Non-Japanese
-                $sets = get_terms(array(
-                  'taxonomy' => 'product_cat',
-                  'parent' => $pokemon_category->term_id,
-                  'hide_empty' => false,
-                  'orderby' => 'name',
-                  'order' => 'ASC'
-                ));
+      foreach ( $game_categories as $game ) :
+        // Get the main category
+        $main_category = get_term_by('slug', $game['slug'], 'product_cat');
 
-                if (!empty($sets) && !is_wp_error($sets)) {
-                  foreach ($sets as $set) {
-                    // Skip the Singles and Sealed categories themselves
-                    if (strpos($set->slug, 'singles-') === 0 || strpos($set->slug, 'sealed-') === 0) {
-                      continue;
+        if ( ! $main_category ) continue;
+
+        // Get the 3 newest sealed releases
+        $newest_releases = get_newest_sealed_categories( $main_category->term_id, 3 );
+        ?>
+
+        <!-- <?php echo esc_html( $game['name'] ); ?> Section -->
+        <div class="mega-menu-game">
+          <div class="mega-menu-game-header">
+            <span class="mega-menu-icon"><?php echo $game['icon']; ?></span>
+            <h3 class="mega-menu-game-title"><?php echo esc_html( $game['name'] ); ?></h3>
+          </div>
+          <div class="mega-menu-two-column">
+            <div class="mega-menu-section">
+              <h4 class="mega-menu-section-title">NEWEST RELEASES</h4>
+              <ul class="mega-menu-list">
+                <?php
+                if ( ! empty( $newest_releases ) ) {
+                  foreach ( $newest_releases as $release ) {
+                    // Get release date and format it
+                    $release_date = get_term_meta( $release->term_id, 'release_date', true );
+                    $formatted_date = '';
+                    if ( ! empty( $release_date ) ) {
+                      $timestamp = strtotime( $release_date );
+                      if ( $timestamp !== false ) {
+                        $formatted_date = date_i18n( 'M j, Y', $timestamp );
+                      }
                     }
 
-                    // Generate the set name without "Singles" or "Sealed" suffix
-                    $set_name = $set->name;
-                    $set_slug = $set->slug;
+                    // Get the category URL
+                    $category_url = get_term_link( $release->term_id, 'product_cat' );
 
-                    // Create links for Singles and Sealed
-                    $singles_url = home_url("/product-category/pokemon-non-japanese/{$set_slug}/singles-{$set_slug}/");
-                    $sealed_url = home_url("/product-category/pokemon-non-japanese/{$set_slug}/sealed-{$set_slug}/");
+                    // Extract the set name (remove 'sealed-' prefix if present)
+                    $set_name = str_replace( 'sealed-', '', $release->slug );
+                    $set_name = str_replace( '-', ' ', $set_name );
+                    $set_name = ucwords( $set_name );
 
                     echo '<li>';
-                    echo '<span class="expansion-badge">' . esc_html(strtoupper(substr($set_slug, 0, 3))) . '</span>';
-                    echo '<span class="set-name">' . esc_html($set_name) . '</span>';
-                    echo '<div class="set-links">';
-                    echo '<a href="' . esc_url($singles_url) . '" class="set-link singles">🃏 Singles</a>';
-                    echo '<a href="' . esc_url($sealed_url) . '" class="set-link sealed">📦 Sealed</a>';
-                    echo '</div>';
+                    echo '<a href="' . esc_url( $category_url ) . '">';
+                    echo '<span class="set-name">' . esc_html( $release->name ) . '</span>';
+                    if ( $formatted_date ) {
+                      echo '<span class="release-date">📅 ' . esc_html( $formatted_date ) . '</span>';
+                    }
+                    echo '</a>';
                     echo '</li>';
                   }
+                } else {
+                  echo '<li><span class="no-releases">No releases yet</span></li>';
                 }
-              }
-              ?>
-            </ul>
-            <a href="<?php echo esc_url(home_url('/product-category/pokemon-non-japanese/')); ?>" class="view-all-link">View all sets...</a>
-          </div>
-          <div class="mega-menu-section">
-            <h4 class="mega-menu-section-title">CATEGORIES</h4>
-            <ul class="mega-menu-list">
-              <li><a href="#"><span class="category-icon">🃏</span>Singles</a></li>
-              <li><a href="#"><span class="category-icon">📦</span>Booster Box</a></li>
-              <li><a href="#"><span class="category-icon">🎁</span>Bundle</a></li>
-              <li><a href="#"><span class="category-icon">💎</span>Graded Cards</a></li>
-              <li><a href="#"><span class="category-icon">📋</span>Blisters</a></li>
-              <li><a href="#"><span class="category-icon">🎯</span>Elite Trainer Box</a></li>
-              <li><a href="#"><span class="category-icon">🏆</span>Premium Collection</a></li>
-              <li><a href="#"><span class="category-icon">🗂️</span>Complete Set</a></li>
-            </ul>
-            <a href="<?php echo esc_url(home_url('/product-category/pokemon-non-japanese/')); ?>" class="view-all-link">View all categories...</a>
+                ?>
+              </ul>
+              <a href="<?php echo esc_url( get_term_link( $main_category->term_id, 'product_cat' ) ); ?>" class="view-all-link">View all releases...</a>
+            </div>
+            <div class="mega-menu-section">
+              <h4 class="mega-menu-section-title">CATEGORIES</h4>
+              <ul class="mega-menu-list">
+                <?php
+                // Define category icons
+                $category_icons = array(
+                  'Single Cards' => '🃏',
+                  'Graded Cards' => '💎',
+                  'Booster' => '📦',
+                  'Booster Box' => '📦',
+                  'Bundle' => '🎁',
+                  'Blisters' => '📋',
+                  'Elite Trainer Box' => '🎯',
+                  'Premium Collection' => '🏆',
+                  'Complete Set' => '🗂️',
+                  'Lots' => '🎲'
+                );
+
+                foreach ( $game['categories'] as $category_name ) {
+                  $icon = isset( $category_icons[$category_name] ) ? $category_icons[$category_name] : '📦';
+
+                  // Create a slug for the subcategory
+                  $subcategory_slug = strtolower( str_replace( ' ', '-', $category_name ) );
+
+                  // Try to find the actual subcategory
+                  $subcategories = get_terms( array(
+                    'taxonomy' => 'product_cat',
+                    'parent' => $main_category->term_id,
+                    'slug' => $subcategory_slug,
+                    'hide_empty' => false
+                  ) );
+
+                  if ( ! empty( $subcategories ) && ! is_wp_error( $subcategories ) ) {
+                    $subcategory_url = get_term_link( $subcategories[0]->term_id, 'product_cat' );
+                  } else {
+                    // Fallback to main category
+                    $subcategory_url = get_term_link( $main_category->term_id, 'product_cat' );
+                  }
+
+                  echo '<li><a href="' . esc_url( $subcategory_url ) . '"><span class="category-icon">' . $icon . '</span>' . esc_html( $category_name ) . '</a></li>';
+                }
+                ?>
+              </ul>
+              <a href="<?php echo esc_url( get_term_link( $main_category->term_id, 'product_cat' ) ); ?>" class="view-all-link">View all categories...</a>
+            </div>
           </div>
         </div>
-      </div>
+      <?php endforeach; ?>
     </div>
   </div>
 </nav>
