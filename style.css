@@ -68,9 +68,9 @@ Text Domain: storefront-child-cardbid
 .post-type-archive-product .col-full,
 .tax-product_cat .col-full,
 .woocommerce-page .col-full {
-  max-width: calc(100% - clamp(40px, 8vw, 160px)) !important;
-  width: calc(100% - clamp(40px, 8vw, 160px)) !important;
-  margin: clamp(20px, 3vh, 40px) clamp(40px, 8vw, 160px) clamp(20px, 3vh, 40px) 0 !important;
+  max-width: calc(100% - clamp(80px, 12vw, 240px)) !important;
+  width: calc(100% - clamp(80px, 12vw, 240px)) !important;
+  margin: clamp(20px, 3vh, 40px) clamp(80px, 12vw, 240px) clamp(20px, 3vh, 40px) 0 !important;
   padding: clamp(40px, 6vw, 80px) clamp(30px, 5vw, 60px) !important;
   box-sizing: border-box !important;
   background: #ffffff !important;
