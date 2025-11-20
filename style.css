@@ -197,6 +197,22 @@ body {
 /* Home page template specific styles */
 body.page-template-page-cardbid-home {
   color: var(--text-white) !important;
+  padding-top: 70px !important; /* Reduced from 90px */
+}
+
+body.page-template-page-cardbid-home .col-full,
+body.page-template-page-cardbid-home .site-content,
+body.page-template-page-cardbid-home #content,
+body.home .col-full,
+body.home .site-content,
+body.home #content {
+  padding-left: clamp(15px, 3vw, 30px) !important;
+  padding-right: clamp(15px, 3vw, 30px) !important;
+}
+
+/* Reduce top padding for homepage */
+body.home {
+  padding-top: 70px !important; /* Reduced from 90px */
 }
 
 /* Ensure page container starts at top */
