@@ -149,10 +149,31 @@
               continue;
             }
 
-            $expansion_url = get_term_link($expansion);
+            // Get Singles and Sealed child categories
+            $child_cats = get_terms(array(
+              'taxonomy' => 'product_cat',
+              'parent' => $expansion->term_id,
+              'hide_empty' => false,
+            ));
 
-            echo '<li>';
-            echo '<a href="' . esc_url($expansion_url) . '" class="expansion-link">' . esc_html($expansion->name) . '</a>';
+            $singles_url = get_term_link($expansion);
+            $sealed_url = get_term_link($expansion);
+
+            // Find specific Singles and Sealed categories
+            foreach ($child_cats as $child) {
+              if (strpos($child->slug, 'singles-') === 0) {
+                $singles_url = get_term_link($child);
+              } elseif (strpos($child->slug, 'sealed-') === 0) {
+                $sealed_url = get_term_link($child);
+              }
+            }
+
+            echo '<li class="expansion-item">';
+            echo '<span class="expansion-name">' . esc_html($expansion->name) . '</span>';
+            echo '<span class="expansion-types">';
+            echo '<a href="' . esc_url($singles_url) . '" class="type-link">S</a>';
+            echo '<a href="' . esc_url($sealed_url) . '" class="type-link">B</a>';
+            echo '</span>';
             echo '</li>';
           }
         }
