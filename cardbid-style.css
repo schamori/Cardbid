@@ -1,0 +1,43 @@
+/* Cardbid Home Page - Full Width Layout Override */
+
+/* Override WordPress container restrictions for full-width layout */
+.page-template-page-cardbid-home #page,
+.page-template-page-cardbid-home #content,
+.page-template-page-cardbid-home .site-content,
+.page-template-page-cardbid-home .col-full {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Ensure the app container is full-width */
+.page-template-page-cardbid-home .app {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+}
+
+/* Add top padding to account for fixed navbar */
+.page-template-page-cardbid-home .app {
+  padding-top: clamp(80px, 12vh, 120px) !important;
+}
+
+/* Remove any default WordPress margins/padding on the page template */
+.page-template-page-cardbid-home #main,
+.page-template-page-cardbid-home .site-main {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Hide WordPress default header elements on this page */
+.page-template-page-cardbid-home .site-header,
+.page-template-page-cardbid-home .storefront-primary-navigation {
+  display: none !important;
+}
