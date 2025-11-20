@@ -1388,7 +1388,7 @@ nav .nav-menu {
   padding: clamp(80px, 10vh, 120px) clamp(20px, 5vw, 105px);
   padding-bottom: 0;
   margin-bottom: calc(-1 * clamp(50px, 8vh, 100px));
-  z-index: 5 !important;
+  z-index: 10 !important; /* Above footer (5) for overlap effect on homepage */
 }
 
 /* Fix pre-footer positioning on shop pages - no overlap with content */
@@ -1396,7 +1396,7 @@ body.woocommerce-shop .pre-footer,
 body.post-type-archive-product .pre-footer,
 body.tax-product_cat .pre-footer,
 body.woocommerce-page .pre-footer {
-  z-index: 5 !important;
+  z-index: 10 !important; /* Keep above footer, but shop content is z-index 100 */
   margin-top: clamp(60px, 8vh, 100px) !important;
   padding-top: clamp(40px, 6vh, 80px) !important;
 }
