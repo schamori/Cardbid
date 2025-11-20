@@ -54,18 +54,43 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
               <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
-          <button class="nav-link">Dashboard</button>
-          <button class="nav-link">Account</button>
 
-          <div class="nav-cart">
-            <span class="cart-items">0 Items</span>
-            <span class="cart-price">0,00€</span>
+          <!-- FiboSearch Integration -->
+          <div class="nav-search">
+            <?php
+            // FiboSearch integration - supports multiple methods
+            if ( function_exists( 'dgwt_wcas_get_search_form' ) ) {
+              // Method 1: Direct function call (Pro version)
+              echo dgwt_wcas_get_search_form();
+            } elseif ( shortcode_exists( 'fibosearch' ) ) {
+              // Method 2: Shortcode (both Free and Pro)
+              echo do_shortcode( '[fibosearch]' );
+            } elseif ( shortcode_exists( 'wcas-search-form' ) ) {
+              // Method 3: Legacy shortcode
+              echo do_shortcode( '[wcas-search-form]' );
+            }
+            ?>
+          </div>
+
+          <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="nav-link">Dashboard</a>
+          <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="nav-link">Account</a>
+          <a href="<?php echo esc_url( wc_get_page_permalink( 'cart' ) ); ?>" class="nav-link">Cart</a>
+          <a href="<?php echo esc_url( wc_get_page_permalink( 'checkout' ) ); ?>" class="nav-link">Checkout</a>
+
+          <a href="<?php echo esc_url( wc_get_page_permalink( 'cart' ) ); ?>" class="nav-cart">
+            <?php if ( function_exists( 'WC' ) ) : ?>
+              <span class="cart-items"><?php echo WC()->cart->get_cart_contents_count(); ?> Items</span>
+              <span class="cart-price"><?php echo WC()->cart->get_cart_total(); ?></span>
+            <?php else : ?>
+              <span class="cart-items">0 Items</span>
+              <span class="cart-price">0,00€</span>
+            <?php endif; ?>
             <div class="cart-icon">
               <svg viewBox="0 0 24 24" fill="none">
                 <path d="M9 11V6C9 4.34315 10.3431 3 12 3C13.6569 3 15 4.34315 15 6V11M12 14H12.01M3.6 21H20.4C20.9601 21 21.2401 21 21.454 20.891C21.6422 20.7951 21.7951 20.6422 21.891 20.454C22 20.2401 22 19.9601 22 19.4V11.6C22 11.0399 22 10.7599 21.891 10.546C21.7951 10.3578 21.6422 10.2049 21.454 10.109C21.2401 10 20.9601 10 20.4 10H3.6C3.03995 10 2.75992 10 2.54601 10.109C2.35785 10.2049 2.20487 10.3578 2.10899 10.546C2 10.7599 2 11.0399 2 11.6V19.4C2 19.9601 2 20.2401 2.10899 20.454C2.20487 20.6422 2.35785 20.7951 2.54601 20.891C2.75992 21 3.03995 21 3.6 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-          </div>
+          </a>
         </div>
 
         <!-- Mega Menu -->
