@@ -73,7 +73,7 @@ Text Domain: storefront-child-cardbid
   margin: clamp(20px, 3vh, 40px) clamp(80px, 12vw, 240px) clamp(20px, 3vh, 40px) 0 !important;
   padding: clamp(40px, 6vw, 80px) clamp(30px, 5vw, 60px) !important;
   box-sizing: border-box !important;
-  background: #ffffff !important;
+  background: linear-gradient(to bottom, #f5f5f5 0%, #ffffff 25%) !important;
   border-radius: 48px !important;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2) !important;
 }
