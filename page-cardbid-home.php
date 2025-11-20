@@ -72,6 +72,13 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
             ?>
           </div>
 
+          <!-- Mobile Search Icon -->
+          <div class="nav-search-icon" onclick="alert('Search functionality - integrate with your search modal or expand search bar')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+
           <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="nav-link">Dashboard</a>
           <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="nav-link">Account</a>
           <a href="<?php echo esc_url( wc_get_page_permalink( 'cart' ) ); ?>" class="nav-link">Cart</a>
