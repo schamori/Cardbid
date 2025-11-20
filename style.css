@@ -71,7 +71,7 @@ Text Domain: storefront-child-cardbid
   max-width: 1600px !important;
   width: calc(100% - clamp(40px, 8vw, 160px)) !important;
   margin: clamp(20px, 3vh, 40px) auto !important;
-  padding: clamp(40px, 6vw, 80px) clamp(30px, 5vw, 60px) !important;
+  padding: clamp(40px, 6vw, 80px) clamp(30px, 5vw, 60px) clamp(40px, 6vw, 80px) 0 !important;
   box-sizing: border-box !important;
   background: #ffffff !important;
   border-radius: 48px !important;
