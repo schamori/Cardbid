@@ -172,17 +172,8 @@ body {
 @font-face {
   font-family: 'Genaminto';
   src: url('fonts/Genaminto-Regular.woff2') format('woff2'),
-    url('fonts/Genaminto-Regular.woff') format('woff');
+    url('fonts/Genaminto-Regular.otf') format('opentype');
   font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Genaminto';
-  src: url('fonts/Genaminto-Bold.woff2') format('woff2'),
-    url('fonts/Genaminto-Bold.woff') format('woff');
-  font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
