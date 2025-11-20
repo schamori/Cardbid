@@ -25,12 +25,12 @@ function showGameSection(gameSlug, linkElement) {
   if (gameSection) {
     gameSection.style.display = 'block';
 
-    // Position the mega menu under the hovered link
+    // Position the mega menu under the hovered link (from the right)
     const navRect = navigation.getBoundingClientRect();
     const linkRect = linkElement.getBoundingClientRect();
-    const leftPosition = linkRect.left - navRect.left;
+    const rightPosition = navRect.right - linkRect.right;
 
-    megaMenu.style.left = `${leftPosition}px`;
+    megaMenu.style.right = `${rightPosition}px`;
     megaMenu.classList.add('active');
     currentActiveGame = gameSlug;
   }
