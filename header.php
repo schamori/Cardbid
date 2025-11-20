@@ -87,7 +87,7 @@
     <div class="nav-row-bottom">
       <div class="nav-links">
         <?php
-        // Define game categories with their slugs and icons - Pokémon in middle
+        // Define game categories with their slugs and icons - Pokémon in the center
         $game_categories = array(
           array('name' => 'Magic: the Gathering', 'slug' => 'magic-the-gathering', 'icon' => '🔮'),
           array('name' => 'Yu-Gi-Oh!', 'slug' => 'yu-gi-oh', 'icon' => '🎴'),
@@ -137,17 +137,10 @@
         if (!$game_category) continue;
 
         echo '<div class="mega-menu-game" data-game="' . esc_attr($game['slug']) . '">';
-        echo '<div class="mega-menu-game-header">';
-        echo '<span class="mega-menu-icon">' . $game['icon'] . '</span>';
-        echo '<h3 class="mega-menu-game-title">' . esc_html($game['name']) . '</h3>';
-        echo '</div>';
-
-        echo '<div class="mega-menu-section">';
-        echo '<h4 class="mega-menu-section-title">LAST EXPANSIONS</h4>';
         echo '<ul class="mega-menu-list">';
 
-        // Get latest expansions sorted by release date
-        $expansions = get_latest_expansions($game['slug'], 10);
+        // Get latest 8 expansions sorted by release date
+        $expansions = get_latest_expansions($game['slug'], 8);
 
         if (!empty($expansions)) {
           foreach ($expansions as $expansion) {
@@ -156,46 +149,15 @@
               continue;
             }
 
-            $release_date = get_term_meta($expansion->term_id, 'release_date', true);
-            $badge = strtoupper(substr($expansion->slug, 0, 3));
-
-            // Get Singles and Sealed child categories
-            $child_cats = get_terms(array(
-              'taxonomy' => 'product_cat',
-              'parent' => $expansion->term_id,
-              'hide_empty' => false,
-            ));
-
-            $singles_url = get_term_link($expansion);
-            $sealed_url = get_term_link($expansion);
-
-            // Find specific Singles and Sealed categories
-            foreach ($child_cats as $child) {
-              if (strpos($child->slug, 'singles-') === 0) {
-                $singles_url = get_term_link($child);
-              } elseif (strpos($child->slug, 'sealed-') === 0) {
-                $sealed_url = get_term_link($child);
-              }
-            }
+            $expansion_url = get_term_link($expansion);
 
             echo '<li>';
-            echo '<span class="expansion-badge">' . esc_html($badge) . '</span>';
-            echo '<span class="set-name">' . esc_html($expansion->name) . '</span>';
-            if ($release_date) {
-              $formatted_date = date_i18n('M j, Y', strtotime($release_date));
-              echo '<span class="release-date">' . esc_html($formatted_date) . '</span>';
-            }
-            echo '<div class="set-links">';
-            echo '<a href="' . esc_url($singles_url) . '" class="set-link singles">Singles</a>';
-            echo '<a href="' . esc_url($sealed_url) . '" class="set-link sealed">Sealed</a>';
-            echo '</div>';
+            echo '<a href="' . esc_url($expansion_url) . '" class="expansion-link">' . esc_html($expansion->name) . '</a>';
             echo '</li>';
           }
         }
 
         echo '</ul>';
-        echo '<a href="' . esc_url(get_term_link($game_category)) . '" class="view-all-link">View all expansions...</a>';
-        echo '</div>';
         echo '</div>';
       }
       ?>
