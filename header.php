@@ -139,6 +139,17 @@
         echo '<div class="mega-menu-game" data-game="' . esc_attr($game['slug']) . '">';
         echo '<ul class="mega-menu-list">';
 
+        // Get all expansions to count total
+        $all_expansions = get_latest_expansions($game['slug'], 999);
+        $total_count = 0;
+        if (!empty($all_expansions)) {
+          foreach ($all_expansions as $exp) {
+            if (strpos($exp->slug, 'singles-') !== 0 && strpos($exp->slug, 'sealed-') !== 0) {
+              $total_count++;
+            }
+          }
+        }
+
         // Get latest 8 expansions sorted by release date
         $expansions = get_latest_expansions($game['slug'], 8);
 
@@ -179,6 +190,14 @@
         }
 
         echo '</ul>';
+
+        // Add "Show all" link
+        if ($total_count > 0) {
+          echo '<a href="' . esc_url(get_term_link($game_category)) . '" class="show-all-link">';
+          echo 'Show all (' . $total_count . ')';
+          echo '</a>';
+        }
+
         echo '</div>';
       }
       ?>
