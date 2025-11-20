@@ -1,7 +1,7 @@
 
 .top4 {
   position: relative;
-  padding: clamp(60px, 10vh, 120px) clamp(20px, 5vw, 80px);
+  padding: clamp(30px, 5vh, 60px) clamp(20px, 5vw, 80px);
   z-index: 10;
 }
 

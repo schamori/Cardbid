@@ -284,18 +284,6 @@ wp_enqueue_style('cardbid-home-css', get_stylesheet_directory_uri() . '/cardbid-
         </div>
       </section>
 
-      <!-- PreFooter Section -->
-      <section class="pre-footer">
-        <div class="pre-footer-container">
-          <h2 class="pre-footer-title">Neu im TCG Karten Hobby?</h2>
-          <div class="pre-footer-buttons">
-            <button class="contact-button">Kontaktformular</button>
-            <button class="contact-button">Kontakt per Whatsapp</button>
-            <button class="contact-button">Chatbot starten</button>
-          </div>
-        </div>
-      </section>
-
   </div>
 </div>
 
