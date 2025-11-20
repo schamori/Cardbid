@@ -81,17 +81,13 @@
     </div>
 
     <div class="nav-links">
+      <a href="#" class="nav-link">Auctions</a>
       <button class="nav-link nav-shop">
         Shop
         <svg class="dropdown-icon" viewBox="0 0 10 6" fill="none">
           <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-
-      <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="nav-link">Dashboard</a>
-      <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="nav-link">Account</a>
-      <a href="<?php echo esc_url( wc_get_page_permalink( 'cart' ) ); ?>" class="nav-link">Cart</a>
-      <a href="<?php echo esc_url( wc_get_page_permalink( 'checkout' ) ); ?>" class="nav-link">Checkout</a>
     </div>
   </div>
 
