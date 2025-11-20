@@ -281,7 +281,7 @@ body.page-template-page-cardbid-home {
   z-index: 10;
 }
 
-/* Navigation Styles - Liquid Glass Effect - FIXED POSITIONING */
+/* Navigation Styles - Liquid Glass Effect - FIXED POSITIONING - TWO ROWS */
 nav.navigation,
 nav.cardbid-nav,
 .navigation,
@@ -305,9 +305,9 @@ body.woocommerce nav.navigation,
   max-width: 100vw !important;
   z-index: 9999 !important;
   display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  padding: clamp(16px, 2.5vh, 24px) clamp(20px, 5vw, 105px) !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  padding: clamp(12px, 2vh, 16px) clamp(20px, 5vw, 105px) !important;
   margin: 0 !important;
 
   /* Override any transform that might break fixed */
@@ -334,6 +334,81 @@ body.woocommerce nav.navigation,
 
   /* Force display above everything */
   isolation: isolate !important;
+}
+
+/* Two-row navbar layout */
+.nav-row-top,
+.nav-row-bottom {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  gap: clamp(16px, 2vw, 24px) !important;
+}
+
+.nav-row-top {
+  justify-content: space-between !important;
+  padding-bottom: 12px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.nav-row-bottom {
+  justify-content: space-between !important;
+  padding-top: 8px !important;
+}
+
+/* Extended search bar on top row */
+.nav-row-top .nav-search {
+  flex: 1 !important;
+  max-width: none !important;
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  margin-right: 20px !important;
+}
+
+/* Account icon styling */
+.nav-account-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 44px !important;
+  height: 44px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  transition: all 0.2s ease !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  cursor: pointer !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  flex-shrink: 0 !important;
+}
+
+.nav-account-icon:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.nav-account-icon svg {
+  width: 24px !important;
+  height: 24px !important;
+  stroke: var(--text-white) !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Navigation links container */
+.nav-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: clamp(16px, 2vw, 32px) !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  flex: 1 !important;
+  justify-content: flex-end !important;
 }
 
 /* Force all navigation children to be visible EXCEPT mega menu */
@@ -371,10 +446,10 @@ nav .nav-menu {
   opacity: 1 !important;
 }
 
-/* First nav-logo (logo container) gets smaller gap */
-.navigation > .nav-logo:first-child,
-.cardbid-nav > .nav-logo:first-child {
+/* Logo in bottom row */
+.nav-row-bottom .nav-logo {
   gap: 12px !important;
+  flex-shrink: 0 !important;
 }
 
 .logo-icon {
