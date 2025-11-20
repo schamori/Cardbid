@@ -12,8 +12,8 @@ console.log('  gameLinks:', gameLinks);
 let megaMenuTimeout;
 let currentActiveGame = null;
 
-// Function to show a specific game section
-function showGameSection(gameSlug) {
+// Function to show a specific game section and position the menu
+function showGameSection(gameSlug, linkElement) {
   // Hide all game sections
   const allGameSections = document.querySelectorAll('.mega-menu-game');
   allGameSections.forEach(section => {
@@ -24,6 +24,13 @@ function showGameSection(gameSlug) {
   const gameSection = document.querySelector(`.mega-menu-game[data-game="${gameSlug}"]`);
   if (gameSection) {
     gameSection.style.display = 'block';
+
+    // Position the mega menu under the hovered link
+    const navRect = navigation.getBoundingClientRect();
+    const linkRect = linkElement.getBoundingClientRect();
+    const leftPosition = linkRect.left - navRect.left;
+
+    megaMenu.style.left = `${leftPosition}px`;
     megaMenu.classList.add('active');
     currentActiveGame = gameSlug;
   }
@@ -35,7 +42,7 @@ gameLinks.forEach(link => {
 
   link.addEventListener('mouseenter', () => {
     clearTimeout(megaMenuTimeout);
-    showGameSection(gameSlug);
+    showGameSection(gameSlug, link);
   });
 
   link.addEventListener('mouseleave', () => {

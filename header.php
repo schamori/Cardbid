@@ -87,17 +87,24 @@
     <div class="nav-row-bottom">
       <div class="nav-links">
         <?php
-        // Define game categories with their slugs and icons
+        // Define game categories with their slugs and icons - Pokémon in middle
         $game_categories = array(
-          array('name' => 'Pokémon', 'slug' => 'pokemon-non-japanese', 'icon' => '⚪'),
           array('name' => 'Magic: the Gathering', 'slug' => 'magic-the-gathering', 'icon' => '🔮'),
           array('name' => 'Yu-Gi-Oh!', 'slug' => 'yu-gi-oh', 'icon' => '🎴'),
           array('name' => 'Flesh and Blood', 'slug' => 'flesh-and-blood', 'icon' => '⚔️'),
+          array('name' => 'Pokémon', 'slug' => 'pokemon-non-japanese', 'icon' => '⚪'),
           array('name' => 'Digimon', 'slug' => 'digimon', 'icon' => '🦖'),
           array('name' => 'Cardfight!! Vanguard', 'slug' => 'cardfight-vanguard', 'icon' => '🛡️'),
+          array('name' => 'All Games', 'slug' => 'all-games', 'icon' => '🎮'),
         );
 
         foreach ($game_categories as $game) {
+          // Handle "All Games" differently
+          if ($game['slug'] === 'all-games') {
+            echo '<a href="' . esc_url(home_url('/shop/')) . '" class="nav-link">' . esc_html($game['name']) . '</a>';
+            continue;
+          }
+
           $category = get_term_by('slug', $game['slug'], 'product_cat');
           if ($category) {
             echo '<a href="' . esc_url(get_term_link($category)) . '" class="nav-link nav-game-link" data-game="' . esc_attr($game['slug']) . '">';
@@ -106,7 +113,6 @@
           }
         }
         ?>
-        <a href="<?php echo esc_url(home_url('/shop/')); ?>" class="nav-link">All Games</a>
       </div>
     </div>
   </div>
@@ -115,12 +121,12 @@
   <div class="mega-menu">
     <div class="mega-menu-content">
       <?php
-      // Define game categories
+      // Define game categories - same order as navigation
       $game_categories = array(
-        array('name' => 'Pokémon', 'slug' => 'pokemon-non-japanese', 'icon' => '⚪'),
         array('name' => 'Magic: the Gathering', 'slug' => 'magic-the-gathering', 'icon' => '🔮'),
         array('name' => 'Yu-Gi-Oh!', 'slug' => 'yu-gi-oh', 'icon' => '🎴'),
         array('name' => 'Flesh and Blood', 'slug' => 'flesh-and-blood', 'icon' => '⚔️'),
+        array('name' => 'Pokémon', 'slug' => 'pokemon-non-japanese', 'icon' => '⚪'),
         array('name' => 'Digimon', 'slug' => 'digimon', 'icon' => '🦖'),
         array('name' => 'Cardfight!! Vanguard', 'slug' => 'cardfight-vanguard', 'icon' => '🛡️'),
       );
