@@ -430,6 +430,7 @@ body.woocommerce nav.navigation,
   opacity: 1 !important;
   flex: 1 !important;
   justify-content: flex-end !important;
+  flex-direction: row-reverse !important;
 }
 
 /* Force all navigation children to be visible EXCEPT mega menu */
