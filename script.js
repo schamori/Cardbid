@@ -1,56 +1,77 @@
 // Mega Menu Functionality
 console.log('=== script.js loaded ===');
-const shopButton = document.querySelector('.nav-shop');
 const megaMenu = document.querySelector('.mega-menu');
 const navigation = document.querySelector('.navigation');
+const gameLinks = document.querySelectorAll('.nav-game-link');
 
 console.log('Mega menu elements check:');
-console.log('  shopButton:', shopButton);
 console.log('  megaMenu:', megaMenu);
 console.log('  navigation:', navigation);
+console.log('  gameLinks:', gameLinks);
 
 let megaMenuTimeout;
+let currentActiveGame = null;
 
-// Only set up mega menu if elements exist
-if (shopButton && megaMenu) {
-  console.log('Setting up mega menu event listeners...');
-
-  // Show mega menu on hover
-  shopButton.addEventListener('mouseenter', () => {
-    clearTimeout(megaMenuTimeout);
-    megaMenu.classList.add('active');
+// Function to show a specific game section
+function showGameSection(gameSlug) {
+  // Hide all game sections
+  const allGameSections = document.querySelectorAll('.mega-menu-game');
+  allGameSections.forEach(section => {
+    section.style.display = 'none';
   });
 
-  // Hide mega menu when leaving the button - with longer delay for easier navigation
-  shopButton.addEventListener('mouseleave', () => {
+  // Show the selected game section
+  const gameSection = document.querySelector(`.mega-menu-game[data-game="${gameSlug}"]`);
+  if (gameSection) {
+    gameSection.style.display = 'block';
+    megaMenu.classList.add('active');
+    currentActiveGame = gameSlug;
+  }
+}
+
+// Set up game link hover handlers
+gameLinks.forEach(link => {
+  const gameSlug = link.getAttribute('data-game');
+
+  link.addEventListener('mouseenter', () => {
+    clearTimeout(megaMenuTimeout);
+    showGameSection(gameSlug);
+  });
+
+  link.addEventListener('mouseleave', () => {
     megaMenuTimeout = setTimeout(() => {
       megaMenu.classList.remove('active');
+      currentActiveGame = null;
     }, 300);
   });
+});
 
-  // Keep mega menu open when hovering over it
+// Keep mega menu open when hovering over it
+if (megaMenu) {
   megaMenu.addEventListener('mouseenter', () => {
     clearTimeout(megaMenuTimeout);
     megaMenu.classList.add('active');
   });
 
-  // Hide mega menu when leaving - with delay for easier dismissal
   megaMenu.addEventListener('mouseleave', () => {
     megaMenuTimeout = setTimeout(() => {
       megaMenu.classList.remove('active');
+      currentActiveGame = null;
     }, 200);
   });
 
   // Close mega menu when clicking anywhere outside
   document.addEventListener('click', (e) => {
-    if (!shopButton.contains(e.target) && !megaMenu.contains(e.target)) {
+    const isGameLink = Array.from(gameLinks).some(link => link.contains(e.target));
+    if (!isGameLink && !megaMenu.contains(e.target)) {
       megaMenu.classList.remove('active');
+      currentActiveGame = null;
     }
   });
 
   console.log('✓ Mega menu event listeners added');
 } else {
-  console.warn('⚠ Mega menu elements not found - skipping mega menu setup');
+  console.warn('⚠ Mega menu not found - skipping mega menu setup');
 }
 
 // Gallery Carousel Functionality

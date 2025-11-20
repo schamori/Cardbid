@@ -83,93 +83,116 @@
       </a>
     </div>
 
-    <!-- Bottom Row: Navigation Links -->
+    <!-- Bottom Row: Game Categories -->
     <div class="nav-row-bottom">
       <div class="nav-links">
-        <a href="#" class="nav-link">Auctions</a>
-        <button class="nav-link nav-shop">
-          Shop
-          <svg class="dropdown-icon" viewBox="0 0 10 6" fill="none">
-            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
+        <?php
+        // Define game categories with their slugs and icons
+        $game_categories = array(
+          array('name' => 'Pokémon', 'slug' => 'pokemon-non-japanese', 'icon' => '⚪'),
+          array('name' => 'Magic: the Gathering', 'slug' => 'magic-the-gathering', 'icon' => '🔮'),
+          array('name' => 'Yu-Gi-Oh!', 'slug' => 'yu-gi-oh', 'icon' => '🎴'),
+          array('name' => 'Flesh and Blood', 'slug' => 'flesh-and-blood', 'icon' => '⚔️'),
+          array('name' => 'Digimon', 'slug' => 'digimon', 'icon' => '🦖'),
+          array('name' => 'Cardfight!! Vanguard', 'slug' => 'cardfight-vanguard', 'icon' => '🛡️'),
+        );
+
+        foreach ($game_categories as $game) {
+          $category = get_term_by('slug', $game['slug'], 'product_cat');
+          if ($category) {
+            echo '<a href="' . esc_url(get_term_link($category)) . '" class="nav-link nav-game-link" data-game="' . esc_attr($game['slug']) . '">';
+            echo esc_html($game['name']);
+            echo '</a>';
+          }
+        }
+        ?>
+        <a href="<?php echo esc_url(home_url('/shop/')); ?>" class="nav-link">All Games</a>
       </div>
     </div>
   </div>
 
-  <!-- Mega Menu -->
+  <!-- Mega Menu for Game Categories -->
   <div class="mega-menu">
     <div class="mega-menu-content">
-      <!-- Pokémon Section -->
-      <div class="mega-menu-game">
-        <div class="mega-menu-game-header">
-          <span class="mega-menu-icon">⚪</span>
-          <h3 class="mega-menu-game-title">Pokémon</h3>
-        </div>
-        <div class="mega-menu-two-column">
-          <div class="mega-menu-section">
-            <h4 class="mega-menu-section-title">SETS</h4>
-            <ul class="mega-menu-list">
-              <?php
-              // Get Pokemon Non-Japanese category
-              $pokemon_category = get_term_by('slug', 'pokemon-non-japanese', 'product_cat');
+      <?php
+      // Define game categories
+      $game_categories = array(
+        array('name' => 'Pokémon', 'slug' => 'pokemon-non-japanese', 'icon' => '⚪'),
+        array('name' => 'Magic: the Gathering', 'slug' => 'magic-the-gathering', 'icon' => '🔮'),
+        array('name' => 'Yu-Gi-Oh!', 'slug' => 'yu-gi-oh', 'icon' => '🎴'),
+        array('name' => 'Flesh and Blood', 'slug' => 'flesh-and-blood', 'icon' => '⚔️'),
+        array('name' => 'Digimon', 'slug' => 'digimon', 'icon' => '🦖'),
+        array('name' => 'Cardfight!! Vanguard', 'slug' => 'cardfight-vanguard', 'icon' => '🛡️'),
+      );
 
-              if ($pokemon_category) {
-                // Get all subcategories (sets) of Pokemon Non-Japanese
-                $sets = get_terms(array(
-                  'taxonomy' => 'product_cat',
-                  'parent' => $pokemon_category->term_id,
-                  'hide_empty' => false,
-                  'orderby' => 'name',
-                  'order' => 'ASC'
-                ));
+      foreach ($game_categories as $game) {
+        $game_category = get_term_by('slug', $game['slug'], 'product_cat');
 
-                if (!empty($sets) && !is_wp_error($sets)) {
-                  foreach ($sets as $set) {
-                    // Skip the Singles and Sealed categories themselves
-                    if (strpos($set->slug, 'singles-') === 0 || strpos($set->slug, 'sealed-') === 0) {
-                      continue;
-                    }
+        if (!$game_category) continue;
 
-                    // Generate the set name without "Singles" or "Sealed" suffix
-                    $set_name = $set->name;
-                    $set_slug = $set->slug;
+        echo '<div class="mega-menu-game" data-game="' . esc_attr($game['slug']) . '">';
+        echo '<div class="mega-menu-game-header">';
+        echo '<span class="mega-menu-icon">' . $game['icon'] . '</span>';
+        echo '<h3 class="mega-menu-game-title">' . esc_html($game['name']) . '</h3>';
+        echo '</div>';
 
-                    // Create links for Singles and Sealed
-                    $singles_url = home_url("/product-category/pokemon-non-japanese/{$set_slug}/singles-{$set_slug}/");
-                    $sealed_url = home_url("/product-category/pokemon-non-japanese/{$set_slug}/sealed-{$set_slug}/");
+        echo '<div class="mega-menu-section">';
+        echo '<h4 class="mega-menu-section-title">LAST EXPANSIONS</h4>';
+        echo '<ul class="mega-menu-list">';
 
-                    echo '<li>';
-                    echo '<span class="expansion-badge">' . esc_html(strtoupper(substr($set_slug, 0, 3))) . '</span>';
-                    echo '<span class="set-name">' . esc_html($set_name) . '</span>';
-                    echo '<div class="set-links">';
-                    echo '<a href="' . esc_url($singles_url) . '" class="set-link singles">🃏 Singles</a>';
-                    echo '<a href="' . esc_url($sealed_url) . '" class="set-link sealed">📦 Sealed</a>';
-                    echo '</div>';
-                    echo '</li>';
-                  }
-                }
+        // Get latest expansions sorted by release date
+        $expansions = get_latest_expansions($game['slug'], 10);
+
+        if (!empty($expansions)) {
+          foreach ($expansions as $expansion) {
+            // Skip Singles and Sealed subcategories
+            if (strpos($expansion->slug, 'singles-') === 0 || strpos($expansion->slug, 'sealed-') === 0) {
+              continue;
+            }
+
+            $release_date = get_term_meta($expansion->term_id, 'release_date', true);
+            $badge = strtoupper(substr($expansion->slug, 0, 3));
+
+            // Get Singles and Sealed child categories
+            $child_cats = get_terms(array(
+              'taxonomy' => 'product_cat',
+              'parent' => $expansion->term_id,
+              'hide_empty' => false,
+            ));
+
+            $singles_url = get_term_link($expansion);
+            $sealed_url = get_term_link($expansion);
+
+            // Find specific Singles and Sealed categories
+            foreach ($child_cats as $child) {
+              if (strpos($child->slug, 'singles-') === 0) {
+                $singles_url = get_term_link($child);
+              } elseif (strpos($child->slug, 'sealed-') === 0) {
+                $sealed_url = get_term_link($child);
               }
-              ?>
-            </ul>
-            <a href="<?php echo esc_url(home_url('/product-category/pokemon-non-japanese/')); ?>" class="view-all-link">View all sets...</a>
-          </div>
-          <div class="mega-menu-section">
-            <h4 class="mega-menu-section-title">CATEGORIES</h4>
-            <ul class="mega-menu-list">
-              <li><a href="#"><span class="category-icon">🃏</span>Singles</a></li>
-              <li><a href="#"><span class="category-icon">📦</span>Booster Box</a></li>
-              <li><a href="#"><span class="category-icon">🎁</span>Bundle</a></li>
-              <li><a href="#"><span class="category-icon">💎</span>Graded Cards</a></li>
-              <li><a href="#"><span class="category-icon">📋</span>Blisters</a></li>
-              <li><a href="#"><span class="category-icon">🎯</span>Elite Trainer Box</a></li>
-              <li><a href="#"><span class="category-icon">🏆</span>Premium Collection</a></li>
-              <li><a href="#"><span class="category-icon">🗂️</span>Complete Set</a></li>
-            </ul>
-            <a href="<?php echo esc_url(home_url('/product-category/pokemon-non-japanese/')); ?>" class="view-all-link">View all categories...</a>
-          </div>
-        </div>
-      </div>
+            }
+
+            echo '<li>';
+            echo '<span class="expansion-badge">' . esc_html($badge) . '</span>';
+            echo '<span class="set-name">' . esc_html($expansion->name) . '</span>';
+            if ($release_date) {
+              $formatted_date = date_i18n('M j, Y', strtotime($release_date));
+              echo '<span class="release-date">' . esc_html($formatted_date) . '</span>';
+            }
+            echo '<div class="set-links">';
+            echo '<a href="' . esc_url($singles_url) . '" class="set-link singles">Singles</a>';
+            echo '<a href="' . esc_url($sealed_url) . '" class="set-link sealed">Sealed</a>';
+            echo '</div>';
+            echo '</li>';
+          }
+        }
+
+        echo '</ul>';
+        echo '<a href="' . esc_url(get_term_link($game_category)) . '" class="view-all-link">View all expansions...</a>';
+        echo '</div>';
+        echo '</div>';
+      }
+      ?>
     </div>
   </div>
 </nav>
