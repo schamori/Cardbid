@@ -101,3 +101,177 @@ function cardbid_remove_woo_breadcrumbs() {
     remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
 }
 add_action( 'init', 'cardbid_remove_woo_breadcrumbs' );
+
+/**
+ * Display custom metadata for WooCommerce product categories
+ * This adds set_price and release_date to category overview pages
+ * Note: Only declare if not already defined in Code Snippets
+ */
+if ( ! function_exists( 'display_pokemon_category_metadata' ) ) {
+    add_action( 'woocommerce_archive_description', 'display_pokemon_category_metadata', 15 );
+
+    function display_pokemon_category_metadata() {
+        // Only run on product category pages
+        if ( ! is_product_category() ) {
+            return;
+        }
+
+        // Get the current category object
+        $current_category = get_queried_object();
+
+        if ( ! $current_category || ! isset( $current_category->term_id ) ) {
+            return;
+        }
+
+        // Get the custom metadata
+        $set_price = get_term_meta( $current_category->term_id, 'set_price', true );
+        $release_date = get_term_meta( $current_category->term_id, 'release_date', true );
+
+        // Only display if at least one field has data
+        if ( empty( $set_price ) && empty( $release_date ) ) {
+            return;
+        }
+
+        // Start building the output
+        $output = '<div class="pokemon-category-meta">';
+
+        // Add a heading
+        $output .= '<h4>Set Information</h4>';
+
+        // Display set price if available
+        if ( ! empty( $set_price ) ) {
+            $formatted_price = wc_price( $set_price );
+            $output .= '<p><strong>Total Set Price:</strong> ' . $formatted_price . '</p>';
+        }
+
+        // Display release date if available
+        if ( ! empty( $release_date ) ) {
+            // Try to format the date nicely if it's in a standard format
+            $formatted_date = $release_date;
+            $timestamp = strtotime( $release_date );
+            if ( $timestamp !== false ) {
+                $formatted_date = date_i18n( get_option( 'date_format' ), $timestamp );
+            }
+            $output .= '<p><strong>Release Date:</strong> ' . esc_html( $formatted_date ) . '</p>';
+        }
+
+        $output .= '</div>';
+
+        // Output the metadata
+        echo $output;
+    }
+}
+
+/**
+ * Add custom CSS for category metadata styling
+ * Note: Only declare if not already defined in Code Snippets
+ */
+if ( ! function_exists( 'pokemon_category_meta_styles' ) ) {
+    add_action( 'wp_head', 'pokemon_category_meta_styles' );
+
+    function pokemon_category_meta_styles() {
+        if ( ! is_product_category() ) {
+            return;
+        }
+        ?>
+        <style>
+            .pokemon-category-meta {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+                color: white !important;
+                border: none !important;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                border-radius: 5px;
+                padding: 15px;
+                margin: 15px 0;
+            }
+            .pokemon-category-meta h4 {
+                color: white !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+                padding-bottom: 8px;
+                margin-top: 0;
+                font-size: 1.1em;
+            }
+            .pokemon-category-meta p {
+                margin: 10px 0 !important;
+            }
+            .pokemon-category-meta .woocommerce-Price-amount {
+                font-weight: bold;
+                font-size: 1.1em;
+            }
+        </style>
+        <?php
+    }
+}
+
+/**
+ * Display metadata on category tiles/cards in category overview pages
+ * Note: Only declare if not already defined in Code Snippets
+ */
+if ( ! function_exists( 'display_pokemon_category_tile_metadata' ) ) {
+    add_action( 'woocommerce_shop_loop_subcategory_title', 'display_pokemon_category_tile_metadata', 15 );
+
+    function display_pokemon_category_tile_metadata( $category ) {
+        // Get the custom metadata for this category
+        $set_price = get_term_meta( $category->term_id, 'set_price', true );
+        $release_date = get_term_meta( $category->term_id, 'release_date', true );
+
+        // Only display if at least one field has data
+        if ( empty( $set_price ) && empty( $release_date ) ) {
+            return;
+        }
+
+        // Start building the output for the tile
+        echo '<div class="pokemon-category-tile-meta" style="margin-top: 8px; font-size: 0.9em; color: #666;">';
+
+        // Display set price if available
+        if ( ! empty( $set_price ) ) {
+            $formatted_price = wc_price( $set_price );
+            echo '<div style="margin: 3px 0;"><strong>Set Price:</strong> ' . $formatted_price . '</div>';
+        }
+
+        // Display release date if available
+        if ( ! empty( $release_date ) ) {
+            // Try to format the date nicely if it's in a standard format
+            $formatted_date = $release_date;
+            $timestamp = strtotime( $release_date );
+            if ( $timestamp !== false ) {
+                $formatted_date = date_i18n( 'M j, Y', $timestamp );
+            }
+            echo '<div style="margin: 3px 0;"><strong>Released:</strong> ' . esc_html( $formatted_date ) . '</div>';
+        }
+
+        echo '</div>';
+    }
+}
+
+/**
+ * Get the latest expansions for a game category
+ * Note: Only declare if not already defined in Code Snippets
+ */
+if ( ! function_exists( 'get_latest_expansions' ) ) {
+    function get_latest_expansions( $parent_slug, $limit = 10 ) {
+        $parent_category = get_term_by('slug', $parent_slug, 'product_cat');
+
+        if ( ! $parent_category ) {
+            return array();
+        }
+
+        $args = array(
+            'taxonomy' => 'product_cat',
+            'parent' => $parent_category->term_id,
+            'hide_empty' => false,
+            'meta_key' => 'release_date',
+            'orderby' => 'meta_value',
+            'order' => 'DESC',
+            'number' => $limit
+        );
+
+        $expansions = get_terms( $args );
+
+        if ( is_wp_error( $expansions ) ) {
+            return array();
+        }
+
+        return $expansions;
+    }
+}
