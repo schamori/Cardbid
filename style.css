@@ -138,8 +138,8 @@ Text Domain: storefront-child-cardbid
 /* Critical: Ensure parent containers don't break sticky */
 body {
   padding-top: 90px !important; /* Space for fixed navbar */
-  /* Gradient background for all pages */
-  background: linear-gradient(135deg,
+  /* Gradient background for all pages - vertical gradient */
+  background: linear-gradient(to bottom,
       var(--dark-blue) 0%,
       var(--dark-blue) 10%,
       var(--moody-purple) 25%,
@@ -243,7 +243,7 @@ body.page-template-page-cardbid-home {
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
-  background: linear-gradient(135deg,
+  background: linear-gradient(to bottom,
       var(--dark-blue) 0%,
       var(--dark-blue) 10%,
       var(--moody-purple) 25%,
