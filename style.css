@@ -346,6 +346,19 @@ body.woocommerce nav.navigation,
   opacity: 1 !important;
 }
 
+/* Logo link styling */
+.nav-logo-link {
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.nav-logo-link:hover {
+  opacity: 0.85 !important;
+}
+
 /* Content wrapper for the right side */
 .nav-content-wrapper {
   display: flex !important;
