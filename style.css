@@ -652,8 +652,8 @@ nav .nav-menu {
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-radius: 12px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  visibility: hidden;
+  opacity: 0 !important;
+  visibility: hidden !important;
   transform: translateY(-10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 10000;
@@ -661,8 +661,8 @@ nav .nav-menu {
 }
 
 .nav-cart-wrapper:hover .cart-dropdown {
-  opacity: 1;
-  visibility: visible;
+  opacity: 1 !important;
+  visibility: visible !important;
   transform: translateY(0);
 }
 
