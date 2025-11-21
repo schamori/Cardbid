@@ -68,20 +68,79 @@
       </a>
 
       <!-- Cart -->
-      <a href="<?php echo esc_url( wc_get_page_permalink( 'cart' ) ); ?>" class="nav-cart">
-        <?php if ( function_exists( 'WC' ) ) : ?>
-          <span class="cart-items"><?php echo WC()->cart->get_cart_contents_count(); ?> Items</span>
-          <span class="cart-price"><?php echo WC()->cart->get_cart_total(); ?></span>
-        <?php else : ?>
-          <span class="cart-items">0 Items</span>
-          <span class="cart-price">0,00€</span>
-        <?php endif; ?>
-        <div class="cart-icon">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M9 11V6C9 4.34315 10.3431 3 12 3C13.6569 3 15 4.34315 15 6V11M12 14H12.01M3.6 21 H20.4C20.9601 21 21.2401 21 21.454 20.891C21.6422 20.7951 21.7951 20.6422 21.891 20.454C22 20.2401 22 19.9601 22 19.4V11.6C22 11.0399 22 10.7599 21.891 10.546C21.7951 10.3578 21.6422 10.2049 21.454 10.109C21.2401 10 20.9601 10 20.4 10H3.6C3.03995 10 2.75992 10 2.54601 10.109C2.35785 10.2049 2.20487 10.3578 2.10899 10.546C2 10.7599 2 11.0399 2 11.6V19.4C2 19.9601 2 20.2401 2.10899 20.454C2.20487 20.6422 2.35785 20.7951 2.54601 20.891C2.75992 21 3.03995 21 3.6 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+      <div class="nav-cart-wrapper">
+        <a href="<?php echo esc_url( wc_get_page_permalink( 'cart' ) ); ?>" class="nav-cart">
+          <?php if ( function_exists( 'WC' ) ) : ?>
+            <span class="cart-items"><?php echo WC()->cart->get_cart_contents_count(); ?> Items</span>
+            <span class="cart-price"><?php echo WC()->cart->get_cart_total(); ?></span>
+          <?php else : ?>
+            <span class="cart-items">0 Items</span>
+            <span class="cart-price">0,00€</span>
+          <?php endif; ?>
+          <div class="cart-icon">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M9 11V6C9 4.34315 10.3431 3 12 3C13.6569 3 15 4.34315 15 6V11M12 14H12.01M3.6 21 H20.4C20.9601 21 21.2401 21 21.454 20.891C21.6422 20.7951 21.7951 20.6422 21.891 20.454C22 20.2401 22 19.9601 22 19.4V11.6C22 11.0399 22 10.7599 21.891 10.546C21.7951 10.3578 21.6422 10.2049 21.454 10.109C21.2401 10 20.9601 10 20.4 10H3.6C3.03995 10 2.75992 10 2.54601 10.109C2.35785 10.2049 2.20487 10.3578 2.10899 10.546C2 10.7599 2 11.0399 2 11.6V19.4C2 19.9601 2 20.2401 2.10899 20.454C2.20487 20.6422 2.35785 20.7951 2.54601 20.891C2.75992 21 3.03995 21 3.6 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Cart Dropdown -->
+        <div class="cart-dropdown">
+          <?php if ( function_exists( 'WC' ) && WC()->cart->get_cart_contents_count() > 0 ) : ?>
+            <div class="cart-dropdown-items">
+              <?php foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) :
+                $_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+                if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 ) :
+                  $product_permalink = $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '';
+              ?>
+                <div class="cart-dropdown-item">
+                  <?php if ( $product_permalink ) : ?>
+                    <a href="<?php echo esc_url( $product_permalink ); ?>" class="cart-item-image">
+                  <?php else : ?>
+                    <div class="cart-item-image">
+                  <?php endif; ?>
+                    <?php echo $_product->get_image( 'thumbnail' ); ?>
+                  <?php echo $product_permalink ? '</a>' : '</div>'; ?>
+
+                  <div class="cart-item-details">
+                    <?php if ( $product_permalink ) : ?>
+                      <a href="<?php echo esc_url( $product_permalink ); ?>" class="cart-item-name">
+                        <?php echo wp_kses_post( $_product->get_name() ); ?>
+                      </a>
+                    <?php else : ?>
+                      <span class="cart-item-name"><?php echo wp_kses_post( $_product->get_name() ); ?></span>
+                    <?php endif; ?>
+                    <div class="cart-item-meta">
+                      <span class="cart-item-quantity">Qty: <?php echo $cart_item['quantity']; ?></span>
+                      <span class="cart-item-price">
+                        <?php echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key ); ?>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              <?php
+                endif;
+              endforeach;
+              ?>
+            </div>
+
+            <div class="cart-dropdown-footer">
+              <div class="cart-dropdown-total">
+                <span>Subtotal:</span>
+                <strong><?php echo WC()->cart->get_cart_subtotal(); ?></strong>
+              </div>
+              <div class="cart-dropdown-actions">
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'cart' ) ); ?>" class="btn-view-cart">View Cart</a>
+                <a href="<?php echo esc_url( wc_get_page_permalink( 'checkout' ) ); ?>" class="btn-checkout">Checkout</a>
+              </div>
+            </div>
+          <?php else : ?>
+            <div class="cart-dropdown-empty">
+              <p>Your cart is empty</p>
+            </div>
+          <?php endif; ?>
         </div>
-      </a>
+      </div>
     </div>
 
     <!-- Bottom Row: Game Categories -->
