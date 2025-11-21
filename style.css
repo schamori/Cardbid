@@ -660,8 +660,7 @@ nav .nav-menu {
   overflow: hidden;
 }
 
-.nav-cart:hover + .cart-dropdown,
-.cart-dropdown:hover {
+.nav-cart-wrapper:hover .cart-dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
