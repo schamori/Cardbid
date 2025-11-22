@@ -2462,19 +2462,24 @@ body.woocommerce-page .nav-cart {
   .navigation {
     display: flex !important;
     align-items: center !important;
-    gap: 12px !important;
-    padding: clamp(10px, 2vh, 14px) clamp(12px, 3vw, 20px) !important;
+    gap: 8px !important;
+    padding: 12px 16px !important;
   }
 
   .nav-logo-wrapper {
     flex: 0 0 auto !important;
     order: 2;
+    margin-right: auto !important;
   }
 
   /* Compact search bar on mobile */
+  .nav-row-top {
+    gap: 8px !important;
+  }
+
   .nav-row-top .nav-search {
     flex: 1 !important;
-    min-width: 0 !important;
+    min-width: 120px !important;
     margin-right: 0 !important;
   }
 
