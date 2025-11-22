@@ -503,7 +503,7 @@ nav .nav-menu {
 .logo-text {
   display: flex !important;
   align-items: center !important;
-  margin-left: 12px;
+  margin-left: 4px;
 }
 
 .logo-text span {
