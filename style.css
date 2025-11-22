@@ -2527,10 +2527,9 @@ body.woocommerce-page .nav-cart {
     box-shadow: none !important;
   }
 
-  /* Hide desktop cart elements on mobile */
+  /* Hide text elements on mobile, show only icon */
   body .nav-cart .cart-items,
-  body .nav-cart .cart-price,
-  body .nav-cart .cart-icon {
+  body .nav-cart .cart-price {
     display: none !important;
     visibility: hidden !important;
     width: 0 !important;
@@ -2539,13 +2538,21 @@ body.woocommerce-page .nav-cart {
     position: absolute !important;
   }
 
-  /* Show only mobile cart icon with badge */
+  /* Show cart icon on mobile */
+  body .nav-cart .cart-icon {
+    display: flex !important;
+    visibility: visible !important;
+  }
+
+  body .nav-cart .cart-icon svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  /* Show mobile cart icon if it exists */
   body .nav-cart .cart-icon-mobile {
     display: flex !important;
     visibility: visible !important;
-    position: relative !important;
-    align-items: center !important;
-    justify-content: center !important;
   }
 
   body .nav-cart .cart-icon-mobile svg {
