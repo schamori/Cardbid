@@ -675,28 +675,7 @@ nav .nav-menu {
 }
 
 .cart-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  width: 360px;
-  max-width: 90vw;
-  background: rgba(30, 39, 65, 0.98);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  opacity: 0 !important;
-  visibility: hidden !important;
-  transform: translateY(-10px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 10000;
-  overflow: hidden;
-}
-
-.nav-cart-wrapper:hover .cart-dropdown {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(0);
+  display: none !important;
 }
 
 .cart-dropdown-items {
