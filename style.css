@@ -2450,7 +2450,7 @@ body.woocommerce-page .nav-cart {
     display: flex !important;
     flex-wrap: wrap !important;
     align-items: center !important;
-    gap: 4px !important;
+    gap: 8px !important;
     padding: 4px 8px !important;
   }
 
@@ -2458,12 +2458,14 @@ body.woocommerce-page .nav-cart {
   .nav-logo-wrapper {
     order: 1;
     flex: 1 1 auto !important;
+    margin-right: 8px !important;
   }
 
   /* Account icon */
   .nav-account-icon {
     order: 2;
     flex: 0 0 auto !important;
+    margin-left: auto !important;
   }
 
   /* Cart wrapper */
