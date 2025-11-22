@@ -2507,14 +2507,27 @@ body.woocommerce-page .nav-cart {
   }
 
   /* Remove white background from search on mobile */
+  .nav-row-top .nav-search,
+  .nav-search,
+  .nav-search form,
+  .nav-search .dgwt-wcas-search-form,
+  .nav-search .dgwt-wcas-search-wrapp,
+  .nav-search .dgwt-wcas-sf-wrapp {
+    background: transparent !important;
+  }
+
   .nav-search input[type="search"],
-  .nav-search .dgwt-wcas-search-input {
+  .nav-search .dgwt-wcas-search-input,
+  .dgwt-wcas-search-input,
+  input.dgwt-wcas-search-input {
     background: rgba(255, 255, 255, 0.15) !important;
     color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
   }
 
   .nav-search input[type="search"]::placeholder,
-  .nav-search .dgwt-wcas-search-input::placeholder {
+  .nav-search .dgwt-wcas-search-input::placeholder,
+  .dgwt-wcas-search-input::placeholder {
     color: rgba(255, 255, 255, 0.6) !important;
   }
 
