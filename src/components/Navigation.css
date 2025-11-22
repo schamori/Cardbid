@@ -12,6 +12,28 @@
   background: transparent;
 }
 
+.nav-hamburger {
+  display: none;
+  width: 24px;
+  height: 24px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  padding: 0;
+  margin-right: 16px;
+}
+
+.nav-hamburger:hover {
+  opacity: 0.7;
+}
+
+.nav-hamburger svg {
+  width: 100%;
+  height: 100%;
+}
+
 .nav-logo {
   display: flex !important;
   align-items: center !important;
@@ -30,8 +52,11 @@
 }
 
 .logo-text {
-  width: clamp(120px, 18vw, 170px);
-  height: auto;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 2.5vw, 32px);
+  color: white;
+  white-space: nowrap;
 }
 
 .nav-menu {
@@ -162,6 +187,27 @@
   opacity: 0.8;
 }
 
+.nav-account-icon {
+  display: none;
+  width: 24px;
+  height: 24px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  padding: 0;
+}
+
+.nav-account-icon:hover {
+  opacity: 0.7;
+}
+
+.nav-account-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
 .dropdown-icon {
   width: 10px;
   height: 6px;
@@ -216,22 +262,51 @@
     padding: 16px 20px !important;
   }
 
+  .nav-hamburger {
+    display: block !important;
+  }
+
+  .logo-text {
+    display: none !important;
+  }
+
   .nav-link:not(.nav-cart) {
     display: none !important;
   }
 
   .nav-search {
-    display: none !important;
+    display: block !important;
+    flex: 1 !important;
+    max-width: none !important;
+    margin: 0 12px !important;
+  }
+
+  .nav-search input[type="search"] {
+    padding: 8px 20px 8px 40px !important;
+    font-size: 13px !important;
   }
 
   .nav-search-icon {
+    display: none !important;
+  }
+
+  .nav-account-icon {
     display: block !important;
-    margin-left: auto !important;
-    margin-right: 12px !important;
+  }
+
+  .nav-cart .cart-items,
+  .nav-cart .cart-price {
+    display: none !important;
   }
 
   .nav-cart {
-    padding: 6px 12px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+  }
+
+  .nav-cart .cart-icon {
+    color: white !important;
   }
 }
 
