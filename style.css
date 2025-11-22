@@ -2450,44 +2450,50 @@ body.woocommerce-page .nav-cart {
     display: flex !important;
     flex-wrap: wrap !important;
     align-items: center !important;
-    gap: 0 !important;
+    gap: 8px !important;
     padding: 12px 16px !important;
   }
 
-  /* First row: hamburger, logo, account, cart */
-  .nav-logo-wrapper {
-    flex: 0 0 auto !important;
-    order: 2;
-    margin-right: auto !important;
-    padding: 0 8px !important;
-  }
-
+  /* First row: hamburger, logo (left), account + cart (right) */
   .mobile-menu-toggle {
     order: 1;
-    margin-right: 8px !important;
+    flex: 0 0 auto !important;
   }
 
-  /* Account and cart icons on the right */
-  .nav-content-wrapper {
-    display: flex !important;
+  .nav-logo-wrapper {
+    order: 2;
+    flex: 1 1 auto !important;
+  }
+
+  /* Account icon */
+  .nav-account-icon {
     order: 3;
     flex: 0 0 auto !important;
-    gap: 8px !important;
+  }
+
+  /* Cart wrapper */
+  .nav-cart-wrapper {
+    order: 4;
+    flex: 0 0 auto !important;
+  }
+
+  /* Second row: full-width search bar */
+  .nav-content-wrapper {
+    order: 5;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    margin-top: 4px !important;
   }
 
   .nav-row-top {
     display: flex !important;
-    gap: 8px !important;
-    align-items: center !important;
+    width: 100% !important;
   }
 
-  /* Second row: full-width search bar */
   .nav-row-top .nav-search {
-    order: 4;
-    flex: 0 0 100% !important;
+    flex: 1 1 100% !important;
     width: 100% !important;
-    margin: 12px 0 0 0 !important;
-    padding: 0 !important;
+    margin: 0 !important;
   }
 
   /* Smaller icons on mobile */
