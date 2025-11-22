@@ -39,6 +39,13 @@
     </a>
   </div>
 
+  <!-- Mobile Menu Toggle -->
+  <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
   <!-- Right side content wrapper -->
   <div class="nav-content-wrapper">
     <!-- Top Row: Search Bar, Account Icon, Cart -->
@@ -263,6 +270,80 @@
       ?>
     </div>
   </div>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu-drawer" id="mobileMenuDrawer">
+    <div class="mobile-menu-header">
+      <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close mobile menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu-content">
+      <!-- Mobile Search -->
+      <div class="mobile-search">
+        <?php
+        if ( function_exists( 'dgwt_wcas_get_search_form' ) ) {
+          echo dgwt_wcas_get_search_form();
+        } elseif ( shortcode_exists( 'fibosearch' ) ) {
+          echo do_shortcode( '[fibosearch]' );
+        } elseif ( shortcode_exists( 'wcas-search-form' ) ) {
+          echo do_shortcode( '[wcas-search-form]' );
+        }
+        ?>
+      </div>
+
+      <!-- Mobile Games Dropdown -->
+      <div class="mobile-games-section">
+        <button class="mobile-games-toggle" id="mobileGamesToggle">
+          <span>Games</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="dropdown-arrow">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="mobile-games-list" id="mobileGamesList">
+          <?php
+          $game_categories = array(
+            array('name' => 'Magic: the Gathering', 'slug' => 'magic-the-gathering'),
+            array('name' => 'Yu-Gi-Oh!', 'slug' => 'yu-gi-oh'),
+            array('name' => 'Flesh and Blood', 'slug' => 'flesh-and-blood'),
+            array('name' => 'Pokémon', 'slug' => 'pokemon-non-japanese'),
+            array('name' => 'Digimon', 'slug' => 'digimon'),
+            array('name' => 'Cardfight!! Vanguard', 'slug' => 'cardfight-vanguard'),
+            array('name' => 'All Games', 'slug' => 'all-games'),
+          );
+
+          foreach ($game_categories as $game) {
+            if ($game['slug'] === 'all-games') {
+              echo '<a href="' . esc_url(home_url('/shop/')) . '" class="mobile-game-link">' . esc_html($game['name']) . '</a>';
+              continue;
+            }
+
+            $category = get_term_by('slug', $game['slug'], 'product_cat');
+            if ($category) {
+              echo '<a href="' . esc_url(get_term_link($category)) . '" class="mobile-game-link">';
+              echo esc_html($game['name']);
+              echo '</a>';
+            }
+          }
+          ?>
+        </div>
+      </div>
+
+      <!-- Mobile Account Link -->
+      <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="mobile-menu-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+        </svg>
+        <span>My Account</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
 </nav>
 
 <div id="page" class="hfeed site">
