@@ -2445,54 +2445,71 @@ body.woocommerce-page .nav-cart {
     display: none !important;
   }
 
-  /* Keep top row visible but restructure for mobile */
-  .nav-content-wrapper {
+  /* Mobile navbar - two rows layout */
+  .navigation {
     display: flex !important;
-    flex: 1 !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 4px 8px !important;
+  }
+
+  /* First row: logo (left), account + cart + hamburger (right) */
+  .nav-logo-wrapper {
+    order: 1;
+    flex: 1 1 auto !important;
+    margin-right: 4px !important;
+    min-width: 0 !important;
+  }
+
+  /* Account icon */
+  .nav-account-icon {
+    order: 2;
+    flex: 0 0 auto !important;
+    margin-left: auto !important;
+  }
+
+  /* Cart wrapper */
+  .nav-cart-wrapper {
     order: 3;
+    flex: 0 0 auto !important;
+  }
+
+  /* Hamburger menu on the right */
+  .mobile-menu-toggle {
+    order: 4;
+    flex: 0 0 auto !important;
+  }
+
+  /* Second row: ONLY search bar - completely alone */
+  .nav-content-wrapper {
+    order: 5;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 4px !important;
   }
 
   .nav-row-top {
     display: flex !important;
     width: 100% !important;
-    gap: 12px !important;
-  }
-
-  /* Mobile navbar layout: hamburger | logo | search | account | cart */
-  .navigation {
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    padding: 12px 16px !important;
-  }
-
-  .nav-logo-wrapper {
-    flex: 0 0 auto !important;
-    order: 2;
-    margin-right: auto !important;
-  }
-
-  /* Compact search bar on mobile */
-  .nav-row-top {
-    gap: 8px !important;
   }
 
   .nav-row-top .nav-search {
-    flex: 1 !important;
-    min-width: 120px !important;
-    margin-right: 0 !important;
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
   }
 
-  /* Smaller icons on mobile */
+  /* Mobile icons - sized for single line layout */
   .nav-account-icon {
     width: 40px !important;
     height: 40px !important;
-    margin-left: 0 !important;
   }
 
   .nav-account-icon svg {
-    width: 20px !important;
-    height: 20px !important;
+    width: 24px !important;
+    height: 24px !important;
   }
 
   /* Mobile cart - show icon only, hide detailed view */
@@ -2530,8 +2547,8 @@ body.woocommerce-page .nav-cart {
   }
 
   .cart-icon-mobile svg {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
   }
 
   .cart-count {
@@ -2556,8 +2573,8 @@ body.woocommerce-page .nav-cart {
 @media (max-width: 768px) {
   /* Tighter spacing for smaller screens */
   .navigation {
-    gap: 8px !important;
-    padding: 10px 12px !important;
+    gap: 4px !important;
+    padding: 4px 8px !important;
   }
 
   /* Smaller logo on mobile */
@@ -2566,20 +2583,24 @@ body.woocommerce-page .nav-cart {
     height: 32px !important;
   }
 
-  /* Hide logo text on mobile - show only icon */
+  /* Keep logo text visible on mobile */
   .logo-text {
-    display: none !important;
+    display: flex !important;
+  }
+
+  .logo-text span {
+    font-size: clamp(24px, 6vw, 34px) !important;
   }
 
   /* Extra compact icons on small mobile */
   .nav-account-icon {
-    width: 36px !important;
-    height: 36px !important;
+    width: 40px !important;
+    height: 40px !important;
   }
 
   .nav-cart {
-    width: 36px !important;
-    height: 36px !important;
+    width: 40px !important;
+    height: 40px !important;
   }
 
   .cart-icon-mobile svg {
