@@ -61,6 +61,15 @@ function storefront_child_cardbid_enqueue_assets() {
         true // Load in footer
     );
 
+    // Enqueue mobile menu JavaScript
+    wp_enqueue_script(
+        'mobile-menu',
+        get_stylesheet_directory_uri() . '/mobile-menu.js',
+        array(),
+        wp_get_theme()->get('Version'),
+        true // Load in footer
+    );
+
     // Enqueue custom header JavaScript
     wp_enqueue_script(
         'cc-header',
