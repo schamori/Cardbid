@@ -2483,6 +2483,7 @@ body.woocommerce-page .nav-cart {
     order: 5;
     flex: 0 0 100% !important;
     width: 100% !important;
+    max-width: 100% !important;
     margin-top: 8px !important;
   }
 
