@@ -2469,27 +2469,10 @@ body.woocommerce-page .nav-cart {
     margin-left: auto !important;
   }
 
-  /* Cart wrapper - hide original on mobile */
+  /* Cart wrapper */
   .nav-cart-wrapper {
     order: 3;
     flex: 0 0 auto !important;
-  }
-
-  /* Create mobile cart icon */
-  .navigation::after {
-    content: '';
-    order: 3;
-    flex: 0 0 auto !important;
-    width: 40px;
-    height: 40px;
-    background-image: url('data:image/svg+xml,<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 11V6C9 4.34315 10.3431 3 12 3C13.6569 3 15 4.34315 15 6V11M12 14H12.01M3.6 21H20.4C20.9601 21 21.2401 21 21.454 20.891C21.6422 20.7951 21.7951 20.6422 21.891 20.454C22 20.2401 22 19.9601 22 19.4V11.6C22 11.0399 22 10.7599 21.891 10.546C21.7951 10.3578 21.6422 10.2049 21.454 10.109C21.2401 10 20.9601 10 20.4 10H3.6C3.03995 10 2.75992 10 2.54601 10.109C2.35785 10.2049 2.20487 10.3578 2.10899 10.546C2 10.7599 2 11.0399 2 11.6V19.4C2 19.9601 2 20.2401 2.10899 20.454C2.20487 20.6422 2.35785 20.7951 2.54601 20.891C2.75992 21 3.03995 21 3.6 21Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-    background-size: 24px 24px;
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   /* Hamburger menu on the right */
@@ -2529,9 +2512,11 @@ body.woocommerce-page .nav-cart {
     height: 24px !important;
   }
 
-  /* Hide entire cart wrapper on mobile */
+  /* Show cart wrapper but minimal on mobile */
   .nav-cart-wrapper {
-    display: none !important;
+    display: flex !important;
+    order: 3 !important;
+    flex: 0 0 auto !important;
   }
 
   /* Mobile cart - show icon only, hide detailed view */
@@ -2542,6 +2527,8 @@ body.woocommerce-page .nav-cart {
     width: 40px !important;
     height: 40px !important;
     justify-content: center !important;
+    display: flex !important;
+    align-items: center !important;
   }
 
   .nav-cart:hover {
@@ -2549,9 +2536,10 @@ body.woocommerce-page .nav-cart {
     box-shadow: none !important;
   }
 
-  /* Hide text elements on mobile, show only icon */
+  /* Hide desktop cart elements on mobile */
   body .nav-cart .cart-items,
-  body .nav-cart .cart-price {
+  body .nav-cart .cart-price,
+  body .nav-cart .cart-icon {
     display: none !important;
     visibility: hidden !important;
     width: 0 !important;
@@ -2560,21 +2548,11 @@ body.woocommerce-page .nav-cart {
     position: absolute !important;
   }
 
-  /* Show cart icon on mobile */
-  body .nav-cart .cart-icon {
-    display: flex !important;
-    visibility: visible !important;
-  }
-
-  body .nav-cart .cart-icon svg {
-    width: 24px !important;
-    height: 24px !important;
-  }
-
-  /* Show mobile cart icon if it exists */
+  /* Show only mobile cart icon with count badge */
   body .nav-cart .cart-icon-mobile {
     display: flex !important;
     visibility: visible !important;
+    position: relative !important;
   }
 
   body .nav-cart .cart-icon-mobile svg {
@@ -2585,6 +2563,9 @@ body.woocommerce-page .nav-cart {
   body .nav-cart .cart-count {
     display: flex !important;
     visibility: visible !important;
+    position: absolute !important;
+    top: -4px !important;
+    right: -4px !important;
   }
 
   /* Hide cart dropdown on mobile - desktop only feature */
