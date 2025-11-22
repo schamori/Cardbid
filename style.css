@@ -2586,7 +2586,7 @@ body.woocommerce-page .nav-cart {
   }
 
   .logo-text span {
-    font-size: clamp(20px, 5vw, 28px) !important;
+    font-size: clamp(24px, 6vw, 34px) !important;
   }
 
   /* Extra compact icons on small mobile */
