@@ -2527,16 +2527,22 @@ body.woocommerce-page .nav-cart {
     box-shadow: none !important;
   }
 
-  .cart-items,
-  .cart-price {
+  body .nav-cart .cart-items,
+  body .nav-cart .cart-price {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
   }
 
-  .cart-icon {
+  body .nav-cart .cart-icon {
     display: flex !important;
   }
 
-  .cart-icon svg {
+  body .nav-cart .cart-icon svg {
     width: 24px !important;
     height: 24px !important;
   }
