@@ -439,7 +439,7 @@ body.woocommerce nav.navigation,
   visibility: visible !important;
   opacity: 1 !important;
   order: 999 !important;
-  margin-right: clamp(70px, 7vw, 110px) !important;
+  margin-right: clamp(100px, 10vw, 160px) !important;
 }
 
 /* Account icon styling - Bigger, spanning both rows */
