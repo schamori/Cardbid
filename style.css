@@ -627,19 +627,20 @@ nav .nav-menu {
   transform: rotate(180deg);
 }
 
-/* Desktop cart - original design */
+/* Desktop cart - compact design */
 .nav-cart {
   display: flex !important;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   background: var(--text-white);
-  padding: 8px 16px;
+  padding: 10px 16px;
   border-radius: 99px;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   visibility: visible !important;
   opacity: 1 !important;
+  position: relative;
 }
 
 .nav-cart:hover {
@@ -648,20 +649,23 @@ nav .nav-menu {
 }
 
 .cart-items {
-  font-size: clamp(12px, 1vw, 16px);
-  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dark-blue);
+  white-space: nowrap;
 }
 
 .cart-price {
   font-weight: 700;
-  font-size: clamp(12px, 1vw, 16px);
+  font-size: 14px;
   color: var(--dark-blue);
 }
 
 .cart-icon {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   color: var(--dark-blue);
+  position: relative;
 }
 
 /* Mobile cart - icon only (hidden on desktop) */
