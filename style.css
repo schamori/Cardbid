@@ -2379,51 +2379,40 @@ body.woocommerce-page .nav-cart {
     display: flex !important;
   }
 
-  /* Hide desktop nav items on mobile */
+  /* Hide ALL desktop nav items on mobile */
   .nav-row-bottom {
     display: none !important;
   }
 
-  /* Keep top row but adjust spacing */
   .nav-row-top {
-    gap: clamp(12px, 2vw, 16px) !important;
+    display: none !important;
   }
 
-  /* Show cart on mobile */
-  .nav-cart-wrapper {
+  .nav-content-wrapper {
+    display: none !important;
+  }
+
+  /* Simplify navbar to just logo and hamburger */
+  .navigation {
     display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: clamp(12px, 2vh, 16px) clamp(20px, 4vw, 30px) !important;
+  }
+
+  .nav-logo-wrapper {
+    flex: 0 0 auto !important;
+  }
+
+  .mobile-menu-toggle {
+    margin-left: auto !important;
   }
 }
 
 @media (max-width: 768px) {
-  /* Hide search bar on very small screens */
-  .nav-row-top .nav-search {
-    display: none !important;
-  }
-
-  /* Hide account icon on very small screens */
-  .nav-account-icon {
-    display: none !important;
-  }
-
-  /* Adjust navbar padding */
+  /* Adjust navbar padding for smaller screens */
   .navigation {
     padding: clamp(10px, 2vh, 14px) clamp(16px, 4vw, 24px) !important;
-  }
-
-  /* Mobile cart adjustments */
-  .nav-cart {
-    padding: 6px 12px !important;
-  }
-
-  .cart-items,
-  .cart-price {
-    font-size: 12px !important;
-  }
-
-  .cart-icon {
-    width: 20px !important;
-    height: 20px !important;
   }
 
   /* Logo adjustments */
