@@ -439,7 +439,7 @@ body.woocommerce nav.navigation,
   visibility: visible !important;
   opacity: 1 !important;
   order: 999 !important;
-  margin-right: clamp(180px, 18vw, 280px) !important;
+  margin-right: clamp(140px, 14vw, 220px) !important;
 }
 
 /* Account icon styling - Bigger, spanning both rows */
@@ -644,7 +644,7 @@ nav .nav-menu {
 .nav-cart {
   display: flex !important;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   background: var(--text-white);
   padding: 10px 16px;
   border-radius: 99px;
