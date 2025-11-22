@@ -2456,35 +2456,25 @@ body.woocommerce-page .nav-cart {
     padding: 4px 8px !important;
   }
 
-  /* First row: hamburger, logo, account, cart */
+  /* First row: ONLY cart icon */
   .mobile-menu-toggle {
-    order: 1;
-    flex: 0 0 auto !important;
-    display: flex !important;
+    display: none !important;
   }
 
   .nav-logo-wrapper {
-    order: 2;
-    flex: 0 0 auto !important;
-    margin-right: 0 !important;
-  }
-
-  /* Hide Cardbid text on mobile, show only icon */
-  .logo-text {
     display: none !important;
   }
 
   /* Account icon */
   .nav-account-icon {
-    order: 3;
-    flex: 0 0 auto !important;
-    margin-left: auto !important;
+    display: none !important;
   }
 
-  /* Cart wrapper */
+  /* Cart wrapper - ONLY visible element on row 1 */
   .nav-cart-wrapper {
-    order: 4;
+    order: 1;
     flex: 0 0 auto !important;
+    margin-left: auto !important;
   }
 
   /* Second row: ONLY search bar - completely alone */
