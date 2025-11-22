@@ -2445,16 +2445,16 @@ body.woocommerce-page .nav-cart {
     display: none !important;
   }
 
-  /* Mobile navbar - two rows layout */
+  /* Mobile navbar - single line layout */
   .navigation {
     display: flex !important;
-    flex-wrap: wrap !important;
+    flex-wrap: nowrap !important;
     align-items: center !important;
     gap: 6px !important;
     padding: 6px 12px !important;
   }
 
-  /* First row: logo (left), account + cart + hamburger (right) */
+  /* Logo on the left */
   .nav-logo-wrapper {
     order: 1;
     flex: 1 1 auto !important;
@@ -2485,51 +2485,11 @@ body.woocommerce-page .nav-cart {
     margin-left: 4px !important;
   }
 
-  /* Second row: ONLY search bar - completely alone */
-  .nav-content-wrapper {
-    order: 5;
-    flex: 0 0 100% !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-top: 2px !important;
-  }
-
-  .nav-row-top {
-    display: flex !important;
-    width: 100% !important;
-    padding-bottom: 0 !important;
-    border-bottom: none !important;
-  }
-
-  .nav-row-top .nav-search {
-    flex: 1 1 100% !important;
-    width: 100% !important;
-    margin: 0 !important;
-  }
-
-  /* Remove white background from search on mobile */
-  .nav-row-top .nav-search,
-  .nav-search,
-  .nav-search form,
-  .nav-search .dgwt-wcas-search-form,
-  .nav-search .dgwt-wcas-search-wrapp,
-  .nav-search .dgwt-wcas-sf-wrapp {
-    background: transparent !important;
-  }
-
-  .nav-search input[type="search"],
-  .nav-search .dgwt-wcas-search-input,
-  .dgwt-wcas-search-input,
-  input.dgwt-wcas-search-input {
-    background: rgba(255, 255, 255, 0.15) !important;
-    color: white !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  }
-
-  .nav-search input[type="search"]::placeholder,
-  .nav-search .dgwt-wcas-search-input::placeholder,
-  .dgwt-wcas-search-input::placeholder {
-    color: rgba(255, 255, 255, 0.6) !important;
+  /* Hide search bar and nav content on mobile - use mobile menu instead */
+  .nav-content-wrapper,
+  .nav-row-top,
+  .nav-row-bottom {
+    display: none !important;
   }
 
   /* Mobile icons - smaller for better fit */
@@ -2768,11 +2728,6 @@ body.woocommerce-page .nav-cart {
 
   .mobile-menu-toggle span {
     height: 2px !important;
-  }
-
-  /* Compact search bar */
-  .nav-content-wrapper {
-    margin-top: 2px !important;
   }
 }
 
