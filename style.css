@@ -388,7 +388,7 @@ body.woocommerce nav.navigation,
 }
 
 .nav-row-top {
-  justify-content: space-between !important;
+  justify-content: flex-start !important;
   padding-bottom: 8px !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
@@ -406,6 +406,7 @@ body.woocommerce nav.navigation,
   visibility: visible !important;
   opacity: 1 !important;
   margin-right: 20px !important;
+  order: 1 !important;
 }
 
 /* FiboSearch form styling */
@@ -428,7 +429,7 @@ body.woocommerce nav.navigation,
   display: none !important;
 }
 
-/* Account icon styling - Larger, no black circle */
+/* Account icon styling - Larger, positioned on right */
 .nav-account-icon {
   display: flex !important;
   align-items: center !important;
@@ -443,7 +444,8 @@ body.woocommerce nav.navigation,
   cursor: pointer !important;
   border: none !important;
   flex-shrink: 0 !important;
-  margin-left: 12px !important;
+  margin-left: auto !important;
+  order: 2 !important;
 }
 
 .nav-account-icon:hover {
@@ -672,6 +674,7 @@ nav .nav-menu {
   position: relative;
   display: flex !important;
   align-items: center !important;
+  order: 3 !important;
 }
 
 .cart-dropdown {
