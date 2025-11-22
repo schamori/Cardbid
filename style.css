@@ -408,6 +408,20 @@ body.woocommerce nav.navigation,
   margin-right: 20px !important;
 }
 
+/* FiboSearch form styling */
+.nav-search form,
+.nav-search .dgwt-wcas-search-form,
+.nav-search .dgwt-wcas-search-wrapp {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.nav-search input[type="search"],
+.nav-search .dgwt-wcas-search-input {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
 /* Hide search autocomplete dropdown */
 .dgwt-wcas-suggestions-wrapp,
 .dgwt-wcas-suggestions {
@@ -2515,6 +2529,11 @@ body.woocommerce-page .nav-cart {
   .cart-items,
   .cart-price,
   .cart-icon {
+    display: none !important;
+  }
+
+  /* Hide cart dropdown on mobile - desktop only feature */
+  .cart-dropdown {
     display: none !important;
   }
 
