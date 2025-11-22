@@ -2581,14 +2581,10 @@ body.woocommerce-page .nav-cart {
     line-height: 1 !important;
   }
 
-  /* Show WooCommerce count badge if it exists (overrides ::after) */
+  /* Hide WooCommerce cart-count (we use our own badge) */
   body .nav-cart .cart-count {
-    display: flex !important;
-    visibility: visible !important;
-    position: absolute !important;
-    top: -4px !important;
-    right: -4px !important;
-    z-index: 1 !important;
+    display: none !important;
+    visibility: hidden !important;
   }
 
   /* Hide cart dropdown on mobile - desktop only feature */
