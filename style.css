@@ -2539,10 +2539,9 @@ body.woocommerce-page .nav-cart {
     box-shadow: none !important;
   }
 
-  /* Hide text elements and mobile icon on mobile */
+  /* Hide text elements on mobile */
   body .nav-cart .cart-items,
-  body .nav-cart .cart-price,
-  body .nav-cart .cart-icon-mobile {
+  body .nav-cart .cart-price {
     display: none !important;
     visibility: hidden !important;
     width: 0 !important;
@@ -2553,41 +2552,29 @@ body.woocommerce-page .nav-cart {
 
   /* Show cart icon on mobile */
   body .nav-cart .cart-icon {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Show mobile cart icon with badge */
+  body .nav-cart .cart-icon-mobile {
     display: flex !important;
     visibility: visible !important;
     position: relative !important;
   }
 
-  body .nav-cart .cart-icon svg {
+  body .nav-cart .cart-icon-mobile svg {
     width: 24px !important;
     height: 24px !important;
   }
 
-  /* Add count badge to cart icon - default "0" */
-  body .nav-cart .cart-icon::after {
-    content: '0' !important;
+  /* Show WooCommerce cart-count badge */
+  body .nav-cart .cart-count {
     display: flex !important;
     visibility: visible !important;
     position: absolute !important;
     top: -4px !important;
     right: -4px !important;
-    background: var(--moody-purple, #6974DC) !important;
-    color: white !important;
-    font-size: 11px !important;
-    font-weight: 700 !important;
-    min-width: 16px !important;
-    height: 16px !important;
-    border-radius: 50% !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 0 4px !important;
-    line-height: 1 !important;
-  }
-
-  /* Hide WooCommerce cart-count */
-  body .nav-cart .cart-count {
-    display: none !important;
-    visibility: hidden !important;
   }
 
   /* Hide cart dropdown on mobile - desktop only feature */
