@@ -2456,34 +2456,40 @@ body.woocommerce-page .nav-cart {
     padding: 4px 8px !important;
   }
 
-  /* First row: logo (left), cart only (right) */
-  .nav-logo-wrapper {
+  /* First row: hamburger, logo, account, cart */
+  .mobile-menu-toggle {
     order: 1;
-    flex: 1 1 auto !important;
-    margin-right: 4px !important;
-    min-width: 0 !important;
+    flex: 0 0 auto !important;
+    display: flex !important;
   }
 
-  /* Hide account icon on mobile */
-  .nav-account-icon {
+  .nav-logo-wrapper {
+    order: 2;
+    flex: 0 0 auto !important;
+    margin-right: 0 !important;
+  }
+
+  /* Hide Cardbid text on mobile, show only icon */
+  .logo-text {
     display: none !important;
   }
 
-  /* Cart wrapper - show only on mobile */
-  .nav-cart-wrapper {
-    order: 2;
+  /* Account icon */
+  .nav-account-icon {
+    order: 3;
     flex: 0 0 auto !important;
     margin-left: auto !important;
   }
 
-  /* Hide hamburger menu on mobile */
-  .mobile-menu-toggle {
-    display: none !important;
+  /* Cart wrapper */
+  .nav-cart-wrapper {
+    order: 4;
+    flex: 0 0 auto !important;
   }
 
   /* Second row: ONLY search bar - completely alone */
   .nav-content-wrapper {
-    order: 3;
+    order: 5;
     flex: 0 0 100% !important;
     width: 100% !important;
     max-width: 100% !important;
