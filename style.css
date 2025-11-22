@@ -611,22 +611,41 @@ nav .nav-menu {
   transform: rotate(180deg);
 }
 
-/* Desktop cart - hidden on desktop, only on mobile */
-.nav-cart-wrapper {
-  display: none !important;
-}
-
+/* Desktop cart - original design */
 .nav-cart {
   display: flex !important;
   align-items: center;
   gap: 12px;
+  background: var(--text-white);
+  padding: 8px 16px;
+  border-radius: 99px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
-.cart-details,
-.cart-icon-desktop {
-  display: none;
+.nav-cart:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.cart-items {
+  font-size: clamp(12px, 1vw, 16px);
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.cart-price {
+  font-weight: 700;
+  font-size: clamp(12px, 1vw, 16px);
+  color: var(--dark-blue);
+}
+
+.cart-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--dark-blue);
 }
 
 /* Mobile cart - icon only (hidden on desktop) */
@@ -2478,11 +2497,6 @@ body.woocommerce-page .nav-cart {
     height: 20px !important;
   }
 
-  /* Show cart on mobile */
-  .nav-cart-wrapper {
-    display: flex !important;
-  }
-
   /* Mobile cart - show icon only, hide detailed view */
   .nav-cart {
     background: transparent !important;
@@ -2498,8 +2512,9 @@ body.woocommerce-page .nav-cart {
     box-shadow: none !important;
   }
 
-  .cart-details,
-  .cart-icon-desktop {
+  .cart-items,
+  .cart-price,
+  .cart-icon {
     display: none !important;
   }
 
