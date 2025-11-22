@@ -611,55 +611,22 @@ nav .nav-menu {
   transform: rotate(180deg);
 }
 
-/* Desktop cart - detailed view with text */
+/* Desktop cart - hidden on desktop, only on mobile */
+.nav-cart-wrapper {
+  display: none !important;
+}
+
 .nav-cart {
   display: flex !important;
   align-items: center;
   gap: 12px;
-  background: var(--text-white);
-  padding: 8px 16px;
-  border-radius: 99px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  visibility: visible !important;
-  opacity: 1 !important;
+  transition: all 0.2s ease;
 }
 
-.nav-cart:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-}
-
-.cart-details {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.cart-items {
-  font-size: clamp(12px, 1vw, 16px);
-  color: rgba(0, 0, 0, 0.5);
-}
-
-.cart-price {
-  font-weight: 700;
-  font-size: clamp(12px, 1vw, 16px);
-  color: var(--dark-blue);
-}
-
+.cart-details,
 .cart-icon-desktop {
-  width: 24px;
-  height: 24px;
-  color: var(--dark-blue);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cart-icon-desktop svg {
-  width: 24px;
-  height: 24px;
+  display: none;
 }
 
 /* Mobile cart - icon only (hidden on desktop) */
@@ -2509,6 +2476,11 @@ body.woocommerce-page .nav-cart {
   .nav-account-icon svg {
     width: 20px !important;
     height: 20px !important;
+  }
+
+  /* Show cart on mobile */
+  .nav-cart-wrapper {
+    display: flex !important;
   }
 
   /* Mobile cart - show icon only, hide detailed view */
