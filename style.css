@@ -2444,53 +2444,102 @@ body.woocommerce-page .nav-cart {
 @media (max-width: 1024px) {
   .mobile-menu-toggle {
     display: flex !important;
+    order: 1;
   }
 
-  /* Hide ALL desktop nav items on mobile */
+  /* Hide only the bottom nav row (games) on mobile */
   .nav-row-bottom {
     display: none !important;
   }
 
-  .nav-row-top {
-    display: none !important;
-  }
-
+  /* Keep top row visible but restructure for mobile */
   .nav-content-wrapper {
-    display: none !important;
+    display: flex !important;
+    flex: 1 !important;
+    order: 3;
   }
 
-  /* Simplify navbar to just logo and hamburger */
+  .nav-row-top {
+    display: flex !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  /* Mobile navbar layout: hamburger | logo | search | account | cart */
   .navigation {
     display: flex !important;
-    justify-content: space-between !important;
     align-items: center !important;
-    padding: clamp(12px, 2vh, 16px) clamp(20px, 4vw, 30px) !important;
+    gap: 12px !important;
+    padding: clamp(10px, 2vh, 14px) clamp(12px, 3vw, 20px) !important;
   }
 
   .nav-logo-wrapper {
     flex: 0 0 auto !important;
+    order: 2;
   }
 
-  .mobile-menu-toggle {
-    margin-left: auto !important;
+  /* Compact search bar on mobile */
+  .nav-row-top .nav-search {
+    flex: 1 !important;
+    min-width: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Smaller icons on mobile */
+  .nav-account-icon {
+    width: 40px !important;
+    height: 40px !important;
+    margin-left: 0 !important;
+  }
+
+  .nav-account-icon svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .nav-cart-icon {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .nav-cart-icon svg {
+    width: 20px !important;
+    height: 20px !important;
   }
 }
 
 @media (max-width: 768px) {
-  /* Adjust navbar padding for smaller screens */
+  /* Tighter spacing for smaller screens */
   .navigation {
-    padding: clamp(10px, 2vh, 14px) clamp(16px, 4vw, 24px) !important;
+    gap: 8px !important;
+    padding: 10px 12px !important;
   }
 
-  /* Logo adjustments */
+  /* Smaller logo on mobile */
   .logo-icon {
-    width: 50px !important;
-    height: 40px !important;
+    width: 40px !important;
+    height: 32px !important;
   }
 
   /* Hide logo text on mobile - show only icon */
   .logo-text {
     display: none !important;
+  }
+
+  /* Extra compact icons on small mobile */
+  .nav-account-icon {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .nav-cart-icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .mobile-menu-toggle {
+    width: 32px !important;
+    height: 32px !important;
   }
 }
 
