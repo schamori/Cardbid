@@ -401,7 +401,7 @@ body.woocommerce nav.navigation,
 /* Extended search bar on top row */
 .nav-row-top .nav-search {
   flex: 1 !important;
-  max-width: none !important;
+  max-width: 600px !important;
   display: flex !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -431,6 +431,10 @@ body.woocommerce nav.navigation,
 
 /* Account icon styling - Compact, positioned on right */
 .nav-account-icon {
+  position: absolute !important;
+  right: clamp(260px, 20vw, 320px) !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -444,14 +448,12 @@ body.woocommerce nav.navigation,
   cursor: pointer !important;
   border: none !important;
   flex-shrink: 0 !important;
-  margin-left: auto !important;
-  order: 2 !important;
-  align-self: center !important;
+  z-index: 10000 !important;
 }
 
 .nav-account-icon:hover {
   background: rgba(255, 255, 255, 0.05) !important;
-  transform: scale(1.1) !important;
+  transform: translateY(-50%) scale(1.1) !important;
 }
 
 .nav-account-icon svg {
