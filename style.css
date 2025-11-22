@@ -2409,15 +2409,16 @@ body.woocommerce-page .nav-cart {
     background: rgba(0, 0, 0, 0.5);
     opacity: 0;
     visibility: hidden;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    z-index: 10001;
+    pointer-events: none !important;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: -1;
   }
 
   .mobile-menu-overlay.active {
     opacity: 1;
     visibility: visible;
-    pointer-events: auto;
+    pointer-events: auto !important;
+    z-index: 10001;
   }
 }
 
