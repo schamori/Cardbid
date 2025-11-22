@@ -2512,6 +2512,11 @@ body.woocommerce-page .nav-cart {
     height: 24px !important;
   }
 
+  /* Hide entire cart wrapper on mobile */
+  .nav-cart-wrapper {
+    display: none !important;
+  }
+
   /* Mobile cart - show icon only, hide detailed view */
   .nav-cart {
     background: transparent !important;
