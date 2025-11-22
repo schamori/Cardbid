@@ -314,7 +314,7 @@ body.woocommerce nav.navigation,
   display: flex !important;
   flex-direction: row !important;
   align-items: stretch !important;
-  padding: clamp(8px, 1.5vh, 12px) clamp(20px, 5vw, 105px) !important;
+  padding: clamp(12px, 2vh, 18px) clamp(20px, 5vw, 105px) !important;
   margin: 0 !important;
   gap: clamp(10px, 1.5vw, 20px) !important;
 
@@ -429,17 +429,23 @@ body.woocommerce nav.navigation,
   display: none !important;
 }
 
-/* Account icon styling - Compact, positioned on right */
+/* Account icon wrapper - spans both rows like logo */
+.nav-account-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  margin-left: auto !important;
+}
+
+/* Account icon styling - Bigger, spanning both rows */
 .nav-account-icon {
-  position: absolute !important;
-  right: clamp(260px, 20vw, 320px) !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: 40px !important;
-  height: 40px !important;
+  width: 56px !important;
+  height: 56px !important;
   background: transparent !important;
   border-radius: 0 !important;
   transition: all 0.2s ease !important;
@@ -448,17 +454,17 @@ body.woocommerce nav.navigation,
   cursor: pointer !important;
   border: none !important;
   flex-shrink: 0 !important;
-  z-index: 10000 !important;
+  text-decoration: none !important;
 }
 
 .nav-account-icon:hover {
   background: rgba(255, 255, 255, 0.05) !important;
-  transform: translateY(-50%) scale(1.1) !important;
+  transform: scale(1.1) !important;
 }
 
 .nav-account-icon svg {
-  width: 32px !important;
-  height: 32px !important;
+  width: 40px !important;
+  height: 40px !important;
   stroke: var(--text-white) !important;
   stroke-width: 2 !important;
   display: block !important;
@@ -635,7 +641,7 @@ nav .nav-menu {
 .nav-cart {
   display: flex !important;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   background: var(--text-white);
   padding: 10px 16px;
   border-radius: 99px;
