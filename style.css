@@ -2445,42 +2445,49 @@ body.woocommerce-page .nav-cart {
     display: none !important;
   }
 
-  /* Keep top row visible but restructure for mobile */
-  .nav-content-wrapper {
-    display: flex !important;
-    flex: 1 !important;
-    order: 3;
-  }
-
-  .nav-row-top {
-    display: flex !important;
-    width: 100% !important;
-    gap: 12px !important;
-  }
-
-  /* Mobile navbar layout: hamburger | logo | search | account | cart */
+  /* Mobile navbar - two rows layout */
   .navigation {
     display: flex !important;
+    flex-wrap: wrap !important;
     align-items: center !important;
-    gap: 8px !important;
+    gap: 0 !important;
     padding: 12px 16px !important;
   }
 
+  /* First row: hamburger, logo, account, cart */
   .nav-logo-wrapper {
     flex: 0 0 auto !important;
     order: 2;
     margin-right: auto !important;
+    padding: 0 8px !important;
   }
 
-  /* Compact search bar on mobile */
-  .nav-row-top {
+  .mobile-menu-toggle {
+    order: 1;
+    margin-right: 8px !important;
+  }
+
+  /* Account and cart icons on the right */
+  .nav-content-wrapper {
+    display: flex !important;
+    order: 3;
+    flex: 0 0 auto !important;
     gap: 8px !important;
   }
 
+  .nav-row-top {
+    display: flex !important;
+    gap: 8px !important;
+    align-items: center !important;
+  }
+
+  /* Second row: full-width search bar */
   .nav-row-top .nav-search {
-    flex: 1 !important;
-    min-width: 120px !important;
-    margin-right: 0 !important;
+    order: 4;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    margin: 12px 0 0 0 !important;
+    padding: 0 !important;
   }
 
   /* Smaller icons on mobile */
@@ -2491,8 +2498,8 @@ body.woocommerce-page .nav-cart {
   }
 
   .nav-account-icon svg {
-    width: 20px !important;
-    height: 20px !important;
+    width: 22px !important;
+    height: 22px !important;
   }
 
   /* Mobile cart - show icon only, hide detailed view */
@@ -2530,8 +2537,8 @@ body.woocommerce-page .nav-cart {
   }
 
   .cart-icon-mobile svg {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
   }
 
   .cart-count {
