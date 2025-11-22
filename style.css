@@ -2454,35 +2454,35 @@ body.woocommerce-page .nav-cart {
     padding: 4px 8px !important;
   }
 
-  /* First row: full-width search bar */
-  .nav-content-wrapper {
-    order: 1;
-    flex-basis: 100% !important;
-    width: 100% !important;
-    margin-bottom: 8px !important;
-  }
-
-  /* Second row: hamburger, logo (left), account + cart (right) */
+  /* First row: hamburger, logo (left), account + cart (right) */
   .mobile-menu-toggle {
-    order: 2;
+    order: 1;
     flex: 0 0 auto !important;
   }
 
   .nav-logo-wrapper {
-    order: 3;
+    order: 2;
     flex: 1 1 auto !important;
   }
 
   /* Account icon */
   .nav-account-icon {
-    order: 4;
+    order: 3;
     flex: 0 0 auto !important;
   }
 
   /* Cart wrapper */
   .nav-cart-wrapper {
-    order: 5;
+    order: 4;
     flex: 0 0 auto !important;
+  }
+
+  /* Second row: ONLY search bar - completely alone */
+  .nav-content-wrapper {
+    order: 5;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    margin-top: 8px !important;
   }
 
   .nav-row-top {
