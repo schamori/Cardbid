@@ -2491,7 +2491,7 @@ body.woocommerce-page .nav-cart {
     flex: 0 0 100% !important;
     width: 100% !important;
     max-width: 100% !important;
-    margin-top: 6px !important;
+    margin-top: 2px !important;
   }
 
   .nav-row-top {
@@ -2772,7 +2772,7 @@ body.woocommerce-page .nav-cart {
 
   /* Compact search bar */
   .nav-content-wrapper {
-    margin-top: 4px !important;
+    margin-top: 2px !important;
   }
 }
 
