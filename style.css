@@ -288,7 +288,7 @@ body.home {
   z-index: 10;
 }
 
-/* Navigation Styles - Liquid Glass Effect - FIXED POSITIONING - SINGLE ROW */
+/* Navigation Styles - Liquid Glass Effect - FIXED POSITIONING - TWO ROWS */
 nav.navigation,
 nav.cardbid-nav,
 .navigation,
@@ -313,7 +313,7 @@ body.woocommerce nav.navigation,
   z-index: 9999 !important;
   display: flex !important;
   flex-direction: row !important;
-  align-items: center !important;
+  align-items: stretch !important;
   padding: clamp(12px, 2vh, 16px) clamp(20px, 5vw, 105px) !important;
   margin: 0 !important;
   gap: clamp(20px, 3vw, 40px) !important;
@@ -344,14 +344,13 @@ body.woocommerce nav.navigation,
   isolation: isolate !important;
 }
 
-/* Logo wrapper - left side */
+/* Logo wrapper spanning both rows */
 .nav-logo-wrapper {
   display: flex !important;
   align-items: center !important;
   flex-shrink: 0 !important;
   visibility: visible !important;
   opacity: 1 !important;
-  order: 1 !important;
 }
 
 /* Logo link styling */
@@ -367,63 +366,46 @@ body.woocommerce nav.navigation,
   opacity: 0.85 !important;
 }
 
-/* Account icon - positioned on right */
-.nav-account-icon {
-  order: 4 !important;
-}
-
-/* Cart wrapper - positioned on far right */
-.nav-cart-wrapper {
-  order: 5 !important;
-}
-
-/* Content wrapper - contains nav links and search */
+/* Content wrapper for the right side */
 .nav-content-wrapper {
   display: flex !important;
-  flex-direction: row !important;
+  flex-direction: column !important;
   flex: 1 !important;
-  gap: clamp(16px, 2vw, 24px) !important;
+  gap: 8px !important;
   visibility: visible !important;
   opacity: 1 !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  order: 2 !important;
 }
 
-/* Nav row bottom - contains navigation links, centered */
+/* Two-row navbar layout */
+.nav-row-top,
 .nav-row-bottom {
   display: flex !important;
   align-items: center !important;
+  width: 100% !important;
   visibility: visible !important;
   opacity: 1 !important;
   gap: clamp(16px, 2vw, 24px) !important;
-  flex: 1 !important;
-  justify-content: center !important;
-  padding-top: 0 !important;
-  order: 1 !important;
 }
 
-/* Nav row top - contains search, positioned on right within content wrapper */
 .nav-row-top {
-  display: flex !important;
-  align-items: center !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  flex: 0 0 auto !important;
-  padding-bottom: 0 !important;
-  border-bottom: none !important;
-  order: 2 !important;
+  justify-content: space-between !important;
+  padding-bottom: 8px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
-/* Search bar - compact */
+.nav-row-bottom {
+  justify-content: flex-end !important;
+  padding-top: 4px !important;
+}
+
+/* Extended search bar on top row */
 .nav-row-top .nav-search {
-  flex: 0 0 auto !important;
-  width: 280px !important;
-  max-width: 280px !important;
+  flex: 1 !important;
+  max-width: none !important;
   display: flex !important;
   visibility: visible !important;
   opacity: 1 !important;
-  margin-right: 0 !important;
+  margin-right: 20px !important;
 }
 
 /* FiboSearch form styling */
