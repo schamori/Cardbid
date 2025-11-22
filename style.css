@@ -521,17 +521,17 @@ nav .nav-menu {
 }
 
 .logo-text {
-  width: clamp(120px, 18vw, 170px);
-  height: auto;
-  display: block !important;
+  display: flex !important;
+  align-items: center !important;
+  margin-left: 0;
 }
 
-/* Ensure SVGs display properly */
-.logo-icon svg,
-.logo-text svg {
-  display: block;
-  width: 100%;
-  height: auto;
+.logo-text span {
+  font-family: 'Genaminto', sans-serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  color: white;
+  font-weight: normal;
+  letter-spacing: 0.02em;
 }
 
 .nav-link {
@@ -601,6 +601,13 @@ nav .nav-menu {
   text-decoration: none;
 }
 
+/* Ensure SVGs display properly */
+.logo-icon svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .cart-icon svg {
   display: block;
   width: 100%;
@@ -668,28 +675,7 @@ nav .nav-menu {
 }
 
 .cart-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  width: 360px;
-  max-width: 90vw;
-  background: rgba(30, 39, 65, 0.98);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  opacity: 0 !important;
-  visibility: hidden !important;
-  transform: translateY(-10px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 10000;
-  overflow: hidden;
-}
-
-.nav-cart-wrapper:hover .cart-dropdown {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(0);
+  display: none !important;
 }
 
 .cart-dropdown-items {
