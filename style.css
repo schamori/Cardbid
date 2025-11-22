@@ -2454,25 +2454,26 @@ body.woocommerce-page .nav-cart {
     padding: 4px 8px !important;
   }
 
-  /* First row: hamburger, logo (left), account + cart (right) */
-  .mobile-menu-toggle {
-    order: 1;
-    flex: 0 0 auto !important;
-  }
-
+  /* First row: logo (left), account + cart + hamburger (right) */
   .nav-logo-wrapper {
-    order: 2;
+    order: 1;
     flex: 1 1 auto !important;
   }
 
   /* Account icon */
   .nav-account-icon {
-    order: 3;
+    order: 2;
     flex: 0 0 auto !important;
   }
 
   /* Cart wrapper */
   .nav-cart-wrapper {
+    order: 3;
+    flex: 0 0 auto !important;
+  }
+
+  /* Hamburger menu on the right */
+  .mobile-menu-toggle {
     order: 4;
     flex: 0 0 auto !important;
   }
