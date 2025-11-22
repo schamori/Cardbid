@@ -2187,7 +2187,7 @@ body.woocommerce-page .nav-cart {
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 10003;
+  z-index: 10003 !important;
   margin-left: auto;
   position: relative;
   flex-shrink: 0;
@@ -2517,6 +2517,8 @@ body.woocommerce-page .nav-cart {
     flex: 0 0 auto !important;
     margin-left: 4px !important;
     align-self: center !important;
+    z-index: 10003 !important;
+    position: relative !important;
   }
 
   /* Second row: ONLY search bar - completely alone */
