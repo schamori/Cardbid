@@ -351,6 +351,7 @@ body.woocommerce nav.navigation,
   flex-shrink: 0 !important;
   visibility: visible !important;
   opacity: 1 !important;
+  order: 1 !important;
 }
 
 /* Logo link styling */
@@ -374,6 +375,7 @@ body.woocommerce nav.navigation,
   gap: 4px !important;
   visibility: visible !important;
   opacity: 1 !important;
+  order: 2 !important;
 }
 
 /* Two-row navbar layout */
@@ -401,7 +403,7 @@ body.woocommerce nav.navigation,
 /* Extended search bar on top row */
 .nav-row-top .nav-search {
   flex: 1 !important;
-  max-width: 600px !important;
+  max-width: none !important;
   display: flex !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -436,7 +438,7 @@ body.woocommerce nav.navigation,
   flex-shrink: 0 !important;
   visibility: visible !important;
   opacity: 1 !important;
-  margin-left: auto !important;
+  order: 999 !important;
 }
 
 /* Account icon styling - Bigger, spanning both rows */
