@@ -429,13 +429,13 @@ body.woocommerce nav.navigation,
   display: none !important;
 }
 
-/* Account icon styling - Larger, positioned on right */
+/* Account icon styling - Compact, positioned on right */
 .nav-account-icon {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: 56px !important;
-  height: 56px !important;
+  width: 40px !important;
+  height: 40px !important;
   background: transparent !important;
   border-radius: 0 !important;
   transition: all 0.2s ease !important;
@@ -446,6 +446,7 @@ body.woocommerce nav.navigation,
   flex-shrink: 0 !important;
   margin-left: auto !important;
   order: 2 !important;
+  align-self: center !important;
 }
 
 .nav-account-icon:hover {
@@ -454,8 +455,8 @@ body.woocommerce nav.navigation,
 }
 
 .nav-account-icon svg {
-  width: 48px !important;
-  height: 48px !important;
+  width: 32px !important;
+  height: 32px !important;
   stroke: var(--text-white) !important;
   stroke-width: 2 !important;
   display: block !important;
@@ -679,6 +680,7 @@ nav .nav-menu {
   display: flex !important;
   align-items: center !important;
   order: 3 !important;
+  align-self: center !important;
 }
 
 .cart-dropdown {
