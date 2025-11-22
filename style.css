@@ -2196,10 +2196,12 @@ body.woocommerce-page .nav-cart {
   transition: right 0.3s ease;
   overflow-y: auto;
   box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
 }
 
 .mobile-menu-drawer.active {
   right: 0;
+  pointer-events: auto;
 }
 
 .mobile-menu-header {
@@ -2358,6 +2360,7 @@ body.woocommerce-page .nav-cart {
   background: rgba(0, 0, 0, 0.5);
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: all 0.3s ease;
   z-index: 10001;
 }
@@ -2365,6 +2368,7 @@ body.woocommerce-page .nav-cart {
 .mobile-menu-overlay.active {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 /* Responsive - Show mobile menu on tablets and mobile */
