@@ -2527,24 +2527,23 @@ body.woocommerce-page .nav-cart {
     box-shadow: none !important;
   }
 
-  body .nav-cart .cart-items,
-  body .nav-cart .cart-price {
+  /* Hide all cart children on mobile */
+  body .nav-cart * {
     display: none !important;
     visibility: hidden !important;
-    opacity: 0 !important;
-    width: 0 !important;
-    height: 0 !important;
-    overflow: hidden !important;
-    position: absolute !important;
   }
 
-  body .nav-cart .cart-icon {
+  /* Rebuild cart with just the icon */
+  body .nav-cart::before {
+    content: '' !important;
     display: flex !important;
-  }
-
-  body .nav-cart .cart-icon svg {
+    visibility: visible !important;
     width: 24px !important;
     height: 24px !important;
+    background-image: url('data:image/svg+xml,<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 11V6C9 4.34315 10.3431 3 12 3C13.6569 3 15 4.34315 15 6V11M12 14H12.01M3.6 21H20.4C20.9601 21 21.2401 21 21.454 20.891C21.6422 20.7951 21.7951 20.6422 21.891 20.454C22 20.2401 22 19.9601 22 19.4V11.6C22 11.0399 22 10.7599 21.891 10.546C21.7951 10.3578 21.6422 10.2049 21.454 10.109C21.2401 10 20.9601 10 20.4 10H3.6C3.03995 10 2.75992 10 2.54601 10.109C2.35785 10.2049 2.20487 10.3578 2.10899 10.546C2 10.7599 2 11.0399 2 11.6V19.4C2 19.9601 2 20.2401 2.10899 20.454C2.20487 20.6422 2.35785 20.7951 2.54601 20.891C2.75992 21 3.03995 21 3.6 21Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
   }
 
   /* Hide cart dropdown on mobile - desktop only feature */
