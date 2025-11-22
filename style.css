@@ -501,9 +501,17 @@ nav .nav-menu {
 }
 
 .logo-text {
-  width: clamp(120px, 18vw, 170px);
-  height: auto;
-  display: block !important;
+  display: flex !important;
+  align-items: center !important;
+  margin-left: 12px;
+}
+
+.logo-text span {
+  font-family: 'Genaminto', sans-serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  color: white;
+  font-weight: normal;
+  letter-spacing: 0.02em;
 }
 
 .nav-link {
@@ -574,8 +582,7 @@ nav .nav-menu {
 }
 
 /* Ensure SVGs display properly */
-.logo-icon svg,
-.logo-text svg {
+.logo-icon svg {
   display: block;
   width: 100%;
   height: auto;
@@ -2469,8 +2476,8 @@ body.woocommerce-page .nav-cart {
     height: 40px !important;
   }
 
-  .logo-text {
-    width: 120px !important;
+  .logo-text span {
+    font-size: 24px !important;
   }
 }
 
