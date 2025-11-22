@@ -2247,6 +2247,14 @@ body.woocommerce-page .nav-cart {
 
 .mobile-search {
   margin-bottom: 8px;
+  width: 100%;
+}
+
+.mobile-search form,
+.mobile-search .dgwt-wcas-search-form,
+.mobile-search .dgwt-wcas-search-wrapp {
+  width: 100% !important;
+  margin: 0 !important;
 }
 
 .mobile-search input[type="search"],
@@ -2258,11 +2266,37 @@ body.woocommerce-page .nav-cart {
   background: rgba(255, 255, 255, 0.15) !important;
   color: white !important;
   font-size: 15px !important;
+  box-sizing: border-box !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
 }
 
 .mobile-search input[type="search"]::placeholder,
 .mobile-search .dgwt-wcas-search-input::placeholder {
   color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.mobile-search input[type="search"]:focus,
+.mobile-search .dgwt-wcas-search-input:focus {
+  outline: none !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Hide any FiboSearch submit buttons or icons in mobile menu */
+.mobile-search .dgwt-wcas-search-submit,
+.mobile-search button[type="submit"],
+.mobile-search .dgwt-wcas-voice-search {
+  display: none !important;
+}
+
+/* Hide autocomplete dropdown in mobile menu if needed */
+.mobile-search .dgwt-wcas-suggestions-wrapp {
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 10003 !important;
 }
 
 .mobile-games-section {
