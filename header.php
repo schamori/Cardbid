@@ -31,43 +31,15 @@
     </a>
   </div>
 
-  <!-- Mobile Menu Toggle -->
-  <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+  <!-- Account Icon -->
+  <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="nav-account-icon" title="My Account">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+    </svg>
+  </a>
 
-  <!-- Right side content wrapper -->
-  <div class="nav-content-wrapper">
-    <!-- Top Row: Search Bar, Account Icon, Cart -->
-    <div class="nav-row-top">
-      <!-- FiboSearch Integration -->
-      <div class="nav-search">
-        <?php
-        // FiboSearch integration - supports multiple methods
-        if ( function_exists( 'dgwt_wcas_get_search_form' ) ) {
-          // Method 1: Direct function call (Pro version)
-          echo dgwt_wcas_get_search_form();
-        } elseif ( shortcode_exists( 'fibosearch' ) ) {
-          // Method 2: Shortcode (both Free and Pro)
-          echo do_shortcode( '[fibosearch]' );
-        } elseif ( shortcode_exists( 'wcas-search-form' ) ) {
-          // Method 3: Legacy shortcode
-          echo do_shortcode( '[wcas-search-form]' );
-        }
-        ?>
-      </div>
-
-      <!-- Account Icon -->
-      <a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="nav-account-icon" title="My Account">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-        </svg>
-      </a>
-
-      <!-- Cart -->
-      <div class="nav-cart-wrapper">
+  <!-- Cart -->
+  <div class="nav-cart-wrapper">
         <a href="<?php echo esc_url( wc_get_page_permalink( 'cart' ) ); ?>" class="nav-cart" title="Shopping Cart">
           <?php if ( function_exists( 'WC' ) ) : ?>
             <span class="cart-items"><?php echo WC()->cart->get_cart_contents_count(); ?> Items</span>
@@ -148,6 +120,34 @@
             </div>
           <?php endif; ?>
         </div>
+  </div>
+
+  <!-- Mobile Menu Toggle -->
+  <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Right side content wrapper -->
+  <div class="nav-content-wrapper">
+    <!-- Top Row: Search Bar Only -->
+    <div class="nav-row-top">
+      <!-- FiboSearch Integration -->
+      <div class="nav-search">
+        <?php
+        // FiboSearch integration - supports multiple methods
+        if ( function_exists( 'dgwt_wcas_get_search_form' ) ) {
+          // Method 1: Direct function call (Pro version)
+          echo dgwt_wcas_get_search_form();
+        } elseif ( shortcode_exists( 'fibosearch' ) ) {
+          // Method 2: Shortcode (both Free and Pro)
+          echo do_shortcode( '[fibosearch]' );
+        } elseif ( shortcode_exists( 'wcas-search-form' ) ) {
+          // Method 3: Legacy shortcode
+          echo do_shortcode( '[wcas-search-form]' );
+        }
+        ?>
       </div>
     </div>
 
