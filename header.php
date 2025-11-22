@@ -68,13 +68,32 @@
 
       <!-- Cart -->
       <div class="nav-cart-wrapper">
-        <a href="<?php echo esc_url( wc_get_page_permalink( 'cart' ) ); ?>" class="nav-cart-icon" title="Shopping Cart">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
-          </svg>
-          <?php if ( function_exists( 'WC' ) && WC()->cart->get_cart_contents_count() > 0 ) : ?>
-            <span class="cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
-          <?php endif; ?>
+        <a href="<?php echo esc_url( wc_get_page_permalink( 'cart' ) ); ?>" class="nav-cart" title="Shopping Cart">
+          <!-- Desktop: Show items and price -->
+          <span class="cart-details">
+            <?php if ( function_exists( 'WC' ) ) : ?>
+              <span class="cart-items"><?php echo WC()->cart->get_cart_contents_count(); ?> Items</span>
+              <span class="cart-price"><?php echo WC()->cart->get_cart_total(); ?></span>
+            <?php else : ?>
+              <span class="cart-items">0 Items</span>
+              <span class="cart-price">0,00€</span>
+            <?php endif; ?>
+          </span>
+          <!-- Mobile: Show icon with count badge -->
+          <span class="cart-icon-mobile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+            <?php if ( function_exists( 'WC' ) && WC()->cart->get_cart_contents_count() > 0 ) : ?>
+              <span class="cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+            <?php endif; ?>
+          </span>
+          <!-- Desktop: Show cart icon -->
+          <span class="cart-icon-desktop">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </span>
         </a>
 
         <!-- Cart Dropdown -->
