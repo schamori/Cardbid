@@ -695,11 +695,32 @@ nav .nav-menu {
   transform: translateY(-50%) !important;
   display: flex !important;
   align-items: center !important;
+  gap: 12px !important;
   z-index: 10000 !important;
 }
 
 .cart-dropdown {
-  display: none !important;
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  right: 0 !important;
+  min-width: 320px !important;
+  background: rgba(30, 39, 65, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(-10px) !important;
+  transition: all 0.3s ease !important;
+  z-index: -1 !important;
+}
+
+.nav-cart-wrapper:hover .cart-dropdown {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+  z-index: 10001 !important;
 }
 
 .cart-dropdown-items {
@@ -2644,6 +2665,14 @@ body.woocommerce-page .nav-cart {
   /* Hide cart dropdown on mobile - desktop only feature */
   .cart-dropdown {
     display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  .nav-cart-wrapper:hover .cart-dropdown {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
   }
 }
 
