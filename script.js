@@ -1,84 +1,77 @@
-// Mega Menu Functionality
+// Desktop Mega Menu Functionality
 console.log('=== script.js loaded ===');
-const megaMenu = document.querySelector('.mega-menu');
-const navigation = document.querySelector('.navigation');
-const gameLinks = document.querySelectorAll('.nav-game-link');
+const desktopMegaMenu = document.querySelector('.nav-desktop-mega-menu');
+const desktopNav = document.querySelector('.nav-desktop');
+const desktopGameLinks = document.querySelectorAll('.nav-desktop-game-link');
 
-console.log('Mega menu elements check:');
-console.log('  megaMenu:', megaMenu);
-console.log('  navigation:', navigation);
-console.log('  gameLinks:', gameLinks);
+console.log('Desktop mega menu elements check:');
+console.log('  desktopMegaMenu:', desktopMegaMenu);
+console.log('  desktopNav:', desktopNav);
+console.log('  desktopGameLinks:', desktopGameLinks);
 
-let megaMenuTimeout;
-let currentActiveGame = null;
+let desktopMegaMenuTimeout;
+let currentActiveDesktopGame = null;
 
-// Function to show a specific game section and position the menu
-function showGameSection(gameSlug, linkElement) {
+// Function to show a specific game section
+function showDesktopGameSection(gameSlug) {
   // Hide all game sections
-  const allGameSections = document.querySelectorAll('.mega-menu-game');
+  const allGameSections = document.querySelectorAll('.nav-desktop-mega-menu-game');
   allGameSections.forEach(section => {
-    section.style.display = 'none';
+    section.classList.remove('active');
   });
 
   // Show the selected game section
-  const gameSection = document.querySelector(`.mega-menu-game[data-game="${gameSlug}"]`);
+  const gameSection = document.querySelector(`.nav-desktop-mega-menu-game[data-game="${gameSlug}"]`);
   if (gameSection) {
-    gameSection.style.display = 'block';
-
-    // Position the mega menu under the hovered link (from the right)
-    const navRect = navigation.getBoundingClientRect();
-    const linkRect = linkElement.getBoundingClientRect();
-    const rightPosition = navRect.right - linkRect.right;
-
-    megaMenu.style.right = `${rightPosition}px`;
-    megaMenu.classList.add('active');
-    currentActiveGame = gameSlug;
+    gameSection.classList.add('active');
+    desktopMegaMenu.classList.add('active');
+    currentActiveDesktopGame = gameSlug;
   }
 }
 
-// Set up game link hover handlers
-gameLinks.forEach(link => {
+// Set up desktop game link hover handlers
+desktopGameLinks.forEach(link => {
   const gameSlug = link.getAttribute('data-game');
 
   link.addEventListener('mouseenter', () => {
-    clearTimeout(megaMenuTimeout);
-    showGameSection(gameSlug, link);
+    clearTimeout(desktopMegaMenuTimeout);
+    showDesktopGameSection(gameSlug);
   });
 
   link.addEventListener('mouseleave', () => {
-    megaMenuTimeout = setTimeout(() => {
-      megaMenu.classList.remove('active');
-      currentActiveGame = null;
+    desktopMegaMenuTimeout = setTimeout(() => {
+      desktopMegaMenu.classList.remove('active');
+      currentActiveDesktopGame = null;
     }, 300);
   });
 });
 
-// Keep mega menu open when hovering over it
-if (megaMenu) {
-  megaMenu.addEventListener('mouseenter', () => {
-    clearTimeout(megaMenuTimeout);
-    megaMenu.classList.add('active');
+// Keep desktop mega menu open when hovering over it
+if (desktopMegaMenu) {
+  desktopMegaMenu.addEventListener('mouseenter', () => {
+    clearTimeout(desktopMegaMenuTimeout);
+    desktopMegaMenu.classList.add('active');
   });
 
-  megaMenu.addEventListener('mouseleave', () => {
-    megaMenuTimeout = setTimeout(() => {
-      megaMenu.classList.remove('active');
-      currentActiveGame = null;
+  desktopMegaMenu.addEventListener('mouseleave', () => {
+    desktopMegaMenuTimeout = setTimeout(() => {
+      desktopMegaMenu.classList.remove('active');
+      currentActiveDesktopGame = null;
     }, 200);
   });
 
-  // Close mega menu when clicking anywhere outside
+  // Close desktop mega menu when clicking anywhere outside
   document.addEventListener('click', (e) => {
-    const isGameLink = Array.from(gameLinks).some(link => link.contains(e.target));
-    if (!isGameLink && !megaMenu.contains(e.target)) {
-      megaMenu.classList.remove('active');
-      currentActiveGame = null;
+    const isGameLink = Array.from(desktopGameLinks).some(link => link.contains(e.target));
+    if (!isGameLink && !desktopMegaMenu.contains(e.target)) {
+      desktopMegaMenu.classList.remove('active');
+      currentActiveDesktopGame = null;
     }
   });
 
-  console.log('✓ Mega menu event listeners added');
+  console.log('✓ Desktop mega menu event listeners added');
 } else {
-  console.warn('⚠ Mega menu not found - skipping mega menu setup');
+  console.warn('⚠ Desktop mega menu not found - skipping mega menu setup');
 }
 
 // Gallery Carousel Functionality

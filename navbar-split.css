@@ -581,6 +581,26 @@
   transform: scale(1.05);
 }
 
+.nav-desktop-show-all-link {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 12px;
+  color: rgba(230, 238, 255, 0.8);
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 14px;
+  margin-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.15s ease;
+  border-radius: 0 0 10px 10px;
+}
+
+.nav-desktop-show-all-link:hover {
+  background: rgba(105, 115, 219, 0.2);
+  color: var(--text-white);
+}
+
 /* ========================================
    MOBILE NAVBAR STYLES
    ======================================== */
