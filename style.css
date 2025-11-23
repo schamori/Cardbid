@@ -696,7 +696,36 @@ nav .nav-menu {
   display: flex !important;
   align-items: center !important;
   gap: 12px !important;
+  padding-right: 8px !important;
   z-index: 10000 !important;
+}
+
+/* Cart icon container for badge positioning */
+.cart-icon-container {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Cart count badge */
+.cart-count-badge {
+  position: absolute !important;
+  top: -6px !important;
+  right: -8px !important;
+  background: #e74c3c !important;
+  color: white !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  min-width: 16px !important;
+  height: 16px !important;
+  border-radius: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 2px 4px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
 }
 
 .cart-dropdown {
@@ -2660,6 +2689,15 @@ body.woocommerce-page .nav-cart {
   .cart-icon-svg {
     width: 20px !important;
     height: 20px !important;
+  }
+
+  /* Cart badge on mobile */
+  .cart-count-badge {
+    font-size: 9px !important;
+    min-width: 14px !important;
+    height: 14px !important;
+    top: -4px !important;
+    right: -6px !important;
   }
 
   /* Hide cart dropdown on mobile - desktop only feature */
