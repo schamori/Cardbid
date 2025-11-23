@@ -9,17 +9,17 @@
 
 /* Mobile navbar - hidden by default (desktop view) */
 .nav-mobile {
-  display: none !important;
+  display: none;
 }
 
 /* Show mobile, hide desktop on mobile screens */
 @media (max-width: 1024px) {
   .nav-desktop {
-    display: none !important;
+    display: none;
   }
 
   .nav-mobile {
-    display: flex !important;
+    display: flex;
   }
 }
 
@@ -190,7 +190,10 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
-.nav-desktop-cart-items,
+.nav-desktop-cart-items {
+  display: none !important;
+}
+
 .nav-desktop-cart-price {
   display: inline-block !important;
   color: #ffffff !important;
