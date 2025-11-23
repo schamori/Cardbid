@@ -240,6 +240,14 @@
         }
 
         echo '</ul>';
+
+        // Add "Show all" link
+        if ($total_count > 0) {
+          echo '<a href="' . esc_url(get_term_link($game_category)) . '" class="nav-desktop-show-all-link">';
+          echo 'Show all (' . $total_count . ')';
+          echo '</a>';
+        }
+
         echo '</div>';
       }
       ?>
