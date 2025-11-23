@@ -2257,7 +2257,7 @@ body.woocommerce-page .nav-cart {
     background: rgba(30, 39, 65, 0.98);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    z-index: 10002;
+    z-index: 10004 !important;
     transition: right 0.3s ease;
     overflow-y: auto;
     box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
