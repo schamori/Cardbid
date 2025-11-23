@@ -7,15 +7,12 @@
    NAVBAR VISIBILITY - Desktop vs Mobile
    ======================================== */
 
-/* Desktop navbar - hidden on mobile */
-.nav-desktop {
-  display: flex !important;
-}
-
+/* Mobile navbar - hidden by default (desktop view) */
 .nav-mobile {
   display: none !important;
 }
 
+/* Show mobile, hide desktop on mobile screens */
 @media (max-width: 1024px) {
   .nav-desktop {
     display: none !important;
