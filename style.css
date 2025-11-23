@@ -1831,15 +1831,16 @@ body.woocommerce-page .footer {
 .footer-logo-icon {
   width: clamp(70px, 9vw, 110px);
   height: auto;
-  margin: 0 auto 16px;
+  margin: 12px auto 16px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.footer-logo-icon svg {
+.footer-logo-icon img {
   width: 100%;
   height: auto;
+  display: block;
 }
 
 .footer .logo-text {
