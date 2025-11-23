@@ -125,14 +125,12 @@
   line-height: 1 !important;
 }
 
-/* Desktop Account wrapper - spans both rows */
+/* Desktop Account wrapper - now inside cart wrapper */
 .nav-desktop-account-wrapper {
   display: flex !important;
   align-items: center !important;
   flex-shrink: 0 !important;
-  order: 999 !important;
-  margin-right: clamp(90px, 9vw, 145px) !important;
-  margin-top: 3px !important;
+  margin-left: 8px !important;
 }
 
 .nav-desktop-account-icon {
@@ -157,15 +155,12 @@
 
 /* Desktop Cart wrapper */
 .nav-desktop-cart-wrapper {
-  position: absolute !important;
-  right: clamp(20px, 5vw, 105px) !important;
-  top: 40% !important;
-  transform: translateY(-50%) !important;
   display: flex !important;
   align-items: center !important;
   gap: 12px !important;
-  padding-right: 8px !important;
-  z-index: 10000 !important;
+  flex-shrink: 0 !important;
+  order: 999 !important;
+  margin-left: auto !important;
 }
 
 .nav-desktop-cart {
