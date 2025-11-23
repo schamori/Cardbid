@@ -686,7 +686,7 @@ nav .nav-menu {
 .nav-cart-wrapper {
   position: absolute !important;
   right: clamp(20px, 5vw, 105px) !important;
-  top: 50% !important;
+  top: 40% !important;
   transform: translateY(-50%) !important;
   display: flex !important;
   align-items: center !important;
