@@ -1831,7 +1831,7 @@ body.woocommerce-page .footer {
 .footer-logo svg {
   width: clamp(140px, 18vw, 220px);
   height: auto;
-  margin: 12px auto 16px;
+  margin: 0 auto;
   display: block;
 }
 
