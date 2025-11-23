@@ -1,5 +1,17 @@
 // Desktop Mega Menu Functionality
 console.log('=== script.js loaded ===');
+
+// Account SVG Click Handler
+const accountSvg = document.querySelector('.nav-desktop-account-svg');
+if (accountSvg) {
+  accountSvg.addEventListener('click', function() {
+    const accountUrl = this.getAttribute('data-account-url');
+    if (accountUrl) {
+      window.location.href = accountUrl;
+    }
+  });
+}
+
 const desktopMegaMenu = document.querySelector('.nav-desktop-mega-menu');
 const desktopNav = document.querySelector('.nav-desktop');
 const desktopGameLinks = document.querySelectorAll('.nav-desktop-game-link');
