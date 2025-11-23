@@ -607,7 +607,6 @@
   right: 0 !important;
   width: 100% !important;
   z-index: 9999 !important;
-  display: flex !important;
   flex-wrap: wrap !important;
   align-items: center !important;
   gap: 4px !important;
