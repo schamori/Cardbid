@@ -2499,6 +2499,11 @@ body.woocommerce-page .nav-cart {
     height: 32px !important;
   }
 
+  .nav-account-icon svg {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
   /* Cart wrapper */
   .nav-cart-wrapper {
     order: 3 !important;
