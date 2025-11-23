@@ -1829,7 +1829,7 @@ body.woocommerce-page .footer {
 }
 
 .footer-logo-icon {
-  width: clamp(70px, 9vw, 110px);
+  width: clamp(140px, 18vw, 220px);
   height: auto;
   margin: 12px auto 16px;
   display: flex;
