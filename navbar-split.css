@@ -9,7 +9,7 @@
 
 /* Mobile navbar - hidden by default (desktop view) */
 .nav-mobile {
-  display: none;
+  display: none !important;
 }
 
 /* Show mobile, hide desktop on mobile screens */
