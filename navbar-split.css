@@ -238,7 +238,9 @@
   z-index: -1 !important;
 }
 
-.nav-desktop-cart-wrapper:hover .nav-desktop-cart-dropdown {
+.nav-desktop-cart:hover ~ .nav-desktop-cart-dropdown,
+.nav-desktop-cart-icon-container:hover ~ .nav-desktop-cart-dropdown,
+.nav-desktop-cart-dropdown:hover {
   opacity: 1 !important;
   visibility: visible !important;
   transform: translateY(0) !important;
