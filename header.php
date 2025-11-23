@@ -344,37 +344,64 @@
       ?>
     </div>
 
-    <!-- Mobile Games Dropdown -->
-    <div class="mobile-games-section">
-      <button class="mobile-games-toggle" id="mobileGamesToggle">
-        <span>Games</span>
+    <!-- Mobile Pokémon Dropdown -->
+    <div class="mobile-pokemon-section">
+      <button class="mobile-pokemon-toggle" id="mobilePokemonToggle">
+        <span>Pokémon</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="dropdown-arrow">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
         </svg>
       </button>
-      <div class="mobile-games-list" id="mobileGamesList">
+      <div class="mobile-pokemon-list" id="mobilePokemonList">
         <?php
-        $game_categories = array(
-          array('name' => 'Magic: the Gathering', 'slug' => 'magic-the-gathering'),
-          array('name' => 'Yu-Gi-Oh!', 'slug' => 'yu-gi-oh'),
-          array('name' => 'Flesh and Blood', 'slug' => 'flesh-and-blood'),
-          array('name' => 'Pokémon', 'slug' => 'pokemon-non-japanese'),
-          array('name' => 'Digimon', 'slug' => 'digimon'),
-          array('name' => 'Cardfight!! Vanguard', 'slug' => 'cardfight-vanguard'),
-          array('name' => 'All Games', 'slug' => 'all-games'),
-        );
+        // Get Pokemon category
+        $pokemon_category = get_term_by('slug', 'pokemon-non-japanese', 'product_cat');
 
-        foreach ($game_categories as $game) {
-          if ($game['slug'] === 'all-games') {
-            echo '<a href="' . esc_url(home_url('/shop/')) . '" class="mobile-game-link">' . esc_html($game['name']) . '</a>';
-            continue;
-          }
+        if ($pokemon_category) {
+          // Get latest 8 expansions
+          $expansions = get_latest_expansions('pokemon-non-japanese', 8);
 
-          $category = get_term_by('slug', $game['slug'], 'product_cat');
-          if ($category) {
-            echo '<a href="' . esc_url(get_term_link($category)) . '" class="mobile-game-link">';
-            echo esc_html($game['name']);
-            echo '</a>';
+          if (!empty($expansions)) {
+            echo '<div class="mobile-expansion-list">';
+
+            foreach ($expansions as $expansion) {
+              // Skip Singles and Sealed subcategories
+              if (strpos($expansion->slug, 'singles-') === 0 || strpos($expansion->slug, 'sealed-') === 0) {
+                continue;
+              }
+
+              // Get Singles and Sealed child categories
+              $child_cats = get_terms(array(
+                'taxonomy' => 'product_cat',
+                'parent' => $expansion->term_id,
+                'hide_empty' => false,
+              ));
+
+              $singles_url = get_term_link($expansion);
+              $sealed_url = get_term_link($expansion);
+
+              // Find specific Singles and Sealed categories
+              foreach ($child_cats as $child) {
+                if (strpos($child->slug, 'singles-') === 0) {
+                  $singles_url = get_term_link($child);
+                } elseif (strpos($child->slug, 'sealed-') === 0) {
+                  $sealed_url = get_term_link($child);
+                }
+              }
+
+              echo '<div class="mobile-expansion-item">';
+              echo '<span class="mobile-expansion-name">' . esc_html($expansion->name) . '</span>';
+              echo '<span class="mobile-expansion-types">';
+              echo '<a href="' . esc_url($singles_url) . '" class="mobile-type-link">S</a>';
+              echo '<a href="' . esc_url($sealed_url) . '" class="mobile-type-link">B</a>';
+              echo '</span>';
+              echo '</div>';
+            }
+
+            echo '</div>';
+
+            // Add "Show all" link
+            echo '<a href="' . esc_url(get_term_link($pokemon_category)) . '" class="mobile-show-all-link">Show all sets</a>';
           }
         }
         ?>

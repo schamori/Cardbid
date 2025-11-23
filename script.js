@@ -398,6 +398,17 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('✓ Top4 next button click listener added');
   }
 
+  // Mobile Pokémon Toggle
+  const mobilePokemonToggle = document.getElementById('mobilePokemonToggle');
+  const mobilePokemonList = document.getElementById('mobilePokemonList');
+
+  if (mobilePokemonToggle && mobilePokemonList) {
+    mobilePokemonToggle.addEventListener('click', function() {
+      this.classList.toggle('active');
+      mobilePokemonList.classList.toggle('active');
+    });
+  }
+
   // Initial carousel setup
   console.log('\n================================================================================');
   console.log('=== Calling initial carousel setup... ===');

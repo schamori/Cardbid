@@ -2450,6 +2450,123 @@ body.woocommerce-page .nav-cart {
   padding-left: 20px;
 }
 
+/* Mobile Pokémon Section */
+.mobile-pokemon-section {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 16px;
+}
+
+.mobile-pokemon-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  border-radius: 8px;
+  color: var(--text-white);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.mobile-pokemon-toggle:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.mobile-pokemon-toggle .dropdown-arrow {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.mobile-pokemon-toggle.active .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.mobile-pokemon-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  margin-top: 8px;
+}
+
+.mobile-pokemon-list.active {
+  max-height: 800px;
+}
+
+.mobile-expansion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-expansion-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.mobile-expansion-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-expansion-name {
+  color: #ffffff;
+  font-size: 14px;
+  flex: 1;
+}
+
+.mobile-expansion-types {
+  display: flex;
+  gap: 8px;
+}
+
+.mobile-type-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.mobile-type-link:hover {
+  background: var(--pale-blue);
+  color: #1e2741;
+  transform: scale(1.05);
+}
+
+.mobile-show-all-link {
+  display: block;
+  text-align: center;
+  padding: 12px 16px;
+  margin-top: 12px;
+  color: rgba(230, 238, 255, 0.8);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.15s ease;
+}
+
+.mobile-show-all-link:hover {
+  background: rgba(105, 115, 219, 0.2);
+  color: var(--text-white);
+}
+
 .mobile-menu-link {
   display: flex;
   align-items: center;
