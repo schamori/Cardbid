@@ -10,6 +10,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: storefront-child-cardbid
 */
 
+/* Import split navbar system - isolated desktop and mobile navbars */
+@import url('navbar-split.css');
+
 /* Hide default WordPress/Storefront header and footer globally */
 .site-header,
 .storefront-primary-navigation,
