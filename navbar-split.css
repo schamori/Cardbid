@@ -48,7 +48,6 @@
   transform-style: flat !important;
   will-change: auto !important;
   perspective: none !important;
-  contain: layout !important;
 
   /* Liquid glass morphism effect */
   background: rgba(30, 39, 65, 0.85) !important;
@@ -64,9 +63,6 @@
   /* Prevent overflow issues */
   overflow: visible !important;
   box-sizing: border-box !important;
-
-  /* Force display above everything */
-  isolation: isolate !important;
 }
 
 /* Desktop Logo wrapper */
